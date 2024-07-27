@@ -46,8 +46,14 @@
 								</button>
 							{/if}
 						</div>
-						{#if item.childMenutItems && item.isOpen}
-							<div class="flex flex-col gap-4 mt-4">
+						{#if item.childMenutItems}
+							<div
+								class={clsx(
+									'transition-maxHeight duration-300 overflow-hidden',
+									item.isOpen ? 'max-h-full mt-4' : 'max-h-0 mt-0',
+									'flex flex-col gap-4'
+								)}
+							>
 								{#each item.childMenutItems as childItem}
 									<a href={childItem.link}>
 										<div class="text-xl font-light">{childItem.label}</div>

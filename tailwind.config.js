@@ -14,6 +14,10 @@ export default {
 			},
 			colors: {
 				secondary: '#2E85AE'
+			},
+			transitionProperty: {
+				maxHeight: 'maxHeight',
+				height: 'height'
 			}
 		}
 	},
