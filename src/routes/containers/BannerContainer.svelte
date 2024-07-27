@@ -3,7 +3,6 @@
 	import { inview, type ObserverEventDetails } from 'svelte-inview';
 
 	import { isTopbarTransparent } from '$lib/store';
-	import Header from '$lib/components/Header.svelte';
 	// import type { RecordModel } from 'pocketbase';
 	// import { pb } from '$lib/pocketbase';
 
@@ -69,7 +68,6 @@
 	on:inview_change={handleChange}
 	class="relative"
 >
-	<Header />
 	<div bind:this={containerEl} class="max-w-full overflow-hidden flex">
 		{#each banners as banner}
 			<div class="relative min-w-full">

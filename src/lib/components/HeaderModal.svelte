@@ -17,7 +17,7 @@
 
 <div
 	class={clsx(
-		'bg-white w-screen min-h-screen',
+		'bg-white text-black w-screen min-h-screen',
 		'fixed top-0 left-0',
 		'transform transition-transform duration-300',
 		isModalOpen ? 'translate-x-0' : 'translate-x-full',

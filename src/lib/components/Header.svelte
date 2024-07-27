@@ -1,10 +1,17 @@
 <script lang="ts">
+	import clsx from 'clsx';
+
 	import menuIcon from '$lib/icons/menu-icon.svg?raw';
 	import mainLogo from '$lib/icons/main-logo.svg?raw';
 	import HeaderModal from './HeaderModal.svelte';
 	import type { MenuItem } from '$lib/type';
+	import { isTopbarTransparent } from '$lib/store';
 
 	let isModalOpen = false;
+	let isTransparent = false;
+
+	isTopbarTransparent.subscribe((value) => (isTransparent = value));
+
 	const navbarItems: MenuItem[] = [
 		{
 			label: 'About Us',
@@ -51,7 +58,12 @@
 	];
 </script>
 
-<div class="fixed top-0 left-0 w-full z-40">
+<div
+	class={clsx(
+		'fixed top-0 left-0 w-full z-40',
+		isTransparent ? 'bg-none text-white' : 'bg-white text-black'
+	)}
+>
 	<div class="w-full">
 		<div class="container py-8 flex justify-between items-center">
 			<!-- Main Logo -->
