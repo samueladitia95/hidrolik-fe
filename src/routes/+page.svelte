@@ -1,5 +1,6 @@
 <script>
 	import BannerContainer from './containers/BannerContainer.svelte';
+	import ContactUsContainer from './containers/ContactUsContainer.svelte';
 	import CustomerTestimonial from './containers/CustomerTestimonial.svelte';
 	import FaqContainer from './containers/FAQContainer.svelte';
 	import FeaturedCategories from './containers/FeaturedCategories.svelte';
@@ -18,4 +19,5 @@
 	<HowToOrderContainer />
 	<CustomerTestimonial />
 	<FaqContainer />
+	<ContactUsContainer />
 </div>
