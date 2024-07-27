@@ -11,6 +11,9 @@ export default {
 			container: {
 				center: true,
 				padding: '2rem'
+			},
+			colors: {
+				secondary: '#2E85AE'
 			}
 		}
 	},

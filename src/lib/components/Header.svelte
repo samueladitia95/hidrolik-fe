@@ -2,20 +2,42 @@
 	import menuIcon from '$lib/icons/menu-icon.svg?raw';
 	import mainLogo from '$lib/icons/main-logo.svg?raw';
 	import HeaderModal from './HeaderModal.svelte';
+	import type { MenuItem } from '$lib/type';
 
-	let isModalOpen = false;
-	const navbarItems = [
+	let isModalOpen = true;
+	const navbarItems: MenuItem[] = [
 		{
-			label: 'About Us'
+			label: 'About Us',
+			isOpen: false
 		},
 		{
-			label: 'Service'
+			label: 'Service',
+			isOpen: false
 		},
 		{
-			label: 'Products'
+			label: 'Products',
+			isOpen: false,
+			childMenutItems: [
+				{
+					label: 'Industrial Cable'
+				},
+				{
+					label: 'Hydraulic Cable'
+				},
+				{
+					label: 'Industrial Connector'
+				},
+				{
+					label: 'Hydraulic Connector'
+				},
+				{
+					label: 'Hydraulic Pipe'
+				}
+			]
 		},
 		{
-			label: 'Contact Us'
+			label: 'Contact Us',
+			isOpen: false
 		}
 	];
 </script>
@@ -43,5 +65,5 @@
 </div>
 
 {#if isModalOpen}
-	<HeaderModal bind:isModalOpen />
+	<HeaderModal bind:isModalOpen {navbarItems} />
 {/if}
