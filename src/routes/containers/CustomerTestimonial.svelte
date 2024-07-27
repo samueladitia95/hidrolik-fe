@@ -38,8 +38,8 @@
 	];
 </script>
 
-<div class="bg-white text-black">
-	<div class="container py-28 md:py-56 lg:pb-0">
+<div class="bg-white text-black min-h-screen lg:flex lg:flex-col lg:justify-center">
+	<div class="container py-28 lg:py-0">
 		<div class="flex flex-col gap-2 md:text-center">
 			<div class="text-3xl/relaxed md:text-4xl/relaxed lg:text-5xl/relaxed font-bold">
 				Customers Testimonials
@@ -68,7 +68,7 @@
 			{/each}
 		</div>
 	</div>
-	<div class="mt-16 hidden lg:block lg:mb-56">
+	<div class="mt-16 hidden lg:block">
 		<Marquee direction="left" fade={true} reverse={false} pauseOnHover={false} innerClassName="">
 			{#each testimonials as testimonial}
 				<div class="rounded-lg border border-solid border-black px-8 py-8 max-w-[492px]">

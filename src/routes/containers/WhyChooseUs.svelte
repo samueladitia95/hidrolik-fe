@@ -24,8 +24,8 @@
 	];
 </script>
 
-<div class="bg-gradient-to-r from-[#05374F] to-[#08222F] w-screen">
-	<div class="container py-28 md:py-56 text-white">
+<div class="bg-gradient-to-r from-[#05374F] to-[#08222F] w-screen min-h-screen lg:flex lg:flex-col lg:justify-center">
+	<div class="container py-28 text-white">
 		<div class="flex flex-col gap-6 items-center md:text-center">
 			<div class="text-3xl md:text-5xl font-bold">Why Choose Us</div>
 			<div class="leading-relaxed md:max-w-xl">
