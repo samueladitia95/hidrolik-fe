@@ -4,6 +4,5 @@
 </script>
 
 <div class="font-inter">
-	<Header />
 	<slot />
 </div>

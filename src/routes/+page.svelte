@@ -1,1 +1,8 @@
-<div class="text-xl text-center text-red-500 font-inter">Hello World</div>
+<script>
+	import Header from '$lib/components/Header.svelte';
+	import BannerContainer from './containers/BannerContainer.svelte';
+</script>
+
+<div>
+	<BannerContainer />
+</div>

@@ -51,7 +51,7 @@
 	];
 </script>
 
-<div class="relative">
+<div class="fixed top-0 left-0 w-full z-40">
 	<div class="w-full">
 		<div class="container py-8 flex justify-between items-center">
 			<!-- Main Logo -->
