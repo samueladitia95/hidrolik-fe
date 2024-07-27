@@ -1,6 +1,6 @@
 <script lang="ts">
-	import menuIconBlack from '$lib/icons/menu-icon-black.svg';
-	import mainLogoBlack from '$lib/icons/main-logo-black.svg';
+	import menuIcon from '$lib/icons/menu-icon.svg?raw';
+	import mainLogo from '$lib/icons/main-logo.svg?raw';
 	import HeaderModal from './HeaderModal.svelte';
 
 	let isModalOpen = false;
@@ -23,12 +23,13 @@
 <div class="w-full">
 	<div class="container py-8 flex justify-between items-start">
 		<!-- Main Logo -->
-		<div>
-			<img src={mainLogoBlack} alt="main-logo" class="max-w-56" />
+		<div class="max-w-56">
+			{@html mainLogo}
 		</div>
 
-		<button on:click={() => (isModalOpen = true)}>
-			<img src={menuIconBlack} alt="icon" class="h-6 w-6" />
+		<!-- Menu Icon -->
+		<button on:click={() => (isModalOpen = true)} class="h-6 w-6">
+			{@html menuIcon}
 		</button>
 
 		<div class="hidden">

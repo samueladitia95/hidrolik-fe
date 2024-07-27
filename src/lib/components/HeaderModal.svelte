@@ -1,5 +1,6 @@
 <script lang="ts">
-	import mainLogoBlack from '$lib/icons/main-logo-black.svg';
+	import mainLogo from '$lib/icons/main-logo.svg?raw';
+	import closeLogo from '$lib/icons/close-logo.svg?raw';
 
 	export let isModalOpen;
 </script>
@@ -7,23 +8,12 @@
 <div class="absolute top-0 left-0 bg-white w-screen min-h-screen">
 	<div class="container py-8">
 		<div class="flex justify-between items-center">
-			<div>
-				<img src={mainLogoBlack} alt="main-logo" class="max-w-56" />
+			<div class="max-w-56">
+				{@html mainLogo}
 			</div>
 
-			<button on:click={() => (isModalOpen = false)}>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="24"
-					height="24"
-					viewBox="0 0 24 24"
-					fill="none"
-				>
-					<path
-						d="M6.4 19L5 17.6L10.6 12L5 6.4L6.4 5L12 10.6L17.6 5L19 6.4L13.4 12L19 17.6L17.6 19L12 13.4L6.4 19Z"
-						fill="black"
-					/>
-				</svg>
+			<button on:click={() => (isModalOpen = false)} class="h-6 w-6">
+				{@html closeLogo}
 			</button>
 		</div>
 	</div>
