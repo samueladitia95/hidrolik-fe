@@ -1,11 +1,17 @@
+import defaultTheme from 'tailwindcss/defaultTheme';
+
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		extend: {},
-		container: {
-			center: true,
-			padding: '2rem'
+		extend: {
+			fontFamily: {
+				inter: ['Inter', ...defaultTheme.fontFamily.sans]
+			},
+			container: {
+				center: true,
+				padding: '2rem'
+			}
 		}
 	},
 	plugins: []
