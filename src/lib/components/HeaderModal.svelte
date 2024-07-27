@@ -65,7 +65,8 @@
 					</div>
 				{/each}
 
-				<button class="bg-secondary text-white font-semibold px-6 py-3 rounded-full"
+				<button
+					class="bg-secondary text-white font-semibold px-6 py-3 rounded-full hover:bg-opacity-85"
 					>Download Catalog</button
 				>
 			</div>

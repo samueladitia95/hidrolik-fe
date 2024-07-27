@@ -9,7 +9,7 @@
 				applications. Our commitment to excellence ensures that you receive the best quality
 				products at the most competitive prices available.
 			</div>
-			<button class="px-6 py-3 rounded-full bg-black text-white font-semibold">Learn More</button>
+			<button class="px-6 py-3 rounded-full bg-black text-white font-semibold hover:bg-opacity-75">Learn More</button>
 		</div>
 
 		<div class="mt-10 flex justify-center">
