@@ -4,7 +4,7 @@
 	import HeaderModal from './HeaderModal.svelte';
 	import type { MenuItem } from '$lib/type';
 
-	let isModalOpen = true;
+	let isModalOpen = false;
 	const navbarItems: MenuItem[] = [
 		{
 			label: 'About Us',
@@ -53,16 +53,11 @@
 
 <div class="relative">
 	<div class="w-full">
-		<div class="container py-8 flex justify-between items-start">
+		<div class="container py-8 flex justify-between items-center">
 			<!-- Main Logo -->
 			<div class="max-w-56">
 				{@html mainLogo}
 			</div>
-
-			<!-- Menu Icon -->
-			<button on:click={() => (isModalOpen = true)} class="h-6 w-6">
-				{@html menuIcon}
-			</button>
 
 			<!-- List of navbar item -->
 			<div class="hidden">
@@ -71,6 +66,19 @@
 						<div>{item.label}</div>
 					</div>
 				{/each}
+			</div>
+
+			<div class="flex gap-8 items-center">
+				<div class="hidden md:block">
+					<button class="bg-secondary text-white font-semibold px-6 py-3 rounded-full"
+						>Download Catalog</button
+					>
+				</div>
+
+				<!-- Menu Icon -->
+				<button on:click={() => (isModalOpen = true)} class="h-6 w-6 md:h-8 md:w-8">
+					{@html menuIcon}
+				</button>
 			</div>
 		</div>
 	</div>

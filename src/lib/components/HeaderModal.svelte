@@ -29,7 +29,7 @@
 				{@html mainLogo}
 			</div>
 
-			<button on:click={() => (isModalOpen = false)} class="h-6 w-6">
+			<button on:click={() => (isModalOpen = false)} class="h-6 w-6 md:h-8 md:w-8">
 				{@html closeLogo}
 			</button>
 		</div>
@@ -56,7 +56,7 @@
 							>
 								{#each item.childMenutItems as childItem}
 									<a href={childItem.link}>
-										<div class="text-xl font-light">{childItem.label}</div>
+										<div class="text-xl font-light px-4">{childItem.label}</div>
 									</a>
 								{/each}
 							</div>
