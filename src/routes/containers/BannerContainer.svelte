@@ -76,16 +76,20 @@
 		{/each}
 	</div>
 	<div
-		class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full container text-white lg:max-w-[556px] md:left-0 md:translate-x-0"
+		class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-screen text-white md:left-0 md:translate-x-0"
 	>
-		<div class="font-bold text-4xl/normal md:text-5xl/normal">
-			Building a Stronger Industry by Quality
+		<div class="container">
+			<div class="lg:max-w-[556px]">
+				<div class="font-bold text-4xl/normal md:text-5xl/normal">
+					Building a Stronger Industry by Quality
+				</div>
+				<div class="leading-loose mt-4">
+					Offer top-notch hydraulic hoses tailored to meet various industry needs, known for
+					exceptional quality and competitive pricing.
+				</div>
+				<button class="bg-secondary px-6 py-3 rounded-full mt-6">Browse Our Products</button>
+			</div>
 		</div>
-		<div class="leading-loose mt-4">
-			Offer top-notch hydraulic hoses tailored to meet various industry needs, known for exceptional
-			quality and competitive pricing.
-		</div>
-		<button class="bg-secondary px-6 py-3 rounded-full mt-6">Browse Our Products</button>
 	</div>
 	<div class="absolute bottom-10 flex gap-3 z-20 left-1/2 -translate-x-1/2 -translate-y-1/2">
 		{#each { length: itemNumber } as _, i}
