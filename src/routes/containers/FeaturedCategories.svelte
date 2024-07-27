@@ -46,7 +46,7 @@
 <div class="bg-white">
 	<div class="container py-28">
 		<div class="flex flex-col md:flex-row md:justify-between md:items-center items-start gap-6">
-			<div class="flex flex-col item-s gap-2">
+			<div class="flex flex-col gap-2">
 				<div class="text-3xl/relaxed md:text-4xl/relaxed font-bold">Featured Categories</div>
 				<div class="leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
 			</div>

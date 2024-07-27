@@ -1,5 +1,6 @@
 <script>
 	import BannerContainer from './containers/BannerContainer.svelte';
+	import CustomerTestimonial from './containers/CustomerTestimonial.svelte';
 	import FeaturedCategories from './containers/FeaturedCategories.svelte';
 	import HowToOrderContainer from './containers/HowToOrderContainer.svelte';
 	import TrustedIndustryContainer from './containers/TrustedIndustryContainer.svelte';
@@ -14,4 +15,5 @@
 	<WhyChooseUs />
 	<FeaturedCategories />
 	<HowToOrderContainer />
+	<CustomerTestimonial />
 </div>
