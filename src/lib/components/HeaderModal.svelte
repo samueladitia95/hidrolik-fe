@@ -20,7 +20,8 @@
 		'bg-white w-screen min-h-screen',
 		'fixed top-0 left-0',
 		'transform transition-transform duration-300',
-		isModalOpen ? 'translate-x-0' : 'translate-x-full'
+		isModalOpen ? 'translate-x-0' : 'translate-x-full',
+		'lg:hidden'
 	)}
 >
 	<div class="container py-8 flex flex-col min-h-screen">
