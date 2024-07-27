@@ -1,4 +1,6 @@
 <script lang="ts">
+	import clsx from 'clsx';
+
 	import mainLogo from '$lib/icons/main-logo.svg?raw';
 	import closeLogo from '$lib/icons/close-logo.svg?raw';
 	import chevronLogo from '$lib/icons/chevron-logo.svg?raw';
@@ -9,11 +11,18 @@
 
 	import type { MenuItem } from '$lib/type';
 
-	export let isModalOpen;
+	export let isModalOpen = false;
 	export let navbarItems: MenuItem[];
 </script>
 
-<div class="absolute top-0 left-0 bg-white w-screen min-h-screen">
+<div
+	class={clsx(
+		'bg-white w-screen min-h-screen',
+		'fixed top-0 left-0',
+		'transform transition-transform duration-300',
+		isModalOpen ? 'translate-x-0' : 'translate-x-full'
+	)}
+>
 	<div class="container py-8 flex flex-col min-h-screen">
 		<div class="flex justify-between items-center">
 			<div class="max-w-56">
@@ -30,7 +39,7 @@
 				{#each navbarItems as item}
 					<div class="w-full">
 						<div class="flex w-full justify-between">
-							<div class="text-2xl/normal font-light">{item.label}</div>
+							<a href={item.link}> <div class="text-2xl/normal font-light">{item.label}</div></a>
 							{#if item.childMenutItems}
 								<button class="w-8 h-8" on:click={() => (item.isOpen = !item.isOpen)}>
 									{@html chevronLogo}
@@ -40,7 +49,9 @@
 						{#if item.childMenutItems && item.isOpen}
 							<div class="flex flex-col gap-4 mt-4">
 								{#each item.childMenutItems as childItem}
-									<div class="text-xl font-light">{childItem.label}</div>
+									<a href={childItem.link}>
+										<div class="text-xl font-light">{childItem.label}</div>
+									</a>
 								{/each}
 							</div>
 						{/if}
