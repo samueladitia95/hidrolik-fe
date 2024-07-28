@@ -21,7 +21,7 @@
 		'fixed top-0 left-0',
 		'transform transition-transform duration-300',
 		isModalOpen ? 'translate-x-0' : 'translate-x-full',
-		'lg:hidden'
+		'lg:!hidden'
 	)}
 >
 	<div class="container py-8 flex flex-col min-h-screen">
@@ -30,7 +30,7 @@
 				{@html mainLogo}
 			</div>
 
-			<button on:click={() => (isModalOpen = false)} class="h-6 w-6 md:h-8 md:w-8">
+			<button on:click={() => (isModalOpen = false)} class="h-6 w-6 md:!h-8 md:!w-8">
 				{@html closeLogo}
 			</button>
 		</div>

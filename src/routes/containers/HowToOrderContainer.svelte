@@ -29,13 +29,13 @@
 </script>
 
 <div class="bg-secondary w-screen">
-	<div class="container py-28 md:py-56 text-white">
-		<div class="xl:flex xl:items-center xl:gap-40">
-			<div class="flex flex-col gap-6 items-center md:text-center xl:text-left xl:w-[1000px]">
-				<div class="text-3xl md:text-5xl/relaxed font-bold">How to order our products</div>
+	<div class="container py-28 md:!py-56 text-white">
+		<div class="xl:!flex xl:!items-center xl:!gap-40">
+			<div class="flex flex-col gap-6 items-center md:!text-center xl:!text-left xl:!w-[1000px]">
+				<div class="text-3xl md:!text-5xl/relaxed font-bold">How to order our products</div>
 			</div>
 
-			<div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
+			<div class="mt-20 grid grid-cols-1 md:!grid-cols-2 gap-12 md:!gap-24">
 				{#each howToOrders as order, index}
 					<div class="flex flex-col gap-6 items-start">
 						<div class="w-12 h-12">{@html boxLogo}</div>

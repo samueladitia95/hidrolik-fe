@@ -47,7 +47,7 @@
 	<div class="container py-28">
 		<div class="flex flex-col md:!flex-row md:!justify-between md:!items-center items-start gap-6">
 			<div class="flex flex-col gap-2">
-				<div class="text-3xl/relaxed md:text-4xl/relaxed font-bold">Featured Categories</div>
+				<div class="text-3xl/relaxed md:!text-4xl/relaxed font-bold">Featured Categories</div>
 				<div class="leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
 			</div>
 			<button
@@ -56,13 +56,13 @@
 			>
 		</div>
 
-		<div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+		<div class="mt-12 grid grid-cols-1 md:!grid-cols-2 lg:!grid-cols-4 gap-6">
 			{#each categories as category}
 				<div class="relative">
 					<img
 						src={category.image}
 						alt="category"
-						class="h-[380px] lg:h-[260px] xl:h-[380px] w-full object-cover rounded-xl"
+						class="h-[380px] lg:!h-[260px] xl:!h-[380px] w-full object-cover rounded-xl"
 					/>
 					<div class="absolute top-0 left-0 w-full h-full gradient-overlay rounded-xl" />
 					<div class="absolute bottom-6 left-6 text-2xl font-semibold text-white">

@@ -56,18 +56,18 @@
 	}
 </script>
 
-<div class="bg-white text-black min-h-screen lg:flex lg:flex-col lg:justify-center">
+<div class="bg-white text-black min-h-screen lg:!flex lg:!flex-col lg:!justify-center">
 	<div class="container py-28">
-		<div class="flex lg:items-center gap-6">
+		<div class="flex lg:!items-center gap-6">
 			<div>
-				<div class="text-3xl/relaxed md:text-5xl/relaxed font-bold">
+				<div class="text-3xl/relaxed md:!text-5xl/relaxed font-bold">
 					We provides for various industries and applications
 				</div>
 
 				<div class="mt-10 flex flex-col gap-6">
 					<div
 						bind:this={carauselEl}
-						class="flex flex-start max-w-screen overflow-hidden snap-x snap-mandatory lg:hidden"
+						class="flex flex-start max-w-screen overflow-hidden snap-x snap-mandatory lg:!hidden"
 					>
 						{#each applications as application}
 							<img
@@ -91,7 +91,7 @@
 								<div class="text-2xl/relaxed font-bold">{application.title}</div>
 								<div
 									class={clsx(
-										'text-sm/loose md:text-base/loose overflow-hidden transition-all duration-200',
+										'text-sm/loose md:!text-base/loose overflow-hidden transition-all duration-200',
 										index === viewIndex ? 'max-h-[200px]' : 'max-h-0'
 									)}
 								>
@@ -105,19 +105,19 @@
 
 			<div
 				bind:this={carauselDesktopEl}
-				class="hidden lg:flex flex-start max-w-screen overflow-hidden snap-x snap-mandatory lg:max-w-[670px]"
+				class="hidden lg:!flex flex-start max-w-screen overflow-hidden snap-x snap-mandatory lg:!max-w-[670px]"
 			>
 				{#each applications as application}
 					<img
 						src={application.image}
 						alt="application"
-						class="rounded-lg object-cover max-w-full lg:max-h-[450px]"
+						class="rounded-lg object-cover max-w-full lg:!max-h-[450px]"
 					/>
 				{/each}
 			</div>
 		</div>
 
-		<div class="flex gap-2 lg:justify-end mt-6">
+		<div class="flex gap-2 lg:!justify-end mt-6">
 			<button
 				on:click|preventDefault={() => scrollIntoView('minus')}
 				class="p-3 border border-solid border-black rounded-full disabled:opacity-50"

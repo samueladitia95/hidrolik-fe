@@ -38,20 +38,20 @@
 	];
 </script>
 
-<div class="bg-white text-black min-h-screen lg:flex lg:flex-col lg:justify-center">
-	<div class="container py-28 lg:py-0">
-		<div class="flex flex-col gap-2 md:text-center">
-			<div class="text-3xl/relaxed md:text-4xl/relaxed lg:text-5xl/relaxed font-bold">
+<div class="bg-white text-black min-h-screen lg:!flex lg:!flex-col lg:!justify-center">
+	<div class="container py-28 lg:!py-0">
+		<div class="flex flex-col gap-2 md:!text-center">
+			<div class="text-3xl/relaxed md:!text-4xl/relaxed lg:!text-5xl/relaxed font-bold">
 				Customers Testimonials
 			</div>
-			<div class="leading-relaxed lg:text-lg">
+			<div class="leading-relaxed lg:!text-lg">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 			</div>
 		</div>
 
-		<div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 lg:hidden">
+		<div class="mt-8 grid grid-cols-1 md:!grid-cols-2 gap-6 lg:!hidden">
 			{#each testimonials as testimonial}
-				<div class="rounded-lg border border-solid border-black px-8 py-6 md:py-8">
+				<div class="rounded-lg border border-solid border-black px-8 py-6 md:!py-8">
 					<div class="leading-relaxed">"{testimonial.content}"</div>
 					<div class="mt-6 flex gap-5">
 						<img
@@ -68,7 +68,7 @@
 			{/each}
 		</div>
 	</div>
-	<div class="mt-16 hidden lg:block">
+	<div class="mt-16 hidden lg:!block">
 		<Marquee direction="left" fade={true} reverse={false} pauseOnHover={false} innerClassName="">
 			{#each testimonials as testimonial}
 				<div class="rounded-lg border border-solid border-black px-8 py-8 max-w-[492px]">
