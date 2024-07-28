@@ -18,6 +18,9 @@ export default {
 			transitionProperty: {
 				maxHeight: 'maxHeight',
 				height: 'height'
+			},
+			borderWidth: {
+				3: '3px'
 			}
 		}
 	},

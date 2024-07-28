@@ -1,4 +1,5 @@
 <script>
+	import ApplicationContainer from './containers/ApplicationContainer.svelte';
 	import BannerContainer from './containers/BannerContainer.svelte';
 	import ContactUsContainer from './containers/ContactUsContainer.svelte';
 	import CustomerTestimonial from './containers/CustomerTestimonial.svelte';
@@ -15,6 +16,7 @@
 	<TrustedIndustryContainer />
 	<TrustedPartnerContainer />
 	<WhyChooseUs />
+	<ApplicationContainer />
 	<FeaturedCategories />
 	<HowToOrderContainer />
 	<CustomerTestimonial />
