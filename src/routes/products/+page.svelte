@@ -1,11 +1,16 @@
 <script lang="ts">
 	import clsx from 'clsx';
+	import { pb } from '$lib/pocketbase';
 
 	import Categories from './containers/Categories.svelte';
 
 	import SearchLogo from '$lib/icons/search-logo.svg?raw';
 	import FilterLogo from '$lib/icons/filter-icon.svg?raw';
 	import CloseLogo from '$lib/icons/close-logo.svg?raw';
+
+	import type { RecordModel } from 'pocketbase';
+	import type { PageData } from './$types';
+	export let data: PageData;
 
 	let isFilterOpen = false;
 
@@ -31,7 +36,14 @@
 		description: string;
 	};
 
-	const products: Product[] = [];
+	$: products = data.products.items.map((el: RecordModel): Product => {
+		return {
+			id: el.id,
+			name: el.name,
+			imageUrl: el['images_url'][0],
+			description: el.description
+		};
+	});
 </script>
 
 <div class="min-h-screen container">
@@ -73,10 +85,10 @@
 		<div class="mt-6">
 			{#if products.length}
 				<div class="flex flex-col gap-16">
-					{#each products as product}
+					{#each products as product, index}
 						<div class="flex flex-col gap-4">
 							<img
-								src={product.imageUrl}
+								src={pb.files.getUrl(data.products.items[index], product.imageUrl)}
 								alt="product"
 								class="w-full object-cover max-h-80 rounded-sm"
 							/>
