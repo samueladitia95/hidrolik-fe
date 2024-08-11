@@ -48,7 +48,7 @@
 
 <div class="min-h-screen container">
 	<div class="flex flex-col gap-6">
-		<div class="text-3xl font-bold">Our Product</div>
+		<div class="text-3xl md:!text-5xl font-bold">Our Product</div>
 
 		<!-- SEARCH -->
 		<div>
@@ -84,7 +84,7 @@
 
 		<div class="mt-6">
 			{#if products.length}
-				<div class="flex flex-col gap-16">
+				<div class="grid grid-cols-1 md:!grid-cols-2 gap-16">
 					{#each products as product, index}
 						<div class="flex flex-col gap-4">
 							<img
@@ -118,10 +118,12 @@
 			'top-0 left-0 z-40 bg-black bg-opacity-50 h-screen w-screen',
 			isFilterOpen ? 'fixed' : 'hidden'
 		)}
+		on:click={() => (isFilterOpen = false)}
+		aria-hidden="true"
 	/>
 	<div
 		class={clsx(
-			'fixed top-0 left-0 z-50 max-w-xs w-full bg-white h-screen pt-10 px-6',
+			'fixed top-0 left-0 z-50 max-w-xs md:max-w-lg w-full bg-white h-screen pt-10 px-6',
 			'transform transition-transform duration-500',
 			isFilterOpen ? 'translate-x-0' : '-translate-x-full'
 		)}
