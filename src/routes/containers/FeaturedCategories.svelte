@@ -3,42 +3,42 @@
 		{
 			label: 'Hydraulic Hose',
 			image:
-				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DCYDk-twB06-~GPUx0hFMfCVChQMY4IVQcSvd~Dp67jXxxm32q32pA3SPQKQRd6ruY5AHa4N1xgCCXLWKrSW6zOnyp-MIF3B0VKiYP9F-heQ68Cpwv3fHjohTIAQSBiJALfP058KFjP6zQE1Moj~P63VoCBLommwAYFUDArn9doK7Ew8qgmf5QbwVHRrS2hzNf~-rK~JXMbQGtldDdK0gvu~nGloJKnOpQjo07GsqdMC65zHXsKJ~Z1nR6rnzlWz44ndA~9aNz5q0TMHAV-sQeQcS6awn4vro4r4dDNveY6hd7U4InaRpwmTq7sMKpnhuf0I-qyY7uiQNf5XnX54Eg__'
+				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qBqZBOg8VFvIkXVHoOIJMtzOle~Fjq2HwfGRF~t06vtMT~RK50y27eG9iotgCDgN8ZXS3-sSXVQQfdb8HFVcgvf8YlPPLhrZrBFZpEunK0OvyowuYSwkL-2HUSTI1p18dQlvdbo4Uyvyw7o6GKBP2T5Rfpggw8VcVdvV7lnuaKs~Jo5bsGtE2qc17hobYYNzWsdREmLuHs-LQ24hFOIPzsC-piLTHlittHxuntTfJrKxQcNWp6PWssqwHUwdq3u9GgL7dH33bXBJo1A8CPUAfoR4DHKtWkssTIRsPvjHSqpxO-zdrBcxvSoAzRrzKD~0xpllIC~q~Mz7h6FIpWcKmw__'
 		},
 		{
 			label: 'Connector',
 			image:
-				'https://s3-alpha-sig.figma.com/img/8c0b/ae9f/31f6ffd1543f0586fcfbb0ccae1cf3b3?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cFgDq85l4RR2UUyH8NU3gPnKRxk252K4UF59f8g4R2NR430UKvOEEWelDYbNQh6ivsy8mdXVYi1Z4Ab0-VO5xlm6I1K3Mh1wjqVaNUGTYuhw-6sZ3j6ZshVL8iNlVCSYprO3X0cPiZf~Z~cDJZrAAqb0UZN6hZC2gV14A6~6lMbkD5qYVIBriWI2ZThiNxRumEWf-qXlF23lyLBuIZMYUZVQzkLH1jQ6S9umJnZfkxqtaBM1l-byoash1QE5e6t3qtcrqCvS-jqDIg4ulFQ6NJnbFpgXPq~hMj7YSZc-NlnpXNq2OSJRTvJ-6p4uP4SMPtnEOgPKT9SBzFaQ7mmmlA__'
+				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qBqZBOg8VFvIkXVHoOIJMtzOle~Fjq2HwfGRF~t06vtMT~RK50y27eG9iotgCDgN8ZXS3-sSXVQQfdb8HFVcgvf8YlPPLhrZrBFZpEunK0OvyowuYSwkL-2HUSTI1p18dQlvdbo4Uyvyw7o6GKBP2T5Rfpggw8VcVdvV7lnuaKs~Jo5bsGtE2qc17hobYYNzWsdREmLuHs-LQ24hFOIPzsC-piLTHlittHxuntTfJrKxQcNWp6PWssqwHUwdq3u9GgL7dH33bXBJo1A8CPUAfoR4DHKtWkssTIRsPvjHSqpxO-zdrBcxvSoAzRrzKD~0xpllIC~q~Mz7h6FIpWcKmw__'
 		},
 		{
 			label: 'Crimping Machine',
 			image:
-				'https://s3-alpha-sig.figma.com/img/ded6/2452/7385d28049bc902db270450c370a5eb0?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Vt97fLljNJy2H6X6e7v7n~cKnAD3NBJ247pSTfduB46xm-owhLWz~qjkPcQDratOOF~1sYDb2MX6CsKUCEL6eckzFWvYMgMyI6~uZ9DfLzNAqp7LUvfDuDaVa~KgYK4isgcbsW8-0cJ6NT6bAA3yjy0b9QJT9sdgxROLPhOS4qWa1KOBzNC71EhxPjUa46P4XKcwKTbqT-7zDFULrnXRc4ftSwjNRiNjbchmG2BW753x1D2mCN1qC5UB3kvt3KEyP~te1LEDmnwnDg0hcYED6ogFsaCaKljJcSMdcN77phLLR0R80BOU1unNaPNs-9mX8UkuhPD5bSi4yzbt5ckUSQ__'
+				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qBqZBOg8VFvIkXVHoOIJMtzOle~Fjq2HwfGRF~t06vtMT~RK50y27eG9iotgCDgN8ZXS3-sSXVQQfdb8HFVcgvf8YlPPLhrZrBFZpEunK0OvyowuYSwkL-2HUSTI1p18dQlvdbo4Uyvyw7o6GKBP2T5Rfpggw8VcVdvV7lnuaKs~Jo5bsGtE2qc17hobYYNzWsdREmLuHs-LQ24hFOIPzsC-piLTHlittHxuntTfJrKxQcNWp6PWssqwHUwdq3u9GgL7dH33bXBJo1A8CPUAfoR4DHKtWkssTIRsPvjHSqpxO-zdrBcxvSoAzRrzKD~0xpllIC~q~Mz7h6FIpWcKmw__'
 		},
 		{
 			label: 'Industrial Connector',
 			image:
-				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DCYDk-twB06-~GPUx0hFMfCVChQMY4IVQcSvd~Dp67jXxxm32q32pA3SPQKQRd6ruY5AHa4N1xgCCXLWKrSW6zOnyp-MIF3B0VKiYP9F-heQ68Cpwv3fHjohTIAQSBiJALfP058KFjP6zQE1Moj~P63VoCBLommwAYFUDArn9doK7Ew8qgmf5QbwVHRrS2hzNf~-rK~JXMbQGtldDdK0gvu~nGloJKnOpQjo07GsqdMC65zHXsKJ~Z1nR6rnzlWz44ndA~9aNz5q0TMHAV-sQeQcS6awn4vro4r4dDNveY6hd7U4InaRpwmTq7sMKpnhuf0I-qyY7uiQNf5XnX54Eg__'
+				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qBqZBOg8VFvIkXVHoOIJMtzOle~Fjq2HwfGRF~t06vtMT~RK50y27eG9iotgCDgN8ZXS3-sSXVQQfdb8HFVcgvf8YlPPLhrZrBFZpEunK0OvyowuYSwkL-2HUSTI1p18dQlvdbo4Uyvyw7o6GKBP2T5Rfpggw8VcVdvV7lnuaKs~Jo5bsGtE2qc17hobYYNzWsdREmLuHs-LQ24hFOIPzsC-piLTHlittHxuntTfJrKxQcNWp6PWssqwHUwdq3u9GgL7dH33bXBJo1A8CPUAfoR4DHKtWkssTIRsPvjHSqpxO-zdrBcxvSoAzRrzKD~0xpllIC~q~Mz7h6FIpWcKmw__'
 		},
 		{
 			label: 'Industrial Connector',
 			image:
-				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DCYDk-twB06-~GPUx0hFMfCVChQMY4IVQcSvd~Dp67jXxxm32q32pA3SPQKQRd6ruY5AHa4N1xgCCXLWKrSW6zOnyp-MIF3B0VKiYP9F-heQ68Cpwv3fHjohTIAQSBiJALfP058KFjP6zQE1Moj~P63VoCBLommwAYFUDArn9doK7Ew8qgmf5QbwVHRrS2hzNf~-rK~JXMbQGtldDdK0gvu~nGloJKnOpQjo07GsqdMC65zHXsKJ~Z1nR6rnzlWz44ndA~9aNz5q0TMHAV-sQeQcS6awn4vro4r4dDNveY6hd7U4InaRpwmTq7sMKpnhuf0I-qyY7uiQNf5XnX54Eg__'
+				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qBqZBOg8VFvIkXVHoOIJMtzOle~Fjq2HwfGRF~t06vtMT~RK50y27eG9iotgCDgN8ZXS3-sSXVQQfdb8HFVcgvf8YlPPLhrZrBFZpEunK0OvyowuYSwkL-2HUSTI1p18dQlvdbo4Uyvyw7o6GKBP2T5Rfpggw8VcVdvV7lnuaKs~Jo5bsGtE2qc17hobYYNzWsdREmLuHs-LQ24hFOIPzsC-piLTHlittHxuntTfJrKxQcNWp6PWssqwHUwdq3u9GgL7dH33bXBJo1A8CPUAfoR4DHKtWkssTIRsPvjHSqpxO-zdrBcxvSoAzRrzKD~0xpllIC~q~Mz7h6FIpWcKmw__'
 		},
 		{
 			label: 'Industrial Connector',
 			image:
-				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DCYDk-twB06-~GPUx0hFMfCVChQMY4IVQcSvd~Dp67jXxxm32q32pA3SPQKQRd6ruY5AHa4N1xgCCXLWKrSW6zOnyp-MIF3B0VKiYP9F-heQ68Cpwv3fHjohTIAQSBiJALfP058KFjP6zQE1Moj~P63VoCBLommwAYFUDArn9doK7Ew8qgmf5QbwVHRrS2hzNf~-rK~JXMbQGtldDdK0gvu~nGloJKnOpQjo07GsqdMC65zHXsKJ~Z1nR6rnzlWz44ndA~9aNz5q0TMHAV-sQeQcS6awn4vro4r4dDNveY6hd7U4InaRpwmTq7sMKpnhuf0I-qyY7uiQNf5XnX54Eg__'
+				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qBqZBOg8VFvIkXVHoOIJMtzOle~Fjq2HwfGRF~t06vtMT~RK50y27eG9iotgCDgN8ZXS3-sSXVQQfdb8HFVcgvf8YlPPLhrZrBFZpEunK0OvyowuYSwkL-2HUSTI1p18dQlvdbo4Uyvyw7o6GKBP2T5Rfpggw8VcVdvV7lnuaKs~Jo5bsGtE2qc17hobYYNzWsdREmLuHs-LQ24hFOIPzsC-piLTHlittHxuntTfJrKxQcNWp6PWssqwHUwdq3u9GgL7dH33bXBJo1A8CPUAfoR4DHKtWkssTIRsPvjHSqpxO-zdrBcxvSoAzRrzKD~0xpllIC~q~Mz7h6FIpWcKmw__'
 		},
 		{
 			label: 'Industrial Connector',
 			image:
-				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DCYDk-twB06-~GPUx0hFMfCVChQMY4IVQcSvd~Dp67jXxxm32q32pA3SPQKQRd6ruY5AHa4N1xgCCXLWKrSW6zOnyp-MIF3B0VKiYP9F-heQ68Cpwv3fHjohTIAQSBiJALfP058KFjP6zQE1Moj~P63VoCBLommwAYFUDArn9doK7Ew8qgmf5QbwVHRrS2hzNf~-rK~JXMbQGtldDdK0gvu~nGloJKnOpQjo07GsqdMC65zHXsKJ~Z1nR6rnzlWz44ndA~9aNz5q0TMHAV-sQeQcS6awn4vro4r4dDNveY6hd7U4InaRpwmTq7sMKpnhuf0I-qyY7uiQNf5XnX54Eg__'
+				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qBqZBOg8VFvIkXVHoOIJMtzOle~Fjq2HwfGRF~t06vtMT~RK50y27eG9iotgCDgN8ZXS3-sSXVQQfdb8HFVcgvf8YlPPLhrZrBFZpEunK0OvyowuYSwkL-2HUSTI1p18dQlvdbo4Uyvyw7o6GKBP2T5Rfpggw8VcVdvV7lnuaKs~Jo5bsGtE2qc17hobYYNzWsdREmLuHs-LQ24hFOIPzsC-piLTHlittHxuntTfJrKxQcNWp6PWssqwHUwdq3u9GgL7dH33bXBJo1A8CPUAfoR4DHKtWkssTIRsPvjHSqpxO-zdrBcxvSoAzRrzKD~0xpllIC~q~Mz7h6FIpWcKmw__'
 		},
 		{
 			label: 'Industrial Connector',
 			image:
-				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DCYDk-twB06-~GPUx0hFMfCVChQMY4IVQcSvd~Dp67jXxxm32q32pA3SPQKQRd6ruY5AHa4N1xgCCXLWKrSW6zOnyp-MIF3B0VKiYP9F-heQ68Cpwv3fHjohTIAQSBiJALfP058KFjP6zQE1Moj~P63VoCBLommwAYFUDArn9doK7Ew8qgmf5QbwVHRrS2hzNf~-rK~JXMbQGtldDdK0gvu~nGloJKnOpQjo07GsqdMC65zHXsKJ~Z1nR6rnzlWz44ndA~9aNz5q0TMHAV-sQeQcS6awn4vro4r4dDNveY6hd7U4InaRpwmTq7sMKpnhuf0I-qyY7uiQNf5XnX54Eg__'
+				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qBqZBOg8VFvIkXVHoOIJMtzOle~Fjq2HwfGRF~t06vtMT~RK50y27eGiotgCDgN8ZXS3-sSXVQQfdb8HFVcgvf8YlPPLhrZrBFZpEunK0OvyowuYSwkL-2HUSTI1p18dQlvdbo4Uyvyw7o6GKBP2T5Rfpggw8VcVdvV7lnuaKs~Jo5bsGtE2qc17hobYYNzWsdREmLuHs-LQ24hFOIPzsC-piLTHlittHxuntTfJrKxQcNWp6PWssqwHUwdq3u9GgL7dH33bXBJo1A8CPUAfoR4DHKtWkssTIRsPvjHSqpxO-zdrBcxvSoAzRrzKD~0xpllIC~q~Mz7h6FIpWcKmw__'
 		}
 	];
 </script>
@@ -78,6 +78,6 @@
 	.gradient-overlay {
 		background:
 			linear-gradient(180deg, #00000000 45.79%, #000 100%),
-			url(<path-to-image>) transparent 50% / cover no-repeat;
+			transparent 50% / cover no-repeat;
 	}
 </style>
