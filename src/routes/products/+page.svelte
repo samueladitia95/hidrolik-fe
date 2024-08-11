@@ -106,6 +106,11 @@
 							</div>
 						{/each}
 					</div>
+					<div class="w-full mt-16 flex justify-center">
+						<button class="rounded-full border-2 border-solid border-black px-6 py-3">
+							View More
+						</button>
+					</div>
 				{:else}
 					<div class="py-60 flex flex-col justify-center items-center gap-2">
 						<div class="font-semibold">No result found</div>

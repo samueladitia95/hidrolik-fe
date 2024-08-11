@@ -197,4 +197,8 @@
 			</div>
 		{/each}
 	</div>
+	<div class="mt-4 flex flex-col gap-2 mb-6">
+		<button class="px-6 py-3 rounded-full bg-black text-white font-semibold">Apply</button>
+		<button class="px-6 py-3 font-semibold">Reset All</button>
+	</div>
 </div>
