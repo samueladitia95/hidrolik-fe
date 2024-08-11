@@ -60,53 +60,59 @@
 			</div>
 		</div>
 	</div>
-	<div class="my-12">
-		<div class="w-full flex justify-between">
-			<!-- FILTER BUTTON -->
-			<button
-				class="border-2 border-solid border-black rounded-full px-6 py-3 flex gap-3"
-				on:click={() => (isFilterOpen = true)}
-			>
-				<div class="h-6 w-6">{@html FilterLogo}</div>
-				<div class="">Filter</div>
-			</button>
-
-			<!-- ORDER BY -->
-			<div class="flex gap-2 items-center">
-				<div class="font-bold">Sort by</div>
-				<select class="p-3 border border-solid border-black rounded outline-none">
-					{#each orders as order}
-						<option>{order.label}</option>
-					{/each}
-				</select>
-			</div>
+	<div class="my-12 lg:!grid lg:!grid-cols-4 xl:!grid-cols-6 lg:!gap-6">
+		<div class="hidden lg:!block">
+			<div class="text-2xl font-bold">Filters</div>
+			<Categories />
 		</div>
+		<div class="lg:!col-span-3 xl:!col-span-5">
+			<div class="w-full flex justify-between lg:!justify-end">
+				<!-- FILTER BUTTON -->
+				<button
+					class="border-2 border-solid border-black rounded-full px-6 py-3 flex gap-3 lg:!hidden"
+					on:click={() => (isFilterOpen = true)}
+				>
+					<div class="h-6 w-6">{@html FilterLogo}</div>
+					<div class="">Filter</div>
+				</button>
 
-		<div class="mt-6">
-			{#if products.length}
-				<div class="grid grid-cols-1 md:!grid-cols-2 gap-16">
-					{#each products as product, index}
-						<div class="flex flex-col gap-4">
-							<img
-								src={pb.files.getUrl(data.products.items[index], product.imageUrl)}
-								alt="product"
-								class="w-full object-cover max-h-80 rounded-sm"
-							/>
-							<div>
-								<div class="text-lg/relaxed font-semibold text-secondary underline">
-									{product.name}
+				<!-- ORDER BY -->
+				<div class="flex gap-2 items-center">
+					<div class="font-bold">Sort by</div>
+					<select class="p-3 border border-solid border-black rounded outline-none">
+						{#each orders as order}
+							<option>{order.label}</option>
+						{/each}
+					</select>
+				</div>
+			</div>
+
+			<div class="mt-6">
+				{#if products.length}
+					<div class="grid grid-cols-1 md:!grid-cols-2 lg:!grid-cols-3 gap-16">
+						{#each products as product, index}
+							<div class="flex flex-col gap-4">
+								<img
+									src={pb.files.getUrl(data.products.items[index], product.imageUrl)}
+									alt="product"
+									class="w-full object-cover rounded-sm"
+								/>
+								<div>
+									<div class="text-lg/relaxed font-semibold text-secondary underline">
+										{product.name}
+									</div>
+									<div class="text-sm/relaxed">{product.description}</div>
 								</div>
-								<div class="text-sm/relaxed">{product.description}</div>
 							</div>
-						</div>
-					{/each}
-				</div>
-			{:else}
-				<div class="py-60 flex flex-col justify-center items-center gap-2">
-					<div class="font-semibold">No result found</div>
-					<div class="text-sm">We can’t find any item matching your search</div>
-				</div>
-			{/if}
+						{/each}
+					</div>
+				{:else}
+					<div class="py-60 flex flex-col justify-center items-center gap-2">
+						<div class="font-semibold">No result found</div>
+						<div class="text-sm">We can’t find any item matching your search</div>
+					</div>
+				{/if}
+			</div>
 		</div>
 	</div>
 </div>
