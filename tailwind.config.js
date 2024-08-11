@@ -16,7 +16,7 @@ export default {
 				secondary: '#2E85AE'
 			},
 			transitionProperty: {
-				maxHeight: 'maxHeight',
+				maxHeight: 'max-height',
 				height: 'height'
 			},
 			borderWidth: {

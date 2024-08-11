@@ -1,11 +1,13 @@
 <script lang="ts">
 	import clsx from 'clsx';
 
+	import Categories from './containers/Categories.svelte';
+
 	import SearchLogo from '$lib/icons/search-logo.svg?raw';
 	import FilterLogo from '$lib/icons/filter-icon.svg?raw';
 	import CloseLogo from '$lib/icons/close-logo.svg?raw';
 
-	let isFilterOpen = false;
+	let isFilterOpen = true;
 
 	const orders = [
 		{
@@ -64,12 +66,12 @@
 	<div
 		class={clsx(
 			'top-0 left-0 z-40 bg-black bg-opacity-50 h-screen w-screen',
-			isFilterOpen ? 'absolute' : 'hidden'
+			isFilterOpen ? 'fixed' : 'hidden'
 		)}
 	/>
 	<div
 		class={clsx(
-			'absolute top-0 left-0 z-50 max-w-xs w-full bg-white h-screen pt-10 px-6',
+			'fixed top-0 left-0 z-50 max-w-xs w-full bg-white h-screen pt-10 px-6',
 			'transform transition-transform duration-500',
 			isFilterOpen ? 'translate-x-0' : '-translate-x-full'
 		)}
@@ -80,5 +82,7 @@
 				{@html CloseLogo}
 			</button>
 		</div>
+
+		<Categories />
 	</div>
 </div>
