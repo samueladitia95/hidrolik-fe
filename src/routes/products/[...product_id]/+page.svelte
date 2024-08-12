@@ -71,6 +71,16 @@
 			{@html data.product.detail}
 		</div>
 	</div>
+
+	<!-- INQUIRY BUTTON -->
+	<div>
+		<button class="px-6 py-3 font-semibold rounded-full bg-black text-white">Inquiry Now</button>
+	</div>
+
+	<!-- RECOMMENDATION -->
+	<div class="py-20">
+		<div class="text-2xl font-bold">You might also like</div>
+	</div>
 </div>
 
 <style>
