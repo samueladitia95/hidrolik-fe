@@ -22,44 +22,61 @@
 </script>
 
 <div class="container">
-	<div>
-		<!-- BREADCRUMB -->
-		<div class="text-xs flex items-center gap-1">
-			<div>Product</div>
-			<div class="h-4 w-4 -rotate-90">
-				{@html ChevronLogo}
-			</div>
-			<div>Industrial Cable</div>
-			<div class="h-4 w-4 -rotate-90">
-				{@html ChevronLogo}
-			</div>
-			<div class="font-semibold">{data.product.name}</div>
+	<!-- BREADCRUMB -->
+	<div class="text-xs flex items-center gap-1">
+		<div>Product</div>
+		<div class="h-4 w-4 -rotate-90">
+			{@html ChevronLogo}
+		</div>
+		<div>Industrial Cable</div>
+		<div class="h-4 w-4 -rotate-90">
+			{@html ChevronLogo}
+		</div>
+		<div class="font-semibold">{data.product.name}</div>
+	</div>
+
+	<!-- PRODUCT NAME AND DESCRIPTION -->
+	<div class="mt-6 flex flex-col gap-3">
+		<div class="text-3xl font-bold">
+			{data.product.name}
+		</div>
+		<div class="font-bold">
+			{data.product.description}
+		</div>
+	</div>
+
+	<!-- GALLERY -->
+	<div class="py-6 flex flex-col gap-2">
+		<div bind:this={containerEl} class="flex flex-start overflow-hidden snap-x snap-mandatory">
+			{#each images as src}
+				<img {src} alt="product" class="max-w-full rounded snap-center" />
+			{/each}
+		</div>
+		<div class="w-full grid grid-cols-5 gap-2">
+			{#each images as src, index}
+				<button on:click={() => scrollIntoView(index, images.length)}>
+					<img {src} alt="product" class="rounded object-cover w-full h-full" />
+				</button>
+			{/each}
+		</div>
+	</div>
+
+	<!-- DETAIL -->
+	<div class="py-2">
+		<div class="flex border-b border-solid border-black border-opacity-25">
+			<div class="p-2 font-semibold border-b-2 border-solid border-secondary">Detail</div>
 		</div>
 
-		<!-- PRODUCT NAME AND DESCRIPTION -->
-		<div class="mt-6 flex flex-col gap-3">
-			<div class="text-3xl font-bold">
-				{data.product.name}
-			</div>
-			<div class="font-bold">
-				{data.product.description}
-			</div>
-		</div>
-
-		<!-- GALLERY -->
-		<div class="py-6 flex flex-col gap-2">
-			<div bind:this={containerEl} class="flex flex-start overflow-hidden snap-x snap-mandatory">
-				{#each images as src}
-					<img {src} alt="product" class="max-w-full rounded snap-center" />
-				{/each}
-			</div>
-			<div class="w-full grid grid-cols-5 gap-2">
-				{#each images as src, index}
-					<button on:click={() => scrollIntoView(index, images.length)}>
-						<img {src} alt="product" class="rounded object-cover w-full h-full" />
-					</button>
-				{/each}
-			</div>
+		<div class="py-6 detail-container">
+			{@html data.product.detail}
 		</div>
 	</div>
 </div>
+
+<style>
+	.detail-container,
+	ul,
+	ol {
+		padding-left: 20px !important;
+	}
+</style>
