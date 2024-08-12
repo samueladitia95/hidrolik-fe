@@ -13,6 +13,7 @@ export default {
 				padding: '2rem'
 			},
 			colors: {
+				primary: '#05374F',
 				secondary: '#2E85AE'
 			},
 			transitionProperty: {
