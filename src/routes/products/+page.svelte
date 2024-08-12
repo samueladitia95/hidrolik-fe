@@ -91,19 +91,21 @@
 				{#if products.length}
 					<div class="grid grid-cols-1 md:!grid-cols-2 lg:!grid-cols-3 gap-16">
 						{#each products as product, index}
-							<div class="flex flex-col gap-4">
-								<img
-									src={pb.files.getUrl(data.products.items[index], product.imageUrl)}
-									alt="product"
-									class="w-full object-cover rounded-sm"
-								/>
-								<div>
-									<div class="text-lg/relaxed font-semibold text-secondary underline">
-										{product.name}
+							<a href={`/products/${product.id}`}>
+								<div class="flex flex-col gap-4">
+									<img
+										src={pb.files.getUrl(data.products.items[index], product.imageUrl)}
+										alt="product"
+										class="w-full object-cover rounded-sm"
+									/>
+									<div>
+										<div class="text-lg/relaxed font-semibold text-secondary underline">
+											{product.name}
+										</div>
+										<div class="text-sm/relaxed">{product.description}</div>
 									</div>
-									<div class="text-sm/relaxed">{product.description}</div>
 								</div>
-							</div>
+							</a>
 						{/each}
 					</div>
 					<div class="w-full mt-16 flex justify-center">
