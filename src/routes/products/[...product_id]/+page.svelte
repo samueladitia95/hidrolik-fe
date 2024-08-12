@@ -67,7 +67,7 @@
 			<div class="p-2 font-semibold border-b-2 border-solid border-secondary">Detail</div>
 		</div>
 
-		<div class="py-6 detail-container">
+		<div class="py-6">
 			{@html data.product.detail}
 		</div>
 	</div>
@@ -82,11 +82,3 @@
 		<div class="text-2xl font-bold">You might also like</div>
 	</div>
 </div>
-
-<style>
-	.detail-container,
-	ul,
-	ol {
-		padding-left: 20px !important;
-	}
-</style>

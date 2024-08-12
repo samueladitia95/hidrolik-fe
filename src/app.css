@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-	ul {
+	ul,
+	ol {
 		list-style: revert;
+		padding-left: 20px;
 	}
 }
