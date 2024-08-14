@@ -95,7 +95,7 @@
 		</div>
 	</div>
 
-	<div class="flex flex-col gap-10">
+	<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 		{#each ourMissions as mission}
 			<div class="flex flex-col gap-4">
 				<div class="text-xl/loose font-bold">{mission.label}</div>
@@ -121,7 +121,7 @@
 			</Map>
 		</div>
 	{/if}
-	<div class="flex flex-col gap-10">
+	<div class="flex flex-col md:flex-row gap-10">
 		{#each locations as location}
 			<div class="flex flex-col gap-4 items-start">
 				<div class="text-xl font-bold">{location.office}</div>
