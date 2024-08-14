@@ -10,12 +10,9 @@
 		return pb.files.getUrl(data.product, element);
 	});
 
-	let chosenImages: number = 0;
 	let containerEl: Element;
 	function scrollIntoView(index: number, maxLength: number) {
 		const maxWidth = containerEl.scrollWidth;
-
-		chosenImages = index;
 
 		containerEl.scrollTo({ left: (maxWidth / maxLength) * index, behavior: 'smooth' });
 	}
