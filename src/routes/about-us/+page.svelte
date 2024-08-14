@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { Map, TileLayer, Marker, Popup } from 'sveaflet';
+	import { browser } from '$app/environment';
+
 	import { pb } from '$lib/pocketbase';
 	import type { PageData } from './$types';
 	export let data: PageData;
@@ -24,6 +27,23 @@
 			label: 'Sustainability and Responsibility',
 			subLabel:
 				'Committing to sustainable practices that minimize environmental impact and contribute to the well-being of our communities.'
+		}
+	];
+
+	const locations = [
+		{
+			office: 'Hammerspir HQ Office (Jakarta)',
+			address: 'Jl. Gatot Subroto Kav. 27 Jakarta Selatan, 12950 Indonesia',
+			phone: '021-14810401',
+			email: 'info@hammerspir.com',
+			coordinate: ''
+		},
+		{
+			office: 'Hammerspir Warehouse',
+			address: 'Jl. Gatot Subroto Kav. 27 Jakarta Selatan, 12950 Indonesia',
+			phone: '021-14810401',
+			email: 'info@hammerspir.com',
+			coordinate: ''
 		}
 	];
 </script>
@@ -86,6 +106,34 @@
 </div>
 
 <!-- OUR LOCATION -->
-<div class="container py-20">
+<div class="container py-20 flex flex-col gap-12">
 	<div class="text-4xl font-bold">Our Location</div>
+	{#if browser}
+		<div class="w-full h-96">
+			<Map
+				options={{
+					center: [51.505, -0.09],
+					zoom: 13
+				}}
+			>
+				<TileLayer url={'https://tile.openstreetmap.org/{z}/{x}/{y}.png'} />
+				<Marker latLng={[51.505, -0.09]} />
+			</Map>
+		</div>
+	{/if}
+	<div class="flex flex-col gap-10">
+		{#each locations as location}
+			<div class="flex flex-col gap-4 items-start">
+				<div class="text-xl font-bold">{location.office}</div>
+				<div class="leading-loose">
+					<div>{location.address}</div>
+					<div>Phone: {location.phone}</div>
+					<div>Email: {location.email}</div>
+				</div>
+				<button class="bg-black text-white rounded-full font-semibold px-6 py-3">
+					Get Direction
+				</button>
+			</div>
+		{/each}
+	</div>
 </div>

@@ -10,3 +10,5 @@ export const load: PageLoad = async () => {
 		about: about.items[0]
 	};
 };
+
+export const ssr = false;

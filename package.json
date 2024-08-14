@@ -36,6 +36,7 @@
 		"@selemondev/svelte-marquee": "^0.0.2",
 		"clsx": "^2.1.1",
 		"pocketbase": "^0.21.4",
+		"sveaflet": "^0.0.10",
 		"svelte-inview": "^4.0.2"
 	},
 	"engines": {
