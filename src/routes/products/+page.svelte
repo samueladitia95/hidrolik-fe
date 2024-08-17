@@ -1,5 +1,6 @@
 <script lang="ts">
 	import clsx from 'clsx';
+	import { onMount } from 'svelte';
 	import { pb } from '$lib/pocketbase';
 
 	import Categories from './containers/Categories.svelte';
@@ -67,6 +68,19 @@
 		$page.url.searchParams.set('order', selectedOrder);
 		goto($page.url, { invalidateAll: true });
 	};
+
+	let searchQuery: string;
+	const handleSearch = () => {
+		$page.url.searchParams.set('q', searchQuery);
+		goto($page.url, { invalidateAll: true });
+	};
+
+	onMount(() => {
+		const q = $page.url.searchParams.get('q');
+		if (q) {
+			searchQuery = q;
+		}
+	});
 </script>
 
 <div class="min-h-screen container">
@@ -79,7 +93,14 @@
 				<div class="h-6 w-6">
 					{@html SearchLogo}
 				</div>
-				<input placeholder="Search Product Here..." class="w-full outline-none" />
+				<form on:submit|preventDefault={() => handleSearch()} class="w-full">
+					<input
+						placeholder="Search Product Here..."
+						class="w-full outline-none"
+						bind:value={searchQuery}
+						on:blur={handleSearch}
+					/>
+				</form>
 			</div>
 		</div>
 	</div>

@@ -7,7 +7,7 @@ export const load: PageLoad = async ({ url }) => {
 	if (Number(page)) {
 		numberPage = Number(page);
 	}
-	const queries = url.searchParams.get('q');
+	const queries = url.searchParams.get('cat');
 	const filterCategories = queries
 		? queries
 				?.split(',')
@@ -21,9 +21,17 @@ export const load: PageLoad = async ({ url }) => {
 		order = '-created';
 	}
 
+	const searchQuery = url.searchParams.get('q');
+	let searchValue = '';
+	if (searchQuery) {
+		searchValue = `name ~ "%${searchQuery}%"`;
+	}
+
+	const combinedFilter = [searchValue, filterCategories].filter((el) => el);
+
 	const products = await pb.collection('products').getList(1, 9 * numberPage, {
 		sort: order,
-		filter: filterCategories ? filterCategories : ''
+		filter: combinedFilter ? combinedFilter.join(' && ') : ''
 	});
 
 	const categories = await pb.collection('parent_categories').getList(1, 100, {

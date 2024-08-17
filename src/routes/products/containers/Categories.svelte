@@ -45,20 +45,20 @@
 
 	let searchQueries: string[] = [];
 	onMount(() => {
-		const queryParams = $page.url.searchParams.get('q');
+		const queryParams = $page.url.searchParams.get('cat');
 		if (queryParams) {
 			searchQueries = queryParams.split(',');
 		}
 	});
 
 	const applyFilter = (searchQueries: string[]) => {
-		$page.url.searchParams.set('q', searchQueries.join(','));
+		$page.url.searchParams.set('cat', searchQueries.join(','));
 		goto($page.url, { invalidateAll: true });
 	};
 
 	const resetFilter = () => {
 		searchQueries = [];
-		$page.url.searchParams.delete('q');
+		$page.url.searchParams.delete('cat');
 		goto($page.url);
 	};
 </script>
