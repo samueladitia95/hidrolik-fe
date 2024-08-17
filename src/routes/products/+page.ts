@@ -3,6 +3,10 @@ import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ url }) => {
 	const page = url.searchParams.get('n') || 1;
+	let numberPage = 1;
+	if (Number(page)) {
+		numberPage = Number(page);
+	}
 	const queries = url.searchParams.get('q');
 	const filterCategories = queries
 		? queries
@@ -11,7 +15,7 @@ export const load: PageLoad = async ({ url }) => {
 				.join(' || ')
 		: '';
 
-	const products = await pb.collection('products').getList(1, 5 * +page, {
+	const products = await pb.collection('products').getList(1, 9 * numberPage, {
 		sort: '-created',
 		filter: filterCategories ? filterCategories : ''
 	});

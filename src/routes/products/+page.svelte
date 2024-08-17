@@ -10,6 +10,8 @@
 
 	import type { RecordModel } from 'pocketbase';
 	import type { PageData } from './$types';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 	export let data: PageData;
 
 	let isFilterOpen = false;
@@ -44,6 +46,20 @@
 			description: el.description
 		};
 	});
+
+	const nextPage = () => {
+		if (products.length >= data.products.totalItems) {
+			return;
+		}
+		const queryParams = $page.url.searchParams.get('n');
+		let nextPage: number = 2;
+		if (queryParams) {
+			const currentPage = Number(queryParams);
+			nextPage = currentPage + 1;
+		}
+		$page.url.searchParams.set('n', String(nextPage));
+		goto($page.url, { invalidateAll: true });
+	};
 </script>
 
 <div class="min-h-screen container">
@@ -109,7 +125,11 @@
 						{/each}
 					</div>
 					<div class="w-full mt-16 flex justify-center">
-						<button class="rounded-full border-2 border-solid border-black px-6 py-3">
+						<button
+							class="rounded-full border-2 border-solid border-black px-6 py-3 disabled:opacity-50"
+							disabled={products.length >= data.products.totalItems}
+							on:click={() => nextPage()}
+						>
 							View More
 						</button>
 					</div>
