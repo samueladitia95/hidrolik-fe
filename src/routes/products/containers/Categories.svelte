@@ -2,169 +2,26 @@
 	import clsx from 'clsx';
 	import { page } from '$app/stores';
 	import type { PageData } from '../$types';
+	import type { RecordModel } from 'pocketbase';
 
 	import ChevronLogo from '$lib/icons/chevron-logo.svg?raw';
 
 	let data: PageData = $page.data as PageData;
-	$: filterFetch = data.categories.items.map((element) => {
+	let filters = data.categories.items.map((element) => {
 		return {
 			parent_label: element.label,
 			parent_id: element.id,
-			isOpen: false
+			isOpen: false,
+			children:
+				element.expand?.child_categories_via_parent_categories.map((element: RecordModel) => {
+					return {
+						child_label: element.label,
+						child_id: element.id,
+						isActiveFilter: false
+					};
+				}) || []
 		};
 	});
-	console.log(filterFetch)
-
-	const filters = [
-		{
-			label: 'Type',
-			id: '1',
-			isOpen: false,
-			children: [
-				{
-					label: 'Type 1',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 2',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 3',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 4',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 5',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 6',
-					id: '1',
-					isActiveFilter: false
-				}
-			]
-		},
-		{
-			label: 'Type',
-			id: '1',
-			isOpen: false,
-			children: [
-				{
-					label: 'Type 1',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 2',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 3',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 4',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 5',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 6',
-					id: '1',
-					isActiveFilter: false
-				}
-			]
-		},
-		{
-			label: 'Type',
-			id: '1',
-			isOpen: false,
-			children: [
-				{
-					label: 'Type 1',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 2',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 3',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 4',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 5',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 6',
-					id: '1',
-					isActiveFilter: false
-				}
-			]
-		},
-		{
-			label: 'Type',
-			id: '1',
-			isOpen: false,
-			children: [
-				{
-					label: 'Type 1',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 2',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 3',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 4',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 5',
-					id: '1',
-					isActiveFilter: false
-				},
-				{
-					label: 'Type 6',
-					id: '1',
-					isActiveFilter: false
-				}
-			]
-		}
-	];
 </script>
 
 <div class="h-full max-h-full overflow-auto py-6 flex flex-col justify-between">
@@ -173,41 +30,43 @@
 
 		<div class="flex flex-col gap-2">
 			{#each filters as filter}
-				<div class="py-2">
-					<div class="flex justify-between">
-						<div>{filter.label}</div>
-						<button
-							class={clsx(
-								'h-6 w-6',
-								'transition-maxHeight duration-200',
-								filter.isOpen ? 'rotate-180' : 'rotate-0'
-							)}
-							on:click={() => (filter.isOpen = !filter.isOpen)}
-						>
-							{@html ChevronLogo}
-						</button>
-					</div>
+				{#if filter.children.length}
+					<div class="py-2">
+						<div class="flex justify-between">
+							<div>{filter.parent_label}</div>
+							<button
+								class={clsx(
+									'h-6 w-6',
+									'transition-maxHeight duration-200',
+									filter.isOpen ? 'rotate-180' : 'rotate-0'
+								)}
+								on:click={() => (filter.isOpen = !filter.isOpen)}
+							>
+								{@html ChevronLogo}
+							</button>
+						</div>
 
-					<div
-						class={clsx(
-							'pl-4 flex flex-col gap-4 mt-4',
-							'transition-all duration-200  overflow-hidden',
-							filter.isOpen ? 'max-h-96' : 'max-h-0'
-						)}
-					>
-						{#each filter.children as childFilter}
-							<div class="flex gap-2 items-center">
-								<input
-									name={childFilter.label}
-									type="checkbox"
-									class="border-2 border-solid border-black border-opacity-55 rounded h-5 w-5"
-									bind:checked={childFilter.isActiveFilter}
-								/>
-								<div class="text-sm">{childFilter.label}</div>
-							</div>
-						{/each}
+						<div
+							class={clsx(
+								'pl-4 flex flex-col gap-4 mt-4',
+								'transition-all duration-200  overflow-hidden',
+								filter.isOpen ? 'max-h-96' : 'max-h-0'
+							)}
+						>
+							{#each filter.children as childFilter}
+								<div class="flex gap-2 items-center">
+									<input
+										name={childFilter.child_label}
+										type="checkbox"
+										class="border-2 border-solid border-black border-opacity-55 rounded h-5 w-5"
+										bind:checked={childFilter.isActiveFilter}
+									/>
+									<div class="text-sm">{childFilter.child_label}</div>
+								</div>
+							{/each}
+						</div>
 					</div>
-				</div>
+				{/if}
 			{/each}
 		</div>
 	</div>
