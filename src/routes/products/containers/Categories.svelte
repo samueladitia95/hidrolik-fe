@@ -1,7 +1,19 @@
 <script lang="ts">
 	import clsx from 'clsx';
+	import { page } from '$app/stores';
+	import type { PageData } from '../$types';
 
 	import ChevronLogo from '$lib/icons/chevron-logo.svg?raw';
+
+	let data: PageData = $page.data as PageData;
+	$: filterFetch = data.categories.items.map((element) => {
+		return {
+			parent_label: element.label,
+			parent_id: element.id,
+			isOpen: false
+		};
+	});
+	console.log(filterFetch)
 
 	const filters = [
 		{
