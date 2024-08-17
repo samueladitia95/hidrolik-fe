@@ -17,17 +17,17 @@
 	let isFilterOpen = false;
 
 	const orders = [
-		{
-			label: 'Best Seller',
-			value: 'best-seller'
-		},
+		// {
+		// 	label: 'Best Seller',
+		// 	value: 'best-seller'
+		// },
 		{
 			label: 'Newest',
-			value: 'new'
+			value: '+created'
 		},
 		{
 			label: 'Oldest',
-			value: 'old'
+			value: '-created'
 		}
 	];
 
@@ -58,6 +58,13 @@
 			nextPage = currentPage + 1;
 		}
 		$page.url.searchParams.set('n', String(nextPage));
+		goto($page.url, { invalidateAll: true });
+	};
+
+	let selectedOrder: string;
+
+	const handleOrder = () => {
+		$page.url.searchParams.set('order', selectedOrder);
 		goto($page.url, { invalidateAll: true });
 	};
 </script>
@@ -95,9 +102,13 @@
 				<!-- ORDER BY -->
 				<div class="flex gap-2 items-center">
 					<div class="font-bold">Sort by</div>
-					<select class="p-3 border border-solid border-black rounded outline-none">
+					<select
+						class="p-3 border border-solid border-black rounded outline-none"
+						bind:value={selectedOrder}
+						on:change={handleOrder}
+					>
 						{#each orders as order}
-							<option>{order.label}</option>
+							<option value={order.value}>{order.label}</option>
 						{/each}
 					</select>
 				</div>

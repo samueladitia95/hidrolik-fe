@@ -15,8 +15,14 @@ export const load: PageLoad = async ({ url }) => {
 				.join(' || ')
 		: '';
 
+	let order = url.searchParams.get('order');
+	const validOrder = ['-created', '+created'];
+	if (!(order && validOrder.includes(order))) {
+		order = '-created';
+	}
+
 	const products = await pb.collection('products').getList(1, 9 * numberPage, {
-		sort: '-created',
+		sort: order,
 		filter: filterCategories ? filterCategories : ''
 	});
 
