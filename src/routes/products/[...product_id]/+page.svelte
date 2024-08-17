@@ -25,7 +25,7 @@
 		<div class="h-4 w-4 -rotate-90">
 			{@html ChevronLogo}
 		</div>
-		<div>Industrial Cable</div>
+		<div>{data.parent_categories}</div>
 		<div class="h-4 w-4 -rotate-90">
 			{@html ChevronLogo}
 		</div>
