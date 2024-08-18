@@ -2,38 +2,17 @@
 	import clsx from 'clsx';
 	import chevronLogo from '$lib/icons/chevron-logo.svg?raw';
 
-	let faqs = [
-		{
-			question: 'How can I purchase HAMMERSPIR products?',
-			answers:
-				'You can purchase our products by contacting our sales team through our website, email, or phone. We also have authorized distributors in various regions.',
-			isOpen: false
-		},
-		{
-			question: 'How can I purchase HAMMERSPIR products?',
-			answers:
-				'You can purchase our products by contacting our sales team through our website, email, or phone. We also have authorized distributors in various regions.',
-			isOpen: false
-		},
-		{
-			question: 'How can I purchase HAMMERSPIR products?',
-			answers:
-				'You can purchase our products by contacting our sales team through our website, email, or phone. We also have authorized distributors in various regions.',
-			isOpen: false
-		},
-		{
-			question: 'How can I purchase HAMMERSPIR products?',
-			answers:
-				'You can purchase our products by contacting our sales team through our website, email, or phone. We also have authorized distributors in various regions.',
-			isOpen: false
-		},
-		{
-			question: 'How can I purchase HAMMERSPIR products?',
-			answers:
-				'You can purchase our products by contacting our sales team through our website, email, or phone. We also have authorized distributors in various regions.',
-			isOpen: false
-		}
-	];
+	import { page } from '$app/stores';
+	import type { PageData } from '../$types';
+
+	let data = $page.data as PageData;
+	let faqs = data.faqs.map((element, index) => {
+		return {
+			question: element.question,
+			answers: element.answer,
+			isOpen: index === 0
+		};
+	});
 
 	const handleOpenAccordion = (chosenIndex: number, value = false) => {
 		faqs = faqs.map((faq, i) => {

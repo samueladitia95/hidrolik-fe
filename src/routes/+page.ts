@@ -26,11 +26,17 @@ export const load: PageLoad = async () => {
 		order: '-created'
 	});
 
+	const faqs = await pb.collection('FAQ').getFullList({
+		filter: 'is_active=true',
+		order: '-created'
+	});
+
 	return {
 		carausels,
 		trustedIndustries,
 		videoLink,
 		featuredCategories,
-		testimonials
+		testimonials,
+		faqs
 	};
 };
