@@ -14,7 +14,8 @@ export default {
 			},
 			colors: {
 				primary: '#05374F',
-				secondary: '#2E85AE'
+				secondary: '#2E85AE',
+				error: '#FF3B3B'
 			},
 			transitionProperty: {
 				maxHeight: 'max-height',

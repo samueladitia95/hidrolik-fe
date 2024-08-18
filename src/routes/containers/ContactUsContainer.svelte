@@ -3,6 +3,10 @@
 	import phoneLogo from '$lib/icons/phone-logo.svg?raw';
 	import officeLogo from '$lib/icons/office-logo.svg?raw';
 
+	import ContactUsModal from '$lib/components/ContactUsModal.svelte';
+
+	let showModal: boolean = false;
+
 	const contacts = [
 		{
 			logo: emailLogo,
@@ -35,9 +39,12 @@
 			<div class="leading-relaxed md:!text-lg/relaxed">
 				Our friendly team would love to hear from you.
 			</div>
-			<button class="px-6 py-3 rounded-full bg-black text-white font-semibold hover:bg-opacity-75"
-				>Inquiry Now</button
+			<button
+				class="px-6 py-3 rounded-full bg-black text-white font-semibold hover:bg-opacity-75 cursor-pointer"
+				on:click={() => (showModal = true)}
 			>
+				Inquiry Now
+			</button>
 		</div>
 
 		<div class="mt-8 grid grid-cols-2 md:!grid-cols-3 gap-6 md:!gap-8 lg:!gap-12 items-stretch">
@@ -56,3 +63,5 @@
 		</div>
 	</div>
 </div>
+
+<ContactUsModal bind:showModal />
