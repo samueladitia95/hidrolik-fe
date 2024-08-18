@@ -31,12 +31,18 @@ export const load: PageLoad = async () => {
 		order: '-created'
 	});
 
+	const applications = await pb.collection('Applications').getFullList({
+		filter: 'is_active=true',
+		order: '-created'
+	});
+
 	return {
 		carausels,
 		trustedIndustries,
 		videoLink,
 		featuredCategories,
 		testimonials,
-		faqs
+		faqs,
+		applications
 	};
 };

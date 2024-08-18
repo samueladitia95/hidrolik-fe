@@ -2,36 +2,18 @@
 	import clsx from 'clsx';
 	import arrowLogo from '$lib/icons/arrrow-logo.svg?raw';
 
-	const applications = [
-		{
-			image:
-				'https://s3-alpha-sig.figma.com/img/f0dc/1fa3/bda5d4d47e3b27646e55e2a8ae577bbf?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hSNVjuf3Iy43-0t6MQydL3qC2R25uygPi6mR1iT0tnDAOoB-C-eY7a0M-adyxVZARPw2IGuFIvKM9HhijTw4ctbyOukJREuwWUCj9hSU-XXkySxnKY2~bN~6zOHhNHveQfsIepmrhP7BGghXd5QZl7RtAyMpW-1Rb~LNexa7xmKs3J1L9RZydqtrLE4Gs5KPhvDefsnFiy-HATLj1jO0PAjhScn1jfbeCaUeuW-YKN6vTsw8z-9m4q501rFy5OyIOm9b-hfByWwDQJY8WX5YHm~3lynzhn0ocDVl8MJ-vW~ngfvxyWHBQ5eyAKhUlaIS7mWU2QMSDuk5J7bGgmis7g__',
-			title: 'Heavy Machinery Equipments',
-			content:
-				'Built to handle the high pressures and tough conditions found in heavy machinery, ensuring reliable performance and minimizing downtime.'
-		},
-		{
-			image:
-				'https://s3-alpha-sig.figma.com/img/f0dc/1fa3/bda5d4d47e3b27646e55e2a8ae577bbf?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hSNVjuf3Iy43-0t6MQydL3qC2R25uygPi6mR1iT0tnDAOoB-C-eY7a0M-adyxVZARPw2IGuFIvKM9HhijTw4ctbyOukJREuwWUCj9hSU-XXkySxnKY2~bN~6zOHhNHveQfsIepmrhP7BGghXd5QZl7RtAyMpW-1Rb~LNexa7xmKs3J1L9RZydqtrLE4Gs5KPhvDefsnFiy-HATLj1jO0PAjhScn1jfbeCaUeuW-YKN6vTsw8z-9m4q501rFy5OyIOm9b-hfByWwDQJY8WX5YHm~3lynzhn0ocDVl8MJ-vW~ngfvxyWHBQ5eyAKhUlaIS7mWU2QMSDuk5J7bGgmis7g__',
-			title: 'Mining Industries',
-			content:
-				'Built to handle the high pressures and tough conditions found in heavy machinery, ensuring reliable performance and minimizing downtime.'
-		},
-		{
-			image:
-				'https://s3-alpha-sig.figma.com/img/f0dc/1fa3/bda5d4d47e3b27646e55e2a8ae577bbf?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hSNVjuf3Iy43-0t6MQydL3qC2R25uygPi6mR1iT0tnDAOoB-C-eY7a0M-adyxVZARPw2IGuFIvKM9HhijTw4ctbyOukJREuwWUCj9hSU-XXkySxnKY2~bN~6zOHhNHveQfsIepmrhP7BGghXd5QZl7RtAyMpW-1Rb~LNexa7xmKs3J1L9RZydqtrLE4Gs5KPhvDefsnFiy-HATLj1jO0PAjhScn1jfbeCaUeuW-YKN6vTsw8z-9m4q501rFy5OyIOm9b-hfByWwDQJY8WX5YHm~3lynzhn0ocDVl8MJ-vW~ngfvxyWHBQ5eyAKhUlaIS7mWU2QMSDuk5J7bGgmis7g__',
-			title: 'Automotive',
-			content:
-				'Built to handle the high pressures and tough conditions found in heavy machinery, ensuring reliable performance and minimizing downtime.'
-		},
-		{
-			image:
-				'https://s3-alpha-sig.figma.com/img/f0dc/1fa3/bda5d4d47e3b27646e55e2a8ae577bbf?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hSNVjuf3Iy43-0t6MQydL3qC2R25uygPi6mR1iT0tnDAOoB-C-eY7a0M-adyxVZARPw2IGuFIvKM9HhijTw4ctbyOukJREuwWUCj9hSU-XXkySxnKY2~bN~6zOHhNHveQfsIepmrhP7BGghXd5QZl7RtAyMpW-1Rb~LNexa7xmKs3J1L9RZydqtrLE4Gs5KPhvDefsnFiy-HATLj1jO0PAjhScn1jfbeCaUeuW-YKN6vTsw8z-9m4q501rFy5OyIOm9b-hfByWwDQJY8WX5YHm~3lynzhn0ocDVl8MJ-vW~ngfvxyWHBQ5eyAKhUlaIS7mWU2QMSDuk5J7bGgmis7g__',
-			title: 'Shipping',
-			content:
-				'Built to handle the high pressures and tough conditions found in heavy machinery, ensuring reliable performance and minimizing downtime.'
-		}
-	];
+	import { page } from '$app/stores';
+	import { pb } from '$lib/pocketbase';
+	import type { PageData } from '../$types';
+
+	let data = $page.data as PageData;
+	let applications = data.applications.map((element) => {
+		return {
+			image: pb.files.getUrl(element, element.image_url, { thumb: '1920x1080' }),
+			title: element.title,
+			content: element.subtitle
+		};
+	});
 
 	const itemNumber: number = 4;
 	let viewIndex: number = 0;
