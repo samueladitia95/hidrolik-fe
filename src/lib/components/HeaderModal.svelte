@@ -26,9 +26,11 @@
 >
 	<div class="container py-8 flex flex-col min-h-screen">
 		<div class="flex justify-between items-center">
-			<div class="max-w-56">
-				{@html mainLogo}
-			</div>
+			<a href="/" class="cursor-pointer">
+				<div class="max-w-56">
+					{@html mainLogo}
+				</div>
+			</a>
 
 			<button on:click={() => (isModalOpen = false)} class="h-6 w-6 md:!h-8 md:!w-8">
 				{@html closeLogo}

@@ -16,17 +16,17 @@
 		{
 			label: 'About Us',
 			isOpen: false,
-			link: 'https://www.google.com'
+			link: '/about-us'
 		},
-		{
-			label: 'Service',
-			isOpen: false,
-			link: 'https://www.google.com'
-		},
+		// {
+		// 	label: 'Service',
+		// 	isOpen: false,
+		// 	link: 'https://www.google.com'
+		// },
 		{
 			label: 'Products',
 			isOpen: false,
-			link: 'https://www.google.com',
+			link: '/products',
 			childMenutItems: [
 				{
 					label: 'Industrial Cable',
@@ -67,17 +67,19 @@
 	<div class="w-full">
 		<div class="container py-8 flex justify-between items-center">
 			<!-- Main Logo -->
-			<div class="max-w-56">
-				{@html mainLogo}
-			</div>
+			<a href="/">
+				<div class="max-w-56 cursor-pointer">
+					{@html mainLogo}
+				</div>
+			</a>
 
 			<div class="flex items-center gap-8">
 				<!-- List of navbar item -->
 				<div class="hidden lg:!flex lg:!justify-right lg:!gap-8">
 					{#each navbarItems as item}
-						<div>
+						<a href={item.link} class="cursor-pointer">
 							<div class="font-medium">{item.label}</div>
-						</div>
+						</a>
 					{/each}
 				</div>
 
