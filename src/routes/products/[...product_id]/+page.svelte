@@ -4,6 +4,7 @@
 	import ChevronLogo from '$lib/icons/chevron-logo.svg?raw';
 
 	import type { PageData } from './$types';
+	import ContactUsModal from '$lib/components/ContactUsModal.svelte';
 	export let data: PageData;
 
 	$: images = data.product.images_url.map((element: string) => {
@@ -16,6 +17,8 @@
 
 		containerEl.scrollTo({ left: (maxWidth / maxLength) * index, behavior: 'smooth' });
 	}
+
+	let showModal: boolean = false;
 </script>
 
 <div class="container">
@@ -72,7 +75,9 @@
 
 			<!-- INQUIRY BUTTON -->
 			<div>
-				<button class="px-6 py-3 font-semibold rounded-full bg-black text-white">Inquiry Now</button
+				<button
+					class="px-6 py-3 font-semibold rounded-full bg-black text-white hover:bg-opacity-75"
+					on:click={() => (showModal = true)}>Inquiry Now</button
 				>
 			</div>
 		</div>
@@ -83,3 +88,5 @@
 		<div class="text-2xl font-bold">You might also like</div>
 	</div>
 </div>
+
+<ContactUsModal bind:showModal />
