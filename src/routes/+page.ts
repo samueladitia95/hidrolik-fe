@@ -11,10 +11,14 @@ export const load: PageLoad = async () => {
 		filter: 'is_active=true',
 		order: '-created'
 	});
-	console.log(trustedIndustries, '+++++++++++++');
+
+	const videoLink = await pb.collection('Main_Video').getFirstListItem('is_active=true', {
+		order: '+created'
+	});
 
 	return {
 		carausels,
-		trustedIndustries
+		trustedIndustries,
+		videoLink
 	};
 };

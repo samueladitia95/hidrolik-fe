@@ -1,3 +1,11 @@
+<script lang="ts">
+	import { page } from '$app/stores';
+	import type { PageData } from '../$types';
+
+	let data = $page.data as PageData;
+	let video_url = data.videoLink.video_url;
+</script>
+
 <div class="bg-white">
 	<div class="container py-28">
 		<div class="flex flex-col gap-6 items-start md:!items-center md:!text-center">
@@ -17,7 +25,7 @@
 		<div class="mt-10 flex justify-center">
 			<iframe
 				width="100%"
-				src="https://www.youtube.com/embed/aA2IRoPFIn0?si=KPHOB2tCdrUnmOC8"
+				src={video_url}
 				title="YouTube video player"
 				frameborder="0"
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
