@@ -5,7 +5,7 @@ export const load: PageLoad = async ({ params }) => {
 	const product = await pb.collection('products').getOne(params.product_id, {
 		expand: 'categories.parent_categories'
 	});
-	console.log(product, '+++++++==sadadadasd');
+
 	const categories = product.expand?.categories.expand?.parent_categories.label;
 	return {
 		product,
