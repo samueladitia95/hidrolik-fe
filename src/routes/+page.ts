@@ -16,9 +16,15 @@ export const load: PageLoad = async () => {
 		order: '+created'
 	});
 
+	const featuredCategories = await pb.collection('parent_categories').getFullList({
+		filter: 'is_featured=true',
+		order: '+created'
+	});
+
 	return {
 		carausels,
 		trustedIndustries,
-		videoLink
+		videoLink,
+		featuredCategories
 	};
 };

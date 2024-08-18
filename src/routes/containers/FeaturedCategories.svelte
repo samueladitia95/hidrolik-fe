@@ -1,46 +1,15 @@
 <script lang="ts">
-	const categories = [
-		{
-			label: 'Hydraulic Hose',
-			image:
-				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qBqZBOg8VFvIkXVHoOIJMtzOle~Fjq2HwfGRF~t06vtMT~RK50y27eG9iotgCDgN8ZXS3-sSXVQQfdb8HFVcgvf8YlPPLhrZrBFZpEunK0OvyowuYSwkL-2HUSTI1p18dQlvdbo4Uyvyw7o6GKBP2T5Rfpggw8VcVdvV7lnuaKs~Jo5bsGtE2qc17hobYYNzWsdREmLuHs-LQ24hFOIPzsC-piLTHlittHxuntTfJrKxQcNWp6PWssqwHUwdq3u9GgL7dH33bXBJo1A8CPUAfoR4DHKtWkssTIRsPvjHSqpxO-zdrBcxvSoAzRrzKD~0xpllIC~q~Mz7h6FIpWcKmw__'
-		},
-		{
-			label: 'Connector',
-			image:
-				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qBqZBOg8VFvIkXVHoOIJMtzOle~Fjq2HwfGRF~t06vtMT~RK50y27eG9iotgCDgN8ZXS3-sSXVQQfdb8HFVcgvf8YlPPLhrZrBFZpEunK0OvyowuYSwkL-2HUSTI1p18dQlvdbo4Uyvyw7o6GKBP2T5Rfpggw8VcVdvV7lnuaKs~Jo5bsGtE2qc17hobYYNzWsdREmLuHs-LQ24hFOIPzsC-piLTHlittHxuntTfJrKxQcNWp6PWssqwHUwdq3u9GgL7dH33bXBJo1A8CPUAfoR4DHKtWkssTIRsPvjHSqpxO-zdrBcxvSoAzRrzKD~0xpllIC~q~Mz7h6FIpWcKmw__'
-		},
-		{
-			label: 'Crimping Machine',
-			image:
-				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qBqZBOg8VFvIkXVHoOIJMtzOle~Fjq2HwfGRF~t06vtMT~RK50y27eG9iotgCDgN8ZXS3-sSXVQQfdb8HFVcgvf8YlPPLhrZrBFZpEunK0OvyowuYSwkL-2HUSTI1p18dQlvdbo4Uyvyw7o6GKBP2T5Rfpggw8VcVdvV7lnuaKs~Jo5bsGtE2qc17hobYYNzWsdREmLuHs-LQ24hFOIPzsC-piLTHlittHxuntTfJrKxQcNWp6PWssqwHUwdq3u9GgL7dH33bXBJo1A8CPUAfoR4DHKtWkssTIRsPvjHSqpxO-zdrBcxvSoAzRrzKD~0xpllIC~q~Mz7h6FIpWcKmw__'
-		},
-		{
-			label: 'Industrial Connector',
-			image:
-				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qBqZBOg8VFvIkXVHoOIJMtzOle~Fjq2HwfGRF~t06vtMT~RK50y27eG9iotgCDgN8ZXS3-sSXVQQfdb8HFVcgvf8YlPPLhrZrBFZpEunK0OvyowuYSwkL-2HUSTI1p18dQlvdbo4Uyvyw7o6GKBP2T5Rfpggw8VcVdvV7lnuaKs~Jo5bsGtE2qc17hobYYNzWsdREmLuHs-LQ24hFOIPzsC-piLTHlittHxuntTfJrKxQcNWp6PWssqwHUwdq3u9GgL7dH33bXBJo1A8CPUAfoR4DHKtWkssTIRsPvjHSqpxO-zdrBcxvSoAzRrzKD~0xpllIC~q~Mz7h6FIpWcKmw__'
-		},
-		{
-			label: 'Industrial Connector',
-			image:
-				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qBqZBOg8VFvIkXVHoOIJMtzOle~Fjq2HwfGRF~t06vtMT~RK50y27eG9iotgCDgN8ZXS3-sSXVQQfdb8HFVcgvf8YlPPLhrZrBFZpEunK0OvyowuYSwkL-2HUSTI1p18dQlvdbo4Uyvyw7o6GKBP2T5Rfpggw8VcVdvV7lnuaKs~Jo5bsGtE2qc17hobYYNzWsdREmLuHs-LQ24hFOIPzsC-piLTHlittHxuntTfJrKxQcNWp6PWssqwHUwdq3u9GgL7dH33bXBJo1A8CPUAfoR4DHKtWkssTIRsPvjHSqpxO-zdrBcxvSoAzRrzKD~0xpllIC~q~Mz7h6FIpWcKmw__'
-		},
-		{
-			label: 'Industrial Connector',
-			image:
-				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qBqZBOg8VFvIkXVHoOIJMtzOle~Fjq2HwfGRF~t06vtMT~RK50y27eG9iotgCDgN8ZXS3-sSXVQQfdb8HFVcgvf8YlPPLhrZrBFZpEunK0OvyowuYSwkL-2HUSTI1p18dQlvdbo4Uyvyw7o6GKBP2T5Rfpggw8VcVdvV7lnuaKs~Jo5bsGtE2qc17hobYYNzWsdREmLuHs-LQ24hFOIPzsC-piLTHlittHxuntTfJrKxQcNWp6PWssqwHUwdq3u9GgL7dH33bXBJo1A8CPUAfoR4DHKtWkssTIRsPvjHSqpxO-zdrBcxvSoAzRrzKD~0xpllIC~q~Mz7h6FIpWcKmw__'
-		},
-		{
-			label: 'Industrial Connector',
-			image:
-				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qBqZBOg8VFvIkXVHoOIJMtzOle~Fjq2HwfGRF~t06vtMT~RK50y27eG9iotgCDgN8ZXS3-sSXVQQfdb8HFVcgvf8YlPPLhrZrBFZpEunK0OvyowuYSwkL-2HUSTI1p18dQlvdbo4Uyvyw7o6GKBP2T5Rfpggw8VcVdvV7lnuaKs~Jo5bsGtE2qc17hobYYNzWsdREmLuHs-LQ24hFOIPzsC-piLTHlittHxuntTfJrKxQcNWp6PWssqwHUwdq3u9GgL7dH33bXBJo1A8CPUAfoR4DHKtWkssTIRsPvjHSqpxO-zdrBcxvSoAzRrzKD~0xpllIC~q~Mz7h6FIpWcKmw__'
-		},
-		{
-			label: 'Industrial Connector',
-			image:
-				'https://s3-alpha-sig.figma.com/img/1011/9fd5/236f3b93ee435678d7dddedbff4c31dc?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qBqZBOg8VFvIkXVHoOIJMtzOle~Fjq2HwfGRF~t06vtMT~RK50y27eGiotgCDgN8ZXS3-sSXVQQfdb8HFVcgvf8YlPPLhrZrBFZpEunK0OvyowuYSwkL-2HUSTI1p18dQlvdbo4Uyvyw7o6GKBP2T5Rfpggw8VcVdvV7lnuaKs~Jo5bsGtE2qc17hobYYNzWsdREmLuHs-LQ24hFOIPzsC-piLTHlittHxuntTfJrKxQcNWp6PWssqwHUwdq3u9GgL7dH33bXBJo1A8CPUAfoR4DHKtWkssTIRsPvjHSqpxO-zdrBcxvSoAzRrzKD~0xpllIC~q~Mz7h6FIpWcKmw__'
-		}
-	];
+	import { page } from '$app/stores';
+	import { pb } from '$lib/pocketbase';
+	import type { PageData } from '../$types';
+
+	let data = $page.data as PageData;
+	let categories = data.featuredCategories.map((element) => {
+		return {
+			label: element.label,
+			image: pb.files.getUrl(element, element.image_url, { thumb: '1920x1080' })
+		};
+	});
 </script>
 
 <div class="bg-white">
