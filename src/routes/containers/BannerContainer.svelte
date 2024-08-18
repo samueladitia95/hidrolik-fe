@@ -11,7 +11,7 @@
 	let data = $page.data as PageData;
 	let banners = data.carausels.map((element) => {
 		return {
-			image: pb.files.getUrl(element, element.image_url)
+			image: pb.files.getUrl(element, element.image_url, { thumb: '1920x1080' })
 		};
 	});
 	const itemNumber: number = banners.length;
