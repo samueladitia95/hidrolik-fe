@@ -21,10 +21,16 @@ export const load: PageLoad = async () => {
 		order: '+created'
 	});
 
+	const testimonials = await pb.collection('Testimonials').getFullList({
+		filter: 'is_active=true',
+		order: '-created'
+	});
+
 	return {
 		carausels,
 		trustedIndustries,
 		videoLink,
-		featuredCategories
+		featuredCategories,
+		testimonials
 	};
 };

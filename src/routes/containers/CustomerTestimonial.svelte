@@ -2,40 +2,19 @@
 	import { Marquee } from '@selemondev/svelte-marquee';
 	import '@selemondev/svelte-marquee/dist/style.css';
 
-	const testimonials = [
-		{
-			content:
-				"HAMMERSPIR's hoses are incredibly durable and reliable, perfect for our heavy machinery needs. Highly recommended!",
-			profileImg:
-				'https://s3-alpha-sig.figma.com/img/c405/2b93/7b21a5ac0f3a7fbab06b5f36010e1dfa?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=flijo6iJSaqoW1pkjKb~N7E0HC4KhBvfuFGY4iC9mtat7m4Lvy9Q5bBOcMUMDv4rhSmOmfgRTuxNw7oH58nJaPMU6CriVhIdteYKUvWN7XNje2Dm2erIZgXAEQzv2NwAHvuFxZOFvy4VP8PBnruzhgNC0njokAaVQbisROu9dDZXb0Q~lPhP0JzOYf8woPwR4tn9~XmLgeOHnW2KOcbFWn3-C2cXVvWQ4PUr8AUF7LbPluOPJwU0OZV77pH~1A-oX9nag8u26CKToHVQDwGcj5GbKMOnhHS99TN2zUoSkAWUGuQ76NrEep2ZQu10D1E94rZlR4vLPXLAJnhCkhgflw__',
-			name: 'John D.',
-			role: 'Heavy Machinery Operator'
-		},
-		{
-			content:
-				"HAMMERSPIR's hoses are incredibly durable and reliable, perfect for our heavy machinery needs. Highly recommended!",
-			profileImg:
-				'https://s3-alpha-sig.figma.com/img/c405/2b93/7b21a5ac0f3a7fbab06b5f36010e1dfa?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=flijo6iJSaqoW1pkjKb~N7E0HC4KhBvfuFGY4iC9mtat7m4Lvy9Q5bBOcMUMDv4rhSmOmfgRTuxNw7oH58nJaPMU6CriVhIdteYKUvWN7XNje2Dm2erIZgXAEQzv2NwAHvuFxZOFvy4VP8PBnruzhgNC0njokAaVQbisROu9dDZXb0Q~lPhP0JzOYf8woPwR4tn9~XmLgeOHnW2KOcbFWn3-C2cXVvWQ4PUr8AUF7LbPluOPJwU0OZV77pH~1A-oX9nag8u26CKToHVQDwGcj5GbKMOnhHS99TN2zUoSkAWUGuQ76NrEep2ZQu10D1E94rZlR4vLPXLAJnhCkhgflw__',
-			name: 'John D.',
-			role: 'Heavy Machinery Operator'
-		},
-		{
-			content:
-				"HAMMERSPIR's hoses are incredibly durable and reliable, perfect for our heavy machinery needs. Highly recommended!",
-			profileImg:
-				'https://s3-alpha-sig.figma.com/img/c405/2b93/7b21a5ac0f3a7fbab06b5f36010e1dfa?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=flijo6iJSaqoW1pkjKb~N7E0HC4KhBvfuFGY4iC9mtat7m4Lvy9Q5bBOcMUMDv4rhSmOmfgRTuxNw7oH58nJaPMU6CriVhIdteYKUvWN7XNje2Dm2erIZgXAEQzv2NwAHvuFxZOFvy4VP8PBnruzhgNC0njokAaVQbisROu9dDZXb0Q~lPhP0JzOYf8woPwR4tn9~XmLgeOHnW2KOcbFWn3-C2cXVvWQ4PUr8AUF7LbPluOPJwU0OZV77pH~1A-oX9nag8u26CKToHVQDwGcj5GbKMOnhHS99TN2zUoSkAWUGuQ76NrEep2ZQu10D1E94rZlR4vLPXLAJnhCkhgflw__',
-			name: 'John D.',
-			role: 'Heavy Machinery Operator'
-		},
-		{
-			content:
-				"HAMMERSPIR's hoses are incredibly durable and reliable, perfect for our heavy machinery needs. Highly recommended!",
-			profileImg:
-				'https://s3-alpha-sig.figma.com/img/c405/2b93/7b21a5ac0f3a7fbab06b5f36010e1dfa?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=flijo6iJSaqoW1pkjKb~N7E0HC4KhBvfuFGY4iC9mtat7m4Lvy9Q5bBOcMUMDv4rhSmOmfgRTuxNw7oH58nJaPMU6CriVhIdteYKUvWN7XNje2Dm2erIZgXAEQzv2NwAHvuFxZOFvy4VP8PBnruzhgNC0njokAaVQbisROu9dDZXb0Q~lPhP0JzOYf8woPwR4tn9~XmLgeOHnW2KOcbFWn3-C2cXVvWQ4PUr8AUF7LbPluOPJwU0OZV77pH~1A-oX9nag8u26CKToHVQDwGcj5GbKMOnhHS99TN2zUoSkAWUGuQ76NrEep2ZQu10D1E94rZlR4vLPXLAJnhCkhgflw__',
-			name: 'John D.',
-			role: 'Heavy Machinery Operator'
-		}
-	];
+	import { page } from '$app/stores';
+	import { pb } from '$lib/pocketbase';
+	import type { PageData } from '../$types';
+
+	let data = $page.data as PageData;
+	let testimonials = data.testimonials.map((element) => {
+		return {
+			profileImg: pb.files.getUrl(element, element.user_profile_image_url, { thumb: '1920x1080' }),
+			content: element.testimonial,
+			name: element.user,
+			role: element.role
+		};
+	});
 </script>
 
 <div class="bg-white text-black min-h-screen lg:!flex lg:!flex-col lg:!justify-center">
