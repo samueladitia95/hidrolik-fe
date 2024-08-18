@@ -2,28 +2,18 @@
 	import { onMount } from 'svelte';
 	import { inview, type ObserverEventDetails } from 'svelte-inview';
 
-	import { isTopbarTransparent } from '$lib/store';
-	// import type { RecordModel } from 'pocketbase';
-	// import { pb } from '$lib/pocketbase';
+	import { pb } from '$lib/pocketbase';
+	import { page } from '$app/stores';
+	import type { PageData } from '../$types';
 
-	let banners = [
-		{
-			image:
-				'https://s3-alpha-sig.figma.com/img/8715/cb2b/a8ef5fdc43b8508382ecbd5cbc00e2cc?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hOH~3eQhjpjMQunuOkUPGislGgD7xTs38POIVYgLf2peT67y9JKCBky22zSTrpxopvIwdm~82nDNeTECXHvjkriQ3FXC4hCspx4ktTDpXAnnGVjNxtfeIk~y3QtKFz5e9LWHYVGXViogSONuUJCoILXljs-WunU1R1Gz~q5SMJ9T8097dKb6HT1s5ftiINkSUXSohhOR-vSIrVIikSM6OFsZ46tN5FdNkMTGOKovFLMDcUiW7qkPsfg2cutlm7iIQa-6gUfxNQHnlEQtQUzZeQ0EKFc6hlnxQpU7MXVAAVB-oA7fCw4kUZdUTk4r4GsIIExKxiC8uUIP0T92xalSJQ__'
-		},
-		{
-			image:
-				'https://s3-alpha-sig.figma.com/img/8715/cb2b/a8ef5fdc43b8508382ecbd5cbc00e2cc?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hOH~3eQhjpjMQunuOkUPGislGgD7xTs38POIVYgLf2peT67y9JKCBky22zSTrpxopvIwdm~82nDNeTECXHvjkriQ3FXC4hCspx4ktTDpXAnnGVjNxtfeIk~y3QtKFz5e9LWHYVGXViogSONuUJCoILXljs-WunU1R1Gz~q5SMJ9T8097dKb6HT1s5ftiINkSUXSohhOR-vSIrVIikSM6OFsZ46tN5FdNkMTGOKovFLMDcUiW7qkPsfg2cutlm7iIQa-6gUfxNQHnlEQtQUzZeQ0EKFc6hlnxQpU7MXVAAVB-oA7fCw4kUZdUTk4r4GsIIExKxiC8uUIP0T92xalSJQ__'
-		},
-		{
-			image:
-				'https://s3-alpha-sig.figma.com/img/8715/cb2b/a8ef5fdc43b8508382ecbd5cbc00e2cc?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hOH~3eQhjpjMQunuOkUPGislGgD7xTs38POIVYgLf2peT67y9JKCBky22zSTrpxopvIwdm~82nDNeTECXHvjkriQ3FXC4hCspx4ktTDpXAnnGVjNxtfeIk~y3QtKFz5e9LWHYVGXViogSONuUJCoILXljs-WunU1R1Gz~q5SMJ9T8097dKb6HT1s5ftiINkSUXSohhOR-vSIrVIikSM6OFsZ46tN5FdNkMTGOKovFLMDcUiW7qkPsfg2cutlm7iIQa-6gUfxNQHnlEQtQUzZeQ0EKFc6hlnxQpU7MXVAAVB-oA7fCw4kUZdUTk4r4GsIIExKxiC8uUIP0T92xalSJQ__'
-		},
-		{
-			image:
-				'https://s3-alpha-sig.figma.com/img/8715/cb2b/a8ef5fdc43b8508382ecbd5cbc00e2cc?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hOH~3eQhjpjMQunuOkUPGislGgD7xTs38POIVYgLf2peT67y9JKCBky22zSTrpxopvIwdm~82nDNeTECXHvjkriQ3FXC4hCspx4ktTDpXAnnGVjNxtfeIk~y3QtKFz5e9LWHYVGXViogSONuUJCoILXljs-WunU1R1Gz~q5SMJ9T8097dKb6HT1s5ftiINkSUXSohhOR-vSIrVIikSM6OFsZ46tN5FdNkMTGOKovFLMDcUiW7qkPsfg2cutlm7iIQa-6gUfxNQHnlEQtQUzZeQ0EKFc6hlnxQpU7MXVAAVB-oA7fCw4kUZdUTk4r4GsIIExKxiC8uUIP0T92xalSJQ__'
-		}
-	];
+	import { isTopbarTransparent } from '$lib/store';
+
+	let data = $page.data as PageData;
+	let banners = data.carausels.map((element) => {
+		return {
+			image: pb.files.getUrl(element, element.image_url)
+		};
+	});
 	const itemNumber: number = banners.length;
 
 	let interval: number;
