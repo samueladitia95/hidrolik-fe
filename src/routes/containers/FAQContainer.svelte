@@ -50,7 +50,7 @@
 <div
 	class="bg-gradient-to-r from-[#05374F] to-[#08222F] text-white min-h-screen lg:!flex lg:!flex-col lg:!justify-center"
 >
-	<div class="container py-28 lg:!py-0">
+	<div class="container py-28">
 		<div
 			class="text-3xl/relaxed md:!text-5xl/relaxed font-bold text-center w-full flex justify-center"
 		>
