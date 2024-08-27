@@ -15,7 +15,7 @@
 
 	$: if (dialog && showModal) dialog.showModal();
 
-	const { form, enhance, constraints, errors, reset } = superForm(defaults(zod(schemaContactUs)), {
+	const { form, enhance, constraints, errors } = superForm(defaults(zod(schemaContactUs)), {
 		SPA: true,
 		validators: zod(schemaContactUs),
 		resetForm: true,
@@ -272,9 +272,9 @@
 									placeholder="Type your message..."
 									name="message"
 									rows="4"
-								>
-									{$form.message}
-								</textarea>
+									{...$constraints.message}
+									bind:value={$form.message}
+								/>
 								{#if $errors.message && $errors.message?.length}
 									<div transition:fly={{ y: -20, duration: 300 }} class="text-xs text-error pt-2">
 										{$errors.message?.[0]}
