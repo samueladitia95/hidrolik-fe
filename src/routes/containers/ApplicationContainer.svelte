@@ -102,7 +102,7 @@
 		<div class="flex gap-2 lg:!justify-end mt-6">
 			<button
 				on:click|preventDefault={() => scrollIntoView('minus')}
-				class="p-3 border border-solid border-black rounded-full disabled:opacity-50"
+				class="p-3 border border-solid border-black rounded-full disabled:opacity-50 hover:opacity-75"
 				disabled={viewIndex <= 0}
 			>
 				<div class="h-6 w-6 rotate-180">
@@ -111,7 +111,7 @@
 			</button>
 			<button
 				on:click|preventDefault={() => scrollIntoView('plus')}
-				class="p-3 border border-solid border-black rounded-full disabled:opacity-50"
+				class="p-3 border border-solid border-black rounded-full disabled:opacity-50 hover:opacity-75"
 				disabled={viewIndex >= itemNumber - 1}
 			>
 				<div class="h-6 w-6">
