@@ -31,7 +31,7 @@
 >
 	<div class="container py-28 lg:py-40">
 		<div
-			class="text-3xl/relaxed md:!text-5xl/relaxed font-bold text-center w-full flex justify-center"
+			class="text-3xl/relaxed md:!text-5xl/relaxed font-bold text-left md:!text-center w-full flex justify-center"
 		>
 			<div class="max-w-xl">Frequently Asked Questions</div>
 		</div>
