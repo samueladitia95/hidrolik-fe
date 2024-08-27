@@ -31,7 +31,7 @@
 <div class="bg-secondary w-screen">
 	<div class="container py-28 md:!py-56 text-white">
 		<div class="xl:!flex xl:!items-center xl:!gap-40">
-			<div class="flex flex-col gap-6 items-center md:!text-center xl:!text-left xl:!w-[1000px]">
+			<div class="flex flex-col gap-6 text-left max-w-[500px] xl:!max-w-[1000px] xl:!items-center xl:!w-[1000px]">
 				<div class="text-3xl md:!text-5xl/relaxed font-bold">How to order our products</div>
 			</div>
 
