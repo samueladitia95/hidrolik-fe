@@ -26,7 +26,7 @@
 >
 	<div class="container py-8 flex flex-col min-h-screen">
 		<div class="flex justify-between items-center">
-			<a href="/" class="cursor-pointer">
+			<a href="/" class="cursor-pointer" on:click={() => (isModalOpen = false)}>
 				<div class="max-w-56">
 					{@html mainLogo}
 				</div>
@@ -42,7 +42,7 @@
 				{#each navbarItems as item}
 					<div class="w-full">
 						<div class="flex w-full justify-between">
-							<a href={item.link}>
+							<a href={item.link} on:click={() => (isModalOpen = false)}>
 								<div class="text-2xl/normal font-light hover:underline">{item.label}</div></a
 							>
 							{#if item.childMenutItems}
@@ -60,7 +60,7 @@
 								)}
 							>
 								{#each item.childMenutItems as childItem}
-									<a href={childItem.link}>
+									<a href={childItem.link} on:click={() => (isModalOpen = false)}>
 										<div class="text-xl font-light px-4">{childItem.label}</div>
 									</a>
 								{/each}
