@@ -42,7 +42,7 @@
 				{#each navbarItems as item}
 					<div class="w-full">
 						<div class="flex w-full justify-between">
-							<a href={item.link}> <div class="text-2xl/normal font-light">{item.label}</div></a>
+							<a href={item.link}> <div class="text-2xl/normal font-light hover:underline">{item.label}</div></a>
 							{#if item.childMenutItems}
 								<button class="w-8 h-8" on:click={() => (item.isOpen = !item.isOpen)}>
 									{@html chevronLogo}
