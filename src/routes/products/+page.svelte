@@ -113,11 +113,12 @@
 			<div class="w-full flex justify-between lg:!justify-end">
 				<!-- FILTER BUTTON -->
 				<button
-					class="border-2 border-solid border-black rounded-full px-6 py-3 flex gap-3 lg:!hidden"
+					class="border-2 border-solid border-black rounded-full px-6 py-3 flex gap-3 items-center lg:!hidden"
 					on:click={() => (isFilterOpen = true)}
 				>
 					<div class="h-6 w-6">{@html FilterLogo}</div>
 					<div class="">Filter</div>
+					<div class="text-sm bg-secondary text-white rounded-full px-1.5">2</div>
 				</button>
 
 				<!-- ORDER BY -->
@@ -180,7 +181,7 @@
 <div class="lg:!hidden">
 	<div
 		class={clsx(
-			'top-0 left-0 z-40 bg-black bg-opacity-50 h-screen w-screen',
+			'top-0 left-0 z-40 bg-black !bg-opacity-50 h-screen w-screen',
 			isFilterOpen ? 'fixed' : 'hidden'
 		)}
 		on:click={() => (isFilterOpen = false)}
