@@ -1,4 +1,10 @@
 <script lang="ts">
+	import { fly } from 'svelte/transition';
+	import { superForm, defaults } from 'sveltekit-superforms';
+	import { zod } from 'sveltekit-superforms/adapters';
+	import { schemaContactUs } from '$lib/schema';
+	import { pb } from '$lib/pocketbase';
+
 	import closeLogo from '$lib/icons/close-logo.svg?raw';
 
 	export let showModal: boolean = false; // boolean
@@ -7,60 +13,91 @@
 
 	$: if (dialog && showModal) dialog.showModal();
 
-	const forms = [
-		{
-			row: [
-				{
-					type: 'input',
-					label: 'First Name',
-					placeholder: 'Enter your first name',
-					name: 'firstName'
-				},
-				{
-					type: 'input',
-					label: 'Last Name',
-					placeholder: 'Enter your last name',
-					name: 'lastName'
-				}
-			]
-		},
-		{
-			row: [
-				{
-					type: 'input',
-					label: 'Email',
-					placeholder: 'Enter your email',
-					name: 'email'
-				},
-				{
-					type: 'input',
-					label: 'Phone Number',
-					placeholder: 'Enter your phone number',
-					name: 'phone'
-				}
-			]
-		},
-		{
-			row: [
-				{
-					type: 'input',
-					label: 'Subject',
-					placeholder: 'Enter your email subject',
-					name: 'subject'
-				}
-			]
-		},
-		{
-			row: [
-				{
-					type: 'area',
-					label: 'Message',
-					placeholder: 'Type your message...',
-					name: 'message'
-				}
-			]
+	const { form, enhance, constraints, errors } = superForm(defaults(zod(schemaContactUs)), {
+		SPA: true,
+		validators: zod(schemaContactUs),
+		resetForm: false,
+		onUpdate: async function onUpdate({ form }) {
+			console.log(form);
+			if (form.valid) {
+				const body = {
+					first_name: form.data.firstName,
+					last_name: form.data.lastName,
+					email: form.data.email,
+					phone: form.data.phone,
+					subjects: form.data.subjects,
+					message: form.data.message
+				};
+				await pb.collection('Inquiry_Forms').create(body);
+			}
 		}
-	];
+	});
+
+	// type Form = {
+	// 	type: string;
+	// 	label: string;
+	// 	placeholder: string;
+	// 	name: 'firstName' | 'lastName' | 'email' | 'phone' | 'subjects' | 'message';
+	// };
+
+	// type FormRow = {
+	// 	row: Form[];
+	// };
+
+	// const forms: FormRow[] = [
+	// 	{
+	// 		row: [
+	// 			{
+	// 				type: 'input',
+	// 				label: 'First Name',
+	// 				placeholder: 'Enter your first name',
+	// 				name: 'firstName'
+	// 			},
+	// 			{
+	// 				type: 'input',
+	// 				label: 'Last Name',
+	// 				placeholder: 'Enter your last name',
+	// 				name: 'lastName'
+	// 			}
+	// 		]
+	// 	},
+	// 	{
+	// 		row: [
+	// 			{
+	// 				type: 'input',
+	// 				label: 'Email',
+	// 				placeholder: 'Enter your email',
+	// 				name: 'email'
+	// 			},
+	// 			{
+	// 				type: 'input',
+	// 				label: 'Phone Number',
+	// 				placeholder: 'Enter your phone number',
+	// 				name: 'phone'
+	// 			}
+	// 		]
+	// 	},
+	// 	{
+	// 		row: [
+	// 			{
+	// 				type: 'input',
+	// 				label: 'Subject',
+	// 				placeholder: 'Enter your email subject',
+	// 				name: 'subjects'
+	// 			}
+	// 		]
+	// 	},
+	// 	{
+	// 		row: [
+	// 			{
+	// 				type: 'area',
+	// 				label: 'Message',
+	// 				placeholder: 'Type your message...',
+	// 				name: 'message'
+	// 			}
+	// 		]
+	// 	}
+	// ];
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
@@ -82,8 +119,8 @@
 			</div>
 
 			<!-- FORM -->
-			<form class="flex flex-col gap-6">
-				{#each forms as form}
+			<form use:enhance class="flex flex-col gap-6">
+				<!-- {#each forms as form}
 					<div class="flex flex-col md:!flex-row gap-6">
 						{#each form.row as row}
 							<div class="flex flex-col gap-1 flex-grow">
@@ -95,14 +132,150 @@
 									name={row.name}
 									placeholder={row.placeholder}
 									class="py-2.5 px-4 rounded border border-solid border-black"
+									{...$constraints[row.name]}
+									bind:value={$form[row.name]}
 								/>
+								{#if $errors[row.name] && $errors[row.name]?.length}
+									<div transition:fly={{ y: -20, duration: 300 }} class="text-xs text-error pt-2">
+										{$errors[row.name]?.[0]}
+									</div>
+								{/if}
 							</div>
 						{/each}
 					</div>
-				{/each}
+				{/each} -->
+
+				<!-- !! SOMEHOW I CANT MAKE THIS INTO ARRAY -->
+				<div class="flex flex-col md:!flex-row gap-6">
+					<!-- ?? FIRST NAME -->
+					<div class="flex flex-col gap-1 flex-grow">
+						<div class="text-sm flex gap-1">
+							<div>First Name</div>
+							<div class="text-error">*</div>
+						</div>
+						<input
+							name="firstName"
+							placeholder="Enter your first name"
+							class="py-2.5 px-4 rounded border border-solid border-black"
+							{...$constraints.firstName}
+							bind:value={$form.firstName}
+						/>
+						{#if $errors.firstName && $errors.firstName?.length}
+							<div transition:fly={{ y: -20, duration: 300 }} class="text-xs text-error pt-2">
+								{$errors.firstName?.[0]}
+							</div>
+						{/if}
+					</div>
+
+					<!-- ?? LAST NAME -->
+					<div class="flex flex-col gap-1 flex-grow">
+						<div class="text-sm flex gap-1">
+							<div>Last Name</div>
+							<div class="text-error">*</div>
+						</div>
+						<input
+							name="lastName"
+							placeholder="Enter your last name"
+							class="py-2.5 px-4 rounded border border-solid border-black"
+							{...$constraints.lastName}
+							bind:value={$form.lastName}
+						/>
+						{#if $errors.lastName && $errors.lastName?.length}
+							<div transition:fly={{ y: -20, duration: 300 }} class="text-xs text-error pt-2">
+								{$errors.lastName?.[0]}
+							</div>
+						{/if}
+					</div>
+				</div>
+
+				<div class="flex flex-col md:!flex-row gap-6">
+					<!-- ?? EMAIL -->
+					<div class="flex flex-col gap-1 flex-grow">
+						<div class="text-sm flex gap-1">
+							<div>Email</div>
+							<div class="text-error">*</div>
+						</div>
+						<input
+							name="email"
+							placeholder="Enter your email"
+							class="py-2.5 px-4 rounded border border-solid border-black"
+							{...$constraints.email}
+							bind:value={$form.email}
+						/>
+						{#if $errors.email && $errors.email?.length}
+							<div transition:fly={{ y: -20, duration: 300 }} class="text-xs text-error pt-2">
+								{$errors.email?.[0]}
+							</div>
+						{/if}
+					</div>
+
+					<!-- ?? PHONE NUMBER -->
+					<div class="flex flex-col gap-1 flex-grow">
+						<div class="text-sm flex gap-1">
+							<div>Phone Number</div>
+							<div class="text-error">*</div>
+						</div>
+						<input
+							name="phone"
+							placeholder="Enter your phone number"
+							class="py-2.5 px-4 rounded border border-solid border-black"
+							{...$constraints.phone}
+							bind:value={$form.phone}
+						/>
+						{#if $errors.phone && $errors.phone?.length}
+							<div transition:fly={{ y: -20, duration: 300 }} class="text-xs text-error pt-2">
+								{$errors.phone?.[0]}
+							</div>
+						{/if}
+					</div>
+				</div>
+
+				<div class="flex flex-col md:!flex-row gap-6">
+					<!-- ?? Subject -->
+					<div class="flex flex-col gap-1 flex-grow">
+						<div class="text-sm flex gap-1">
+							<div>Subject</div>
+							<div class="text-error">*</div>
+						</div>
+						<input
+							name="subjects"
+							placeholder="Enter your email subject"
+							class="py-2.5 px-4 rounded border border-solid border-black"
+							{...$constraints.subjects}
+							bind:value={$form.subjects}
+						/>
+						{#if $errors.subjects && $errors.subjects?.length}
+							<div transition:fly={{ y: -20, duration: 300 }} class="text-xs text-error pt-2">
+								{$errors.subjects?.[0]}
+							</div>
+						{/if}
+					</div>
+				</div>
+
+				<div class="flex flex-col md:!flex-row gap-6">
+					<!-- ?? MESSAGE -->
+					<div class="flex flex-col gap-1 flex-grow">
+						<div class="text-sm flex gap-1">
+							<div>Message</div>
+							<div class="text-error">*</div>
+						</div>
+						<input
+							name="message"
+							placeholder="Type your message..."
+							class="py-2.5 px-4 rounded border border-solid border-black"
+							{...$constraints.message}
+							bind:value={$form.message}
+						/>
+						{#if $errors.message && $errors.message?.length}
+							<div transition:fly={{ y: -20, duration: 300 }} class="text-xs text-error pt-2">
+								{$errors.message?.[0]}
+							</div>
+						{/if}
+					</div>
+				</div>
 
 				<div class="flex flex-col gap-4 md:!flex-row md:!justify-end">
-					<button class="px-6 py-3 bg-black text-white rounded-full font-semibold"
+					<button type="submit" class="px-6 py-3 bg-black text-white rounded-full font-semibold"
 						>Submit Message</button
 					>
 					<button class="px-6 py-3 font-semibold" on:click={() => dialog.close()} type="button"

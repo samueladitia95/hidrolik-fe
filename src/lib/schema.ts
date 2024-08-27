@@ -20,7 +20,7 @@ export const schemaContactUs = z
 				required_error: 'Phone Number is Required'
 			})
 			.regex(/(^08)(\d{3,4}-?){2}\d{2,3}$/, 'Phone Number is Invalid'),
-		subject: z.string({
+		subjects: z.string({
 			required_error: 'Subject is Required'
 		}),
 		message: z.string({
