@@ -77,9 +77,11 @@
 					Offer top-notch hydraulic hoses tailored to meet various industry needs, known for
 					exceptional quality and competitive pricing.
 				</div>
-				<button class="bg-secondary px-6 py-3 rounded-full mt-6 hover:bg-opacity-85"
-					>Browse Our Products</button
-				>
+				<a href="/products">
+					<button class="bg-secondary px-6 py-3 rounded-full mt-6 hover:bg-opacity-85">
+						Browse Our Products
+					</button>
+				</a>
 			</div>
 		</div>
 	</div>
