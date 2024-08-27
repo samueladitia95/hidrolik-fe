@@ -111,7 +111,7 @@
 			<Categories bind:activeFilterLabels />
 		</div>
 		<div class="lg:!col-span-3 xl:!col-span-5">
-			<div class="w-full flex justify-between lg:!justify-end">
+			<div class="w-full flex justify-between items-center">
 				<!-- FILTER BUTTON -->
 				<button
 					class="border-2 border-solid border-black rounded-full px-6 py-3 flex gap-3 items-center lg:!hidden"
@@ -125,6 +125,13 @@
 						</div>
 					{/if}
 				</button>
+
+				<!-- FILTER LIST -->
+				<div class="hidden lg:!flex gap-2">
+					{#each activeFilterLabels as label}
+						<div class="px-3 py-1.5 bg-secondary text-white text-sm rounded-full">{label}</div>
+					{/each}
+				</div>
 
 				<!-- ORDER BY -->
 				<div class="flex gap-2 items-center">
