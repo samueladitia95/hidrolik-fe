@@ -16,6 +16,7 @@
 	export let data: PageData;
 
 	let isFilterOpen = false;
+	let activeFilterLabels: string[] = [];
 
 	const orders = [
 		// {
@@ -107,7 +108,7 @@
 	<div class="my-12 lg:!grid lg:!grid-cols-4 xl:!grid-cols-6 lg:!gap-6">
 		<div class="hidden lg:!block">
 			<div class="text-2xl font-bold">Filters</div>
-			<Categories />
+			<Categories bind:activeFilterLabels />
 		</div>
 		<div class="lg:!col-span-3 xl:!col-span-5">
 			<div class="w-full flex justify-between lg:!justify-end">
@@ -118,7 +119,11 @@
 				>
 					<div class="h-6 w-6">{@html FilterLogo}</div>
 					<div class="">Filter</div>
-					<div class="text-sm bg-secondary text-white rounded-full px-1.5">2</div>
+					{#if activeFilterLabels.length}
+						<div class="text-sm bg-secondary text-white rounded-full px-1.5">
+							{activeFilterLabels.length}
+						</div>
+					{/if}
 				</button>
 
 				<!-- ORDER BY -->
@@ -201,6 +206,6 @@
 			</button>
 		</div>
 
-		<Categories />
+		<Categories bind:activeFilterLabels />
 	</div>
 </div>

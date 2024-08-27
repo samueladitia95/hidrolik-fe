@@ -44,10 +44,22 @@
 	});
 
 	let searchQueries: string[] = [];
+	export let activeFilterLabels: string[];
+
 	onMount(() => {
 		const queryParams = $page.url.searchParams.get('cat');
 		if (queryParams) {
 			searchQueries = queryParams.split(',');
+			searchQueries.forEach((el) => {
+				filters.forEach((el_parent) => {
+					const foundCat = el_parent.children.find((el_child) => {
+						return el_child.child_id === el;
+					});
+					if (foundCat) {
+						activeFilterLabels = [...activeFilterLabels, foundCat.child_label];
+					}
+				});
+			});
 		}
 	});
 
@@ -100,8 +112,12 @@
 										on:change={() => {
 											if (searchQueries.includes(childFilter.child_id)) {
 												searchQueries = searchQueries.filter((el) => el !== childFilter.child_id);
+												activeFilterLabels = activeFilterLabels.filter(
+													(el) => el !== childFilter.child_label
+												);
 											} else {
 												searchQueries = [...searchQueries, childFilter.child_id];
+												activeFilterLabels = [...activeFilterLabels, childFilter.child_label];
 											}
 										}}
 									/>
