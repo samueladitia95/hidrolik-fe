@@ -32,7 +32,10 @@
 	];
 </script>
 
-<div class="bg-white text-black min-h-screen lg:!flex lg:!flex-col lg:!justify-center">
+<div
+	class="bg-white text-black min-h-screen lg:!flex lg:!flex-col lg:!justify-center"
+	id="contact-us-homepage"
+>
 	<div class="container py-28 lg:!py-0">
 		<div class="flex flex-col gap-4 items-start">
 			<div class="text-3xl/relaxed md:!text-5xl/relaxed font-bold">Contact us</div>

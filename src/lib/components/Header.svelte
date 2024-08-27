@@ -53,7 +53,7 @@
 		{
 			label: 'Contact Us',
 			isOpen: false,
-			link: 'https://www.google.com'
+			link: '/#contact-us-homepage'
 		}
 	];
 </script>
