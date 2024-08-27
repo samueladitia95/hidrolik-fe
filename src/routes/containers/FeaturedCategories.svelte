@@ -28,12 +28,18 @@
 		<div class="mt-12 grid grid-cols-1 md:!grid-cols-2 lg:!grid-cols-4 gap-6">
 			{#each categories as category}
 				<div class="relative">
-					<img
-						src={category.image}
-						alt="category"
-						class="h-[380px] lg:!h-[260px] xl:!h-[380px] w-full object-cover rounded-xl"
-					/>
-					<div class="absolute top-0 left-0 w-full h-full gradient-overlay rounded-xl" />
+					<div
+						class="transform max-h-[380px] lg:!max-h-[260px] xl:!max-h-[380px] overflow-hidden rounded-xl"
+					>
+						<div class="hover:scale-125 transition-transform duration-200 rounded-xl">
+							<img
+								src={category.image}
+								alt="category"
+								class="h-[380px] lg:!h-[260px] xl:!h-[380px] w-full object-cover rounded-xl"
+							/>
+							<div class="absolute top-0 left-0 w-full h-full gradient-overlay rounded-xl" />
+						</div>
+					</div>
 					<div class="absolute bottom-6 left-6 text-2xl font-semibold text-white">
 						{category.label}
 					</div>
