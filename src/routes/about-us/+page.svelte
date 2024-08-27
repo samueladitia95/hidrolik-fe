@@ -68,19 +68,21 @@
 
 <!-- OUR VISION -->
 <div class="bg-primary">
-	<div class="container py-20 text-white flex flex-col gap-6">
+	<div class="container py-20 text-white flex flex-col xl:!flex-row xl:!items-center gap-6">
 		<img
 			src={pb.files.getUrl(about, about.vision_image)}
 			alt="main-vision"
-			class="rounded-lg h-[445px] w-full object-cover"
+			class="rounded-lg h-[445px] xl:!w-[670px] w-full object-cover"
 		/>
 
-		<div class="text-3xl/loose font-bold">Our Vision</div>
-		<div class="leading-loose">
-			our vision is to be the global leader in hydraulic hose solutions, renowned for our commitment
-			to quality, innovation, and customer satisfaction. We aspire to set the industry standard for
-			excellence, providing reliable and durable products that empower our customers across various
-			sectors to achieve their goals.
+		<div class="flex flex-col gap-6">
+			<div class="text-3xl/loose font-bold">Our Vision</div>
+			<div class="leading-loose max-w-3xl">
+				our vision is to be the global leader in hydraulic hose solutions, renowned for our
+				commitment to quality, innovation, and customer satisfaction. We aspire to set the industry
+				standard for excellence, providing reliable and durable products that empower our customers
+				across various sectors to achieve their goals.
+			</div>
 		</div>
 	</div>
 </div>
