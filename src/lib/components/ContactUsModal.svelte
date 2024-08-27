@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
-	import { superForm, defaults } from 'sveltekit-superforms';
+	import { superForm, defaults, message } from 'sveltekit-superforms';
 	import { zod } from 'sveltekit-superforms/adapters';
 	import { schemaContactUs } from '$lib/schema';
 	import { pb } from '$lib/pocketbase';
@@ -259,13 +259,15 @@
 							<div>Message</div>
 							<div class="text-error">*</div>
 						</div>
-						<input
-							name="message"
-							placeholder="Type your message..."
+
+						<textarea
 							class="py-2.5 px-4 rounded border border-solid border-black"
-							{...$constraints.message}
-							bind:value={$form.message}
-						/>
+							placeholder="Type your message..."
+							name="message"
+							rows="4"
+						>
+							{$form.message}
+						</textarea>
 						{#if $errors.message && $errors.message?.length}
 							<div transition:fly={{ y: -20, duration: 300 }} class="text-xs text-error pt-2">
 								{$errors.message?.[0]}
