@@ -108,7 +108,7 @@
 	<div class="my-12 lg:!grid lg:!grid-cols-4 xl:!grid-cols-6 lg:!gap-6">
 		<div class="hidden lg:!block">
 			<div class="text-2xl font-bold">Filters</div>
-			<Categories bind:activeFilterLabels />
+			<Categories bind:activeFilterLabels mode="change" />
 		</div>
 		<div class="lg:!col-span-3 xl:!col-span-5">
 			<div class="w-full flex justify-between items-center">
@@ -213,6 +213,6 @@
 			</button>
 		</div>
 
-		<Categories bind:activeFilterLabels />
+		<Categories bind:activeFilterLabels mode="submit" />
 	</div>
 </div>

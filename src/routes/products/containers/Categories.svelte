@@ -21,6 +21,7 @@
 		children: Child[];
 	};
 
+	export let mode: 'change' | 'submit' = 'submit';
 	let data: PageData = $page.data as PageData;
 	$: filters = data.categories.items.map((element) => {
 		const returnObject = {
@@ -119,6 +120,10 @@
 												searchQueries = [...searchQueries, childFilter.child_id];
 												activeFilterLabels = [...activeFilterLabels, childFilter.child_label];
 											}
+
+											if (mode === 'change') {
+												applyFilter(searchQueries);
+											}
 										}}
 									/>
 									<div class="text-sm">{childFilter.child_label}</div>
@@ -130,7 +135,7 @@
 			{/each}
 		</div>
 	</div>
-	<div class="mt-4 flex flex-col gap-2 mb-6">
+	<div class="mt-4 flex flex-col gap-2 mb-6 xl:!hidden">
 		<button
 			class="px-6 py-3 rounded-full bg-black text-white font-semibold"
 			on:click={() => applyFilter(searchQueries)}>Apply</button
