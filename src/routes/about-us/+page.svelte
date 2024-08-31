@@ -80,7 +80,9 @@
 
 <!-- OUR VISION -->
 <div class="bg-primary">
-	<div class="container py-20 text-white flex flex-col xl:!flex-row xl:!items-center gap-6">
+	<div
+		class="container py-20 text-white flex flex-col xl:!flex-row xl:!items-center gap-6 xl:!py-48"
+	>
 		<img
 			src={pb.files.getUrl(about, about.vision_image)}
 			alt="main-vision"
@@ -88,7 +90,7 @@
 		/>
 
 		<div class="flex flex-col gap-6">
-			<div class="text-3xl/loose font-bold">Our Vision</div>
+			<div class="text-3xl/loose md:!text-4xl/loose font-bold">Our Vision</div>
 			<div class="leading-loose max-w-3xl">
 				our vision is to be the global leader in hydraulic hose solutions, renowned for our
 				commitment to quality, innovation, and customer satisfaction. We aspire to set the industry
