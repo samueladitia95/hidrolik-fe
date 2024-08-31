@@ -1,78 +1,18 @@
 <script lang="ts">
 	import clsx from 'clsx';
-	import { onMount } from 'svelte';
-
-	import { page } from '$app/stores';
-	import type { PageData } from '../$types';
-	import type { RecordModel } from 'pocketbase';
 
 	import ChevronLogo from '$lib/icons/chevron-logo.svg?raw';
-	import { goto } from '$app/navigation';
-
-	type Child = {
-		child_id: string;
-		child_label: string;
-	};
-
-	type Parent = {
-		parent_id: string;
-		parent_label: string;
-		isOpen: boolean;
-		children: Child[];
-	};
+	import type { CategoryQuery, ChildCategory, ParentCategory } from '../types';
 
 	export let mode: 'change' | 'submit' = 'submit';
-	let data: PageData = $page.data as PageData;
-	$: filters = data.categories.items.map((element) => {
-		const returnObject = {
-			parent_label: element.label,
-			parent_id: element.id,
-			isOpen: true
-		} as Parent;
+	export let filters: ParentCategory[];
 
-		if (element.expand) {
-			returnObject.children = element.expand.child_categories_via_parent_categories.map(
-				(element: RecordModel) => {
-					return {
-						child_label: element.label,
-						child_id: element.id
-					};
-				}
-			);
-		}
+	export let categoriesQueries: CategoryQuery[];
+	export let resetFilterCategories: () => void;
+	export let applyFilterCategories: (categoriesQueries: CategoryQuery[]) => void;
 
-		return returnObject;
-	});
-
-	let searchQueries: string[] = [];
-	export let activeFilterLabels: string[];
-
-	onMount(() => {
-		const queryParams = $page.url.searchParams.get('cat');
-		if (queryParams) {
-			searchQueries = queryParams.split(',');
-			searchQueries.forEach((el) => {
-				filters.forEach((el_parent) => {
-					const foundCat = el_parent.children.find((el_child) => {
-						return el_child.child_id === el;
-					});
-					if (foundCat) {
-						activeFilterLabels = [...activeFilterLabels, foundCat.child_label];
-					}
-				});
-			});
-		}
-	});
-
-	const applyFilter = (searchQueries: string[]) => {
-		$page.url.searchParams.set('cat', searchQueries.join(','));
-		goto($page.url, { invalidateAll: true });
-	};
-
-	const resetFilter = () => {
-		searchQueries = [];
-		$page.url.searchParams.delete('cat');
-		goto($page.url);
+	const isChecked = (childFilter: ChildCategory) => {
+		return categoriesQueries.some((el) => el.id === childFilter.child_id);
 	};
 </script>
 
@@ -109,20 +49,24 @@
 									<input
 										type="checkbox"
 										class="border-2 border-solid border-black border-opacity-55 rounded h-5 w-5"
-										checked={searchQueries.includes(childFilter.child_id)}
+										checked={isChecked(childFilter)}
 										on:change={() => {
-											if (searchQueries.includes(childFilter.child_id)) {
-												searchQueries = searchQueries.filter((el) => el !== childFilter.child_id);
-												activeFilterLabels = activeFilterLabels.filter(
-													(el) => el !== childFilter.child_label
+											if (isChecked(childFilter)) {
+												categoriesQueries = categoriesQueries.filter(
+													(el) => el.id !== childFilter.child_id
 												);
 											} else {
-												searchQueries = [...searchQueries, childFilter.child_id];
-												activeFilterLabels = [...activeFilterLabels, childFilter.child_label];
+												categoriesQueries = [
+													...categoriesQueries,
+													{
+														label: childFilter.child_label,
+														id: childFilter.child_id
+													}
+												];
 											}
 
 											if (mode === 'change') {
-												applyFilter(searchQueries);
+												applyFilterCategories(categoriesQueries);
 											}
 										}}
 									/>
@@ -138,8 +82,10 @@
 	<div class="mt-4 flex flex-col gap-2 mb-6 xl:!hidden">
 		<button
 			class="px-6 py-3 rounded-full bg-black text-white font-semibold"
-			on:click={() => applyFilter(searchQueries)}>Apply</button
+			on:click={() => applyFilterCategories(categoriesQueries)}>Apply</button
 		>
-		<button class="px-6 py-3 font-semibold" on:click={() => resetFilter()}>Reset All</button>
+		<button class="px-6 py-3 font-semibold" on:click={() => resetFilterCategories()}>
+			Reset All
+		</button>
 	</div>
 </div>

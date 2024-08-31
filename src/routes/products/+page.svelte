@@ -8,38 +8,18 @@
 	import SearchLogo from '$lib/icons/search-logo.svg?raw';
 	import FilterLogo from '$lib/icons/filter-icon.svg?raw';
 	import CloseLogo from '$lib/icons/close-logo.svg?raw';
+	import CloseCircleLogo from '$lib/icons/close-circle.svg?raw';
 
 	import type { RecordModel } from 'pocketbase';
 	import type { PageData } from './$types';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
+	import type { CategoryQuery, ParentCategory, Product } from './types';
 	export let data: PageData;
 
 	let isFilterOpen = false;
-	let activeFilterLabels: string[] = [];
 
-	const orders = [
-		// {
-		// 	label: 'Best Seller',
-		// 	value: 'best-seller'
-		// },
-		{
-			label: 'Newest',
-			value: '+created'
-		},
-		{
-			label: 'Oldest',
-			value: '-created'
-		}
-	];
-
-	type Product = {
-		id: string;
-		name: string;
-		imageUrl: string;
-		description: string;
-	};
-
+	// LIST OF PRODUCTS
 	$: products = data.products.items.map((el: RecordModel): Product => {
 		return {
 			id: el.id,
@@ -49,6 +29,7 @@
 		};
 	});
 
+	// PAGINATION
 	const nextPage = () => {
 		if (products.length >= data.products.totalItems) {
 			return;
@@ -63,23 +44,92 @@
 		goto($page.url, { invalidateAll: true });
 	};
 
+	// ORDERS
+	const orders = [
+		// {
+		// 	label: 'Best Seller',
+		// 	value: 'best-seller'
+		// },
+		{
+			label: 'Newest',
+			value: '+created'
+		},
+		{
+			label: 'Oldest',
+			value: '-created'
+		}
+	];
 	let selectedOrder: string;
-
 	const handleOrder = () => {
 		$page.url.searchParams.set('order', selectedOrder);
 		goto($page.url, { invalidateAll: true });
 	};
 
+	// SEARCH
 	let searchQuery: string;
 	const handleSearch = () => {
 		$page.url.searchParams.set('q', searchQuery);
 		goto($page.url, { invalidateAll: true });
 	};
 
+	// CATEGORIES FILTER
+	let categoriesQueries: CategoryQuery[] = [];
+	$: filters = data.categories.items.map((element) => {
+		const returnObject = {
+			parent_label: element.label,
+			parent_id: element.id,
+			isOpen: true
+		} as ParentCategory;
+
+		if (element.expand) {
+			returnObject.children = element.expand.child_categories_via_parent_categories.map(
+				(element: RecordModel) => {
+					return {
+						child_label: element.label,
+						child_id: element.id
+					};
+				}
+			);
+		}
+
+		return returnObject;
+	});
+
+	const resetFilterCategories = () => {
+		categoriesQueries = [];
+		$page.url.searchParams.delete('cat');
+		goto($page.url, { invalidateAll: true });
+	};
+
+	const applyFilterCategories = (categoriesQueries: CategoryQuery[]) => {
+		$page.url.searchParams.set('cat', categoriesQueries.map((el) => el.id).join(','));
+		goto($page.url, { invalidateAll: true });
+	};
+
 	onMount(() => {
+		// SEARCH QUERY
 		const q = $page.url.searchParams.get('q');
 		if (q) {
 			searchQuery = q;
+		}
+
+		// CATEGORIES QUERY
+		const queryParams = $page.url.searchParams.get('cat');
+		if (queryParams) {
+			let categoriesIds = queryParams.split(',');
+			categoriesIds.forEach((el) => {
+				filters.forEach((el_parent) => {
+					const foundCat = el_parent.children.find((el_child) => {
+						return el_child.child_id === el;
+					});
+					if (foundCat) {
+						categoriesQueries = [
+							...categoriesQueries,
+							{ label: foundCat.child_label, id: foundCat.child_id }
+						];
+					}
+				});
+			});
 		}
 	});
 </script>
@@ -108,7 +158,13 @@
 	<div class="my-12 lg:!grid lg:!grid-cols-4 xl:!grid-cols-6 lg:!gap-6">
 		<div class="hidden lg:!block">
 			<div class="text-2xl font-bold">Filters</div>
-			<Categories bind:activeFilterLabels mode="change" />
+			<Categories
+				mode="change"
+				bind:filters
+				bind:categoriesQueries
+				{resetFilterCategories}
+				{applyFilterCategories}
+			/>
 		</div>
 		<div class="lg:!col-span-3 xl:!col-span-5">
 			<div class="w-full flex justify-between items-center">
@@ -119,18 +175,32 @@
 				>
 					<div class="h-6 w-6">{@html FilterLogo}</div>
 					<div class="">Filter</div>
-					{#if activeFilterLabels.length}
+					{#if categoriesQueries.length}
 						<div class="text-sm bg-secondary text-white rounded-full px-1.5">
-							{activeFilterLabels.length}
+							{categoriesQueries.length}
 						</div>
 					{/if}
 				</button>
 
 				<!-- FILTER LIST -->
 				<div class="hidden lg:!flex gap-2">
-					{#each activeFilterLabels as label}
-						<div class="px-3 py-1.5 bg-secondary text-white text-sm rounded-full">{label}</div>
+					{#each categoriesQueries as catQuery}
+						<div class="px-3 py-1.5 bg-secondary text-white rounded-full flex items-center gap-1">
+							<div class="text-sm">{catQuery.label}</div>
+							<button
+								class="w-4 h-4"
+								on:click={() => {
+									categoriesQueries = categoriesQueries.filter((el) => el.id !== catQuery.id);
+									applyFilterCategories(categoriesQueries);
+								}}
+							>
+								{@html CloseCircleLogo}
+							</button>
+						</div>
 					{/each}
+					{#if categoriesQueries.length}
+						<button on:click={() => resetFilterCategories()}> Clear all </button>
+					{/if}
 				</div>
 
 				<!-- ORDER BY -->
@@ -213,6 +283,12 @@
 			</button>
 		</div>
 
-		<Categories bind:activeFilterLabels mode="submit" />
+		<Categories
+			bind:categoriesQueries
+			mode="submit"
+			bind:filters
+			{resetFilterCategories}
+			{applyFilterCategories}
+		/>
 	</div>
 </div>
