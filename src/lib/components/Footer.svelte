@@ -35,6 +35,20 @@
 			link: downloadFileUrl
 		}
 	];
+
+	const downloadCatalog = async () => {
+		const a = document.createElement('a');
+		a.href = await toDataURL(downloadFileUrl);
+		a.download = `catalog-hidrolik.pdf`;
+		document.body.appendChild(a);
+		a.click();
+		document.body.removeChild(a);
+	};
+
+	const toDataURL = async (url: string) => {
+		const blob = await fetch(url).then((res) => res.blob());
+		return URL.createObjectURL(blob);
+	};
 </script>
 
 <div class="bg-black py-10 text-white">
@@ -47,11 +61,13 @@
 				<div class="flex flex-col md:!flex-row md:!justify-between md:!items-center gap-6">
 					<div class="grid grid-cols-2 md:!flex gap-6 w-full">
 						{#each navbarItems as navbarItem}
-							<a
-								href={navbarItem.link}
-								download={navbarItem.isDownload}
-								class="text-sm font-semibold">{navbarItem.label}</a
-							>
+							{#if navbarItem.isDownload}
+								<button on:click={() => downloadCatalog()} class="text-sm font-semibold"
+									>{navbarItem.label}</button
+								>
+							{:else}
+								<a href={navbarItem.link} class="text-sm font-semibold">{navbarItem.label}</a>
+							{/if}
 						{/each}
 					</div>
 					<div class="flex gap-6">
