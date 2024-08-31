@@ -11,5 +11,5 @@
 <div class="font-inter">
 	<Header downloadFileUrl={pb.getFileUrl(data.catalogs, data.catalogs.File)} />
 	<slot />
-	<Footer />
+	<Footer downloadFileUrl={pb.getFileUrl(data.catalogs, data.catalogs.File)} />
 </div>

@@ -6,31 +6,33 @@
 	import instagramLogo from '$lib/icons/instagram-logo.svg?raw';
 	import linkedinLogo from '$lib/icons/linkedin-logo.svg?raw';
 
+	export let downloadFileUrl: string;
 	const navbarItems = [
 		{
 			label: 'About Us',
 			isOpen: false,
-			link: 'https://www.google.com'
+			link: '/about-us'
 		},
-		{
-			label: 'Service',
-			isOpen: false,
-			link: 'https://www.google.com'
-		},
+		// {
+		// 	label: 'Service',
+		// 	isOpen: false,
+		// 	link: 'https://www.google.com'
+		// },
 		{
 			label: 'Products',
 			isOpen: false,
-			link: 'https://www.google.com'
+			link: '/products'
 		},
 		{
 			label: 'Contact Us',
 			isOpen: false,
-			link: 'https://www.google.com'
+			link: '/#contact-us-homepage'
 		},
 		{
 			label: 'Download Catalog',
 			isOpen: false,
-			link: 'https://www.google.com'
+			isDownload: true,
+			link: downloadFileUrl
 		}
 	];
 </script>
@@ -45,7 +47,11 @@
 				<div class="flex flex-col md:!flex-row md:!justify-between md:!items-center gap-6">
 					<div class="grid grid-cols-2 md:!flex gap-6 w-full">
 						{#each navbarItems as navbarItem}
-							<div class="text-sm font-semibold">{navbarItem.label}</div>
+							<a
+								href={navbarItem.link}
+								download={navbarItem.isDownload}
+								class="text-sm font-semibold">{navbarItem.label}</a
+							>
 						{/each}
 					</div>
 					<div class="flex gap-6">
