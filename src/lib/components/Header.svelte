@@ -29,28 +29,28 @@
 			label: 'Products',
 			isOpen: false,
 			link: '/products',
-			childMenutItems: [
-				{
-					label: 'Industrial Cable',
-					link: 'https://www.google.com'
-				},
-				{
-					label: 'Hydraulic Cable',
-					link: 'https://www.google.com'
-				},
-				{
-					label: 'Industrial Connector',
-					link: 'https://www.google.com'
-				},
-				{
-					label: 'Hydraulic Connector',
-					link: 'https://www.google.com'
-				},
-				{
-					label: 'Hydraulic Pipe',
-					link: 'https://www.google.com'
-				}
-			]
+			// childMenutItems: [
+			// 	{
+			// 		label: 'Industrial Cable',
+			// 		link: 'https://www.google.com'
+			// 	},
+			// 	{
+			// 		label: 'Hydraulic Cable',
+			// 		link: 'https://www.google.com'
+			// 	},
+			// 	{
+			// 		label: 'Industrial Connector',
+			// 		link: 'https://www.google.com'
+			// 	},
+			// 	{
+			// 		label: 'Hydraulic Connector',
+			// 		link: 'https://www.google.com'
+			// 	},
+			// 	{
+			// 		label: 'Hydraulic Pipe',
+			// 		link: 'https://www.google.com'
+			// 	}
+			// ]
 		},
 		{
 			label: 'Contact Us',
