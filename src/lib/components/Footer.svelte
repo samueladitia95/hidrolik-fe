@@ -1,6 +1,4 @@
 <script lang="ts">
-	import type { MenuItem } from '$lib/type';
-
 	import mainLogo from '$lib/icons/main-logo.svg?raw';
 	import facebookLogo from '$lib/icons/facebook-logo.svg?raw';
 	import instagramLogo from '$lib/icons/instagram-logo.svg?raw';
