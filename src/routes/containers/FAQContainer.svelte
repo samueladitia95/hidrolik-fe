@@ -40,7 +40,14 @@
 				<div class="flex flex-col gap-6">
 					<div class="flex items-center justify-between">
 						<div class="text-xl/relaxed md:!text-2xl/relaxed font-bold">{faq.question}</div>
-						<button class="w-12 h-12" on:click={() => handleOpenAccordion(index, !faq.isOpen)}>
+						<button
+							class={clsx(
+								'w-12 h-12',
+								'transition-transform duration-200',
+								faq.isOpen ? 'rotate-180' : ' rotate-0'
+							)}
+							on:click={() => handleOpenAccordion(index, !faq.isOpen)}
+						>
 							{@html chevronLogo}
 						</button>
 					</div>
