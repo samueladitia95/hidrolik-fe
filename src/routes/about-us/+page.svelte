@@ -102,9 +102,9 @@
 </div>
 
 <!-- OUR MISSION -->
-<div class="container py-20 flex flex-col gap-10">
-	<div class="flex flex-col gap-6">
-		<div class="text-3xl/loose font-bold">Our Mission</div>
+<div class="container py-20 flex flex-col xl:!flex-row xl:!item-start gap-10">
+	<div class="flex flex-col gap-6 xl:!max-w-lg">
+		<div class="text-3xl/loose md:!text-4xl/loose font-bold">Our Mission</div>
 		<div class="leading-loose">
 			At HAMMERSPIR, we are not just about products; we are about building lasting relationships and
 			creating value for our customers through exceptional hydraulic hose solutions.
@@ -115,7 +115,7 @@
 		{#each ourMissions as mission}
 			<div class="flex flex-col gap-4">
 				<div class="text-xl/loose font-bold">{mission.label}</div>
-				<div class="text-sm/loose">{mission.subLabel}</div>
+				<div class="text-sm/loose md:!text-base/loose">{mission.subLabel}</div>
 			</div>
 		{/each}
 	</div>
