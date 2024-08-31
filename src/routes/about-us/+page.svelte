@@ -49,17 +49,29 @@
 </script>
 
 <!-- INTRO -->
-<div class="pt-10 pb-20 flex flex-col gap-10 container">
-	<div>
+<div
+	class="pt-10 pb-20 flex flex-col xl:!flex-row-reverse xl:!items-center gap-10 xl:!gap-40 container"
+>
+	<div
+		class="relative h-[400px] md:!h-[600px] lg:!h-[750px] xl:!h-[600px] grid grid-cols-2 gap-4 xl:!max-w-xl"
+	>
+		<img
+			src={pb.files.getUrl(about, about.main_images[1])}
+			alt="main-about"
+			class="rounded-lg object-cover self-end h-60 md:!h-[440px] xl:!h-[350px]"
+		/>
+
 		<img
 			src={pb.files.getUrl(about, about.main_images[0])}
 			alt="main-about"
-			class="rounded-lg h-[400px] w-full object-cover"
+			class="rounded-lg object-cover self-start h-60 md:!h-[440px] xl:!h-[350px]"
 		/>
 	</div>
 	<div class="flex flex-col gap-6">
-		<div class="text-3xl/relaxed font-bold">Your Trusted Partner for Premium Hydraulic Hoses</div>
-		<div class="text-sm/loose">
+		<div class="text-3xl/relaxed md:!text-5xl/relaxed font-bold">
+			Your Trusted Partner for Premium Hydraulic Hoses
+		</div>
+		<div class="text-sm/loose md:!text-lg/loose">
 			Offer top-notch hydraulic hoses tailored to meet various industry needs, known for exceptional
 			quality and competitive pricing.
 		</div>
