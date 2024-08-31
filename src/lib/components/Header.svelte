@@ -10,6 +10,8 @@
 	let isModalOpen = false;
 	let isTransparent = false;
 
+	export let downloadFileUrl: string;
+
 	isTopbarTransparent.subscribe((value) => (isTransparent = value));
 
 	const navbarItems: MenuItem[] = [
@@ -56,6 +58,20 @@
 			link: '/#contact-us-homepage'
 		}
 	];
+
+	const downloadCatalog = async () => {
+		const a = document.createElement('a');
+		a.href = await toDataURL(downloadFileUrl);
+		a.download = `catalog-hidrolik.pdf`;
+		document.body.appendChild(a);
+		a.click();
+		document.body.removeChild(a);
+	};
+
+	const toDataURL = async (url: string) => {
+		const blob = await fetch(url).then((res) => res.blob());
+		return URL.createObjectURL(blob);
+	};
 </script>
 
 <div
@@ -88,7 +104,11 @@
 					<div class="hidden md:!block">
 						<button
 							class="bg-secondary text-white font-semibold px-6 py-3 rounded-full hover:bg-opacity-85"
-							>Download Catalog</button
+							on:click={() => {
+								downloadCatalog();
+							}}
+						>
+							Download Catalog</button
 						>
 					</div>
 
@@ -101,5 +121,5 @@
 		</div>
 	</div>
 
-	<HeaderModal bind:isModalOpen {navbarItems} />
+	<HeaderModal bind:isModalOpen {navbarItems} {downloadCatalog} />
 </div>

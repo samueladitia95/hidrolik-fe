@@ -13,6 +13,7 @@
 
 	export let isModalOpen = false;
 	export let navbarItems: MenuItem[];
+	export let downloadCatalog: () => void;
 </script>
 
 <div
@@ -71,8 +72,10 @@
 
 				<button
 					class="bg-secondary text-white font-semibold px-6 py-3 rounded-full hover:bg-opacity-85"
-					>Download Catalog</button
+					on:click={() => downloadCatalog()}
 				>
+					Download Catalog
+				</button>
 			</div>
 
 			<div class="pt-8 flex flex-col gap-4">
