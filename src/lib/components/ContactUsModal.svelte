@@ -283,7 +283,7 @@
 							</div>
 						</div>
 
-						<div class="flex flex-col gap-4 md:!flex-row md:!justify-end">
+						<div class="flex flex-col gap-4 md:!flex-row-reverse md:!justify-start">
 							<button type="submit" class="px-6 py-3 bg-black text-white rounded-full font-semibold"
 								>Submit Message</button
 							>
