@@ -48,7 +48,7 @@
 								<div class="flex gap-2 items-center">
 									<input
 										type="checkbox"
-										class="border-2 border-solid border-black border-opacity-55 rounded h-5 w-5"
+										class="border-2 border-solid border-black border-opacity-55 rounded h-5 w-5 accent-secondary"
 										checked={isChecked(childFilter)}
 										on:change={() => {
 											if (isChecked(childFilter)) {
