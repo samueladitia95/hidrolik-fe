@@ -11,7 +11,7 @@
 	export let showModal: boolean = false; // boolean
 
 	let dialog: HTMLDialogElement; // HTMLDialogElement
-	let isFinshed: boolean = false;
+	let isFinshed: boolean = true;
 
 	$: if (dialog && showModal) dialog.showModal();
 
@@ -296,7 +296,7 @@
 
 				<!-- FINISH PAGE -->
 				{#if isFinshed}
-					<div class="py-60 flex flex-col items-center gap-6">
+					<div class="py-32 flex flex-col items-center gap-6 overflow-hidden">
 						<div class="flex flex-col gap-4">
 							<div class="text-center font-bold text-2xl">Thank you!</div>
 							<div class="text-center">We will get back to you as soon as possible</div>
