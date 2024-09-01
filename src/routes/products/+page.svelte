@@ -103,6 +103,7 @@
 
 	const applyFilterCategories = (categoriesQueries: CategoryQuery[]) => {
 		$page.url.searchParams.set('cat', categoriesQueries.map((el) => el.id).join(','));
+		isFilterOpen = false;
 		goto($page.url, { invalidateAll: true });
 	};
 
@@ -239,15 +240,17 @@
 							</a>
 						{/each}
 					</div>
-					<div class="w-full mt-16 flex justify-center">
-						<button
-							class="rounded-full border-2 border-solid border-black px-6 py-3 disabled:opacity-50"
-							disabled={products.length >= data.products.totalItems}
-							on:click={() => nextPage()}
-						>
-							View More
-						</button>
-					</div>
+					{#if products.length > 9}
+						<div class="w-full mt-16 flex justify-center">
+							<button
+								class="rounded-full border-2 border-solid border-black px-6 py-3 disabled:opacity-50"
+								disabled={products.length >= data.products.totalItems}
+								on:click={() => nextPage()}
+							>
+								View More
+							</button>
+						</div>
+					{/if}
 				{:else}
 					<div class="py-60 flex flex-col justify-center items-center gap-2">
 						<div class="font-semibold">No result found</div>
