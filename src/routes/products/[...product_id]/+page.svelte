@@ -2,6 +2,7 @@
 	import { pb } from '$lib/pocketbase';
 
 	import ChevronLogo from '$lib/icons/chevron-logo.svg?raw';
+	import BackArrowLogo from '$lib/icons/back-arrow-logo.svg?raw';
 
 	import type { PageData } from './$types';
 	import ContactUsModal from '$lib/components/ContactUsModal.svelte';
@@ -37,8 +38,13 @@
 
 	<!-- PRODUCT NAME AND DESCRIPTION -->
 	<div class="mt-6 flex flex-col gap-3">
-		<div class="text-3xl font-bold">
-			{data.product.name}
+		<div class="flex gap-4 items-start">
+			<button class="w-10 h-10 min-h-10 min-w-10" on:click={() => window.history.back()}>
+				{@html BackArrowLogo}
+			</button>
+			<div class="text-3xl font-bold">
+				{data.product.name}
+			</div>
 		</div>
 		<div class="font-bold">
 			{data.product.description}
