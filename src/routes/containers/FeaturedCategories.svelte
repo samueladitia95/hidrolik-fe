@@ -1,13 +1,22 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { pb } from '$lib/pocketbase';
+	import type { RecordModel } from 'pocketbase';
 	import type { PageData } from '../$types';
 
 	let data = $page.data as PageData;
+	const parseChildLink = (categories: RecordModel) => {
+		if (categories.expand) {
+			return `/products?cat=${categories.expand?.child_categories_via_parent_categories.map((el: RecordModel) => el.id).join(',')}`;
+		} else {
+			return '/products';
+		}
+	};
 	let categories = data.featuredCategories.map((element) => {
 		return {
 			label: element.label,
-			image: pb.files.getUrl(element, element.image_url, { thumb: '1920x1080' })
+			image: pb.files.getUrl(element, element.image_url, { thumb: '1920x1080' }),
+			link: parseChildLink(element)
 		};
 	});
 </script>
@@ -28,21 +37,23 @@
 		<div class="mt-12 grid grid-cols-1 md:!grid-cols-2 lg:!grid-cols-4 gap-6">
 			{#each categories as category}
 				<div class="relative">
-					<div
-						class="transform max-h-[380px] lg:!max-h-[260px] xl:!max-h-[380px] overflow-hidden rounded-xl"
-					>
-						<div class="hover:scale-125 transition-transform duration-200 rounded-xl">
-							<img
-								src={category.image}
-								alt="category"
-								class="h-[380px] lg:!h-[260px] xl:!h-[380px] w-full object-cover rounded-xl"
-							/>
-							<div class="absolute top-0 left-0 w-full h-full gradient-overlay rounded-xl" />
+					<a href={category.link}>
+						<div
+							class="transform max-h-[380px] lg:!max-h-[260px] xl:!max-h-[380px] overflow-hidden rounded-xl"
+						>
+							<div class="hover:scale-125 transition-transform duration-200 rounded-xl">
+								<img
+									src={category.image}
+									alt="category"
+									class="h-[380px] lg:!h-[260px] xl:!h-[380px] w-full object-cover rounded-xl"
+								/>
+								<div class="absolute top-0 left-0 w-full h-full gradient-overlay rounded-xl" />
+							</div>
 						</div>
-					</div>
-					<div class="absolute bottom-6 left-6 text-2xl font-semibold text-white">
-						{category.label}
-					</div>
+						<div class="absolute bottom-6 left-6 text-2xl font-semibold text-white">
+							{category.label}
+						</div>
+					</a>
 				</div>
 			{/each}
 		</div>
