@@ -16,7 +16,7 @@ export const load: PageLoad = async () => {
 		order: '+created'
 	});
 
-	const testimonials = await pb.collection('Testimonials').getFullList({
+	const testimonials = await pb.collection('Testimonials').getList(1, 6, {
 		filter: 'is_active=true',
 		order: '-created'
 	});
@@ -35,7 +35,7 @@ export const load: PageLoad = async () => {
 		carausels,
 		trustedIndustries,
 		videoLink,
-		testimonials,
+		testimonials: testimonials.items,
 		faqs,
 		applications
 	};
