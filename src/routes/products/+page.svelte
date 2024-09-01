@@ -15,6 +15,9 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import type { CategoryQuery, ParentCategory, Product } from './types';
+	import { isTopbarTransparent } from '$lib/store';
+	import { inview } from 'svelte-inview';
+	import { fade } from 'svelte/transition';
 	export let data: PageData;
 
 	let isFilterOpen = false;
@@ -108,6 +111,7 @@
 	};
 
 	onMount(() => {
+		isTopbarTransparent.set(false);
 		// SEARCH QUERY
 		const q = $page.url.searchParams.get('q');
 		if (q) {
@@ -133,111 +137,144 @@
 			});
 		}
 	});
+
+	let isShow: boolean = false;
+	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
+		if (!isShow && detail.inView) isShow = true;
+	};
 </script>
 
-<div class="min-h-screen container">
+<div
+	class="min-h-screen container"
+	use:inview={{
+		rootMargin: '-100px'
+	}}
+	on:inview_change={handleChange}
+>
 	<div class="flex flex-col gap-6">
-		<div class="text-3xl md:!text-5xl font-bold">Our Product</div>
+		{#if isShow}
+			<div class="text-3xl md:!text-5xl font-bold" transition:fade={{ duration: 500, delay: 0 }}>
+				Our Product
+			</div>
+		{/if}
 
 		<!-- SEARCH -->
-		<div>
-			<div class="flex gap-2 px-4 py-2.5 border border-solid border-black rounded">
-				<div class="h-6 w-6">
-					{@html SearchLogo}
+
+		{#if isShow}
+			<div transition:fade={{ duration: 500, delay: 0 }}>
+				<div class="flex gap-2 px-4 py-2.5 border border-solid border-black rounded">
+					<div class="h-6 w-6">
+						{@html SearchLogo}
+					</div>
+					<form on:submit|preventDefault={() => handleSearch()} class="w-full">
+						<input
+							placeholder="Search Product Here..."
+							class="w-full outline-none"
+							bind:value={searchQuery}
+							on:blur={handleSearch}
+						/>
+					</form>
 				</div>
-				<form on:submit|preventDefault={() => handleSearch()} class="w-full">
-					<input
-						placeholder="Search Product Here..."
-						class="w-full outline-none"
-						bind:value={searchQuery}
-						on:blur={handleSearch}
-					/>
-				</form>
 			</div>
-		</div>
+		{/if}
 	</div>
+
 	<div class="my-12 lg:!grid lg:!grid-cols-4 xl:!grid-cols-6 lg:!gap-6">
-		<div class="hidden lg:!block">
-			<div class="text-2xl font-bold">Filters</div>
-			<Categories
-				mode="change"
-				bind:filters
-				bind:categoriesQueries
-				{resetFilterCategories}
-				{applyFilterCategories}
-			/>
-		</div>
-		<div class="lg:!col-span-3 xl:!col-span-5">
-			<div class="w-full flex justify-between items-center">
-				<!-- FILTER BUTTON -->
-				<button
-					class="border-2 border-solid border-black rounded-full px-6 py-3 flex gap-3 items-center lg:!hidden"
-					on:click={() => (isFilterOpen = true)}
-				>
-					<div class="h-6 w-6">{@html FilterLogo}</div>
-					<div class="">Filter</div>
-					{#if categoriesQueries.length}
-						<div class="text-sm bg-secondary text-white rounded-full px-1.5">
-							{categoriesQueries.length}
-						</div>
-					{/if}
-				</button>
-
-				<!-- FILTER LIST -->
-				<div class="hidden lg:!flex gap-2">
-					{#each categoriesQueries as catQuery}
-						<div class="px-3 py-1.5 bg-secondary text-white rounded-full flex items-center gap-1">
-							<div class="text-sm">{catQuery.label}</div>
-							<button
-								class="w-4 h-4"
-								on:click={() => {
-									categoriesQueries = categoriesQueries.filter((el) => el.id !== catQuery.id);
-									applyFilterCategories(categoriesQueries);
-								}}
-							>
-								{@html CloseCircleLogo}
-							</button>
-						</div>
-					{/each}
-					{#if categoriesQueries.length}
-						<button on:click={() => resetFilterCategories()}> Clear all </button>
-					{/if}
-				</div>
-
-				<!-- ORDER BY -->
-				<div class="flex gap-2 items-center">
-					<div class="font-bold">Sort by</div>
-					<select
-						class="p-3 border border-solid border-black rounded outline-none"
-						bind:value={selectedOrder}
-						on:change={handleOrder}
-					>
-						{#each orders as order}
-							<option value={order.value}>{order.label}</option>
-						{/each}
-					</select>
-				</div>
+		{#if isShow}
+			<div class="hidden lg:!block" transition:fade={{ duration: 500, delay: 0 }}>
+				<div class="text-2xl font-bold">Filters</div>
+				<Categories
+					mode="change"
+					bind:filters
+					bind:categoriesQueries
+					{resetFilterCategories}
+					{applyFilterCategories}
+				/>
 			</div>
+		{/if}
+		<div class="lg:!col-span-3 xl:!col-span-5">
+			{#if isShow}
+				<div
+					class="w-full flex justify-between items-center"
+					transition:fade={{ duration: 500, delay: 0 }}
+				>
+					<!-- FILTER BUTTON -->
+					<button
+						class="border-2 border-solid border-black rounded-full px-6 py-3 flex gap-3 items-center lg:!hidden"
+						on:click={() => (isFilterOpen = true)}
+					>
+						<div class="h-6 w-6">{@html FilterLogo}</div>
+						<div class="">Filter</div>
+						{#if categoriesQueries.length}
+							<div class="text-sm bg-secondary text-white rounded-full px-1.5">
+								{categoriesQueries.length}
+							</div>
+						{/if}
+					</button>
+
+					<!-- FILTER LIST -->
+					<div class="hidden lg:!flex gap-2">
+						{#each categoriesQueries as catQuery}
+							<div class="px-3 py-1.5 bg-secondary text-white rounded-full flex items-center gap-1">
+								<div class="text-sm">{catQuery.label}</div>
+								<button
+									class="w-4 h-4"
+									on:click={() => {
+										categoriesQueries = categoriesQueries.filter((el) => el.id !== catQuery.id);
+										applyFilterCategories(categoriesQueries);
+									}}
+								>
+									{@html CloseCircleLogo}
+								</button>
+							</div>
+						{/each}
+						{#if categoriesQueries.length}
+							<button on:click={() => resetFilterCategories()}> Clear all </button>
+						{/if}
+					</div>
+
+					<!-- ORDER BY -->
+					<div class="flex gap-2 items-center">
+						<div class="font-bold">Sort by</div>
+						<select
+							class="p-3 border border-solid border-black rounded outline-none"
+							bind:value={selectedOrder}
+							on:change={handleOrder}
+						>
+							{#each orders as order}
+								<option value={order.value}>{order.label}</option>
+							{/each}
+						</select>
+					</div>
+				</div>
+			{/if}
 
 			<div class="mt-6">
 				{#if products.length}
 					<div class="grid grid-cols-1 md:!grid-cols-2 lg:!grid-cols-3 gap-y-16 gap-x-6">
 						{#each products as product, index}
-							<a href={`/products/${product.id}`}>
-								<div class="flex flex-col gap-4">
-									<img
-										src={pb.files.getUrl(data.products.items[index], product.imageUrl)}
-										alt="product"
-										class="w-full object-cover rounded-sm"
-									/>
-									<div>
-										<div class="text-lg/relaxed font-semibold hover:text-secondary hover:underline">
-											{product.name}
+							{#if isShow}
+								<a
+									href={`/products/${product.id}`}
+									transition:fade={{ duration: 500, delay: 0 + index * 100 }}
+								>
+									<div class="flex flex-col gap-4">
+										<img
+											src={pb.files.getUrl(data.products.items[index], product.imageUrl)}
+											alt="product"
+											class="w-full object-cover rounded-sm"
+										/>
+										<div>
+											<div
+												class="text-lg/relaxed font-semibold hover:text-secondary hover:underline"
+											>
+												{product.name}
+											</div>
+											<div class="text-sm/relaxed">{product.description}</div>
 										</div>
-										<div class="text-sm/relaxed">{product.description}</div>
 									</div>
-								</div>
-							</a>
+								</a>
+							{/if}
 						{/each}
 					</div>
 					{#if products.length > 9}
