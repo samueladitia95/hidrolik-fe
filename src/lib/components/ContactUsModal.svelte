@@ -11,7 +11,7 @@
 	export let showModal: boolean = false; // boolean
 
 	let dialog: HTMLDialogElement; // HTMLDialogElement
-	let isFinshed: boolean = true;
+	let isFinshed: boolean = false;
 
 	$: if (dialog && showModal) dialog.showModal();
 
