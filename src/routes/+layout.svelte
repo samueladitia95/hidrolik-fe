@@ -11,5 +11,10 @@
 <div class="font-inter">
 	<Header downloadFileUrl={pb.getFileUrl(data.catalogs, data.catalogs.File)} />
 	<slot />
-	<Footer downloadFileUrl={pb.getFileUrl(data.catalogs, data.catalogs.File)} />
+	<Footer
+		downloadFileUrl={pb.getFileUrl(data.catalogs, data.catalogs.File)}
+		facebookLink={data.contactUs.facebook_url}
+		instagramLink={data.contactUs.Instagram_url}
+		linkedinLink={data.contactUs.linkedin_url}
+	/>
 </div>

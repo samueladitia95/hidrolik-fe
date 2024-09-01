@@ -47,6 +47,10 @@
 		const blob = await fetch(url).then((res) => res.blob());
 		return URL.createObjectURL(blob);
 	};
+
+	export let facebookLink: string;
+	export let instagramLink: string;
+	export let linkedinLink: string;
 </script>
 
 <div class="bg-black py-10 text-white">
@@ -69,15 +73,15 @@
 						{/each}
 					</div>
 					<div class="flex gap-6">
-						<div class="h-8 w-8">
+						<a class="h-8 w-8" href={facebookLink} target="_blank">
 							{@html facebookLogo}
-						</div>
-						<div class="h-8 w-8">
+						</a>
+						<a class="h-8 w-8" href={instagramLink} target="_blank">
 							{@html instagramLogo}
-						</div>
-						<div class="h-8 w-8">
+						</a>
+						<a class="h-8 w-8" href={linkedinLink} target="_blank">
 							{@html linkedinLogo}
-						</div>
+						</a>
 					</div>
 				</div>
 			</div>
