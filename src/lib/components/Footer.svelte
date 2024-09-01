@@ -64,7 +64,7 @@
 					<div class="grid grid-cols-2 md:!flex gap-6 w-full">
 						{#each navbarItems as navbarItem}
 							{#if navbarItem.isDownload}
-								<button on:click={() => downloadCatalog()} class="text-sm font-semibold"
+								<button on:click={() => downloadCatalog()} class="text-sm font-semibold text-left"
 									>{navbarItem.label}</button
 								>
 							{:else}
