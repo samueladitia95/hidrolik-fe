@@ -57,9 +57,9 @@
 	<div class="container">
 		<div class="flex flex-col gap-6">
 			<div class="flex flex-col gap-8 lg:!flex-row lg:!w-full lg:!justify-between">
-				<div class="max-w-56 md:!max-w-[347px]">
+				<a class="max-w-56 md:!max-w-[347px]" href="/">
 					{@html mainLogo}
-				</div>
+				</a>
 				<div class="flex flex-col md:!flex-row md:!justify-between md:!items-center gap-6">
 					<div class="grid grid-cols-2 md:!flex gap-6 w-full">
 						{#each navbarItems as navbarItem}
