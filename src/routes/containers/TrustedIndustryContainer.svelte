@@ -29,7 +29,7 @@
 		{#if isShow}
 			<div
 				class="font-bold text-center text-base/relaxed"
-				transition:fade={{ duration: 500, delay: 1000 }}
+				transition:fade={{ duration: 500, delay: 500 }}
 			>
 				Trusted by industry leaders for superior quality and reliability
 			</div>
@@ -41,7 +41,7 @@
 						src={industry.image}
 						alt="industry"
 						class="w-36 h-14"
-						transition:fly={{ x: 200, duration: 1000 + 100 * index, delay: 500 }}
+						transition:fly={{ x: 200, duration: 500 + 100 * index, delay: 500 }}
 					/>
 				{/if}
 			{/each}
