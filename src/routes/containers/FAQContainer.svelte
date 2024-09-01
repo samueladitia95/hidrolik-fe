@@ -59,7 +59,7 @@
 							<div class="text-xl/relaxed md:!text-2xl/relaxed font-bold">{faq.question}</div>
 							<button
 								class={clsx(
-									'w-12 h-12',
+									'w-8 h-8 min-w-8 min-h-8 lg:!w-8 lg:!h-8 lg:!min-w-8 lg:!min-h-8',
 									'transition-transform duration-200',
 									faq.isOpen ? 'rotate-180' : ' rotate-0'
 								)}
