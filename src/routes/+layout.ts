@@ -6,7 +6,12 @@ export const load: LayoutLoad = async () => {
 		order: '+created'
 	});
 
+	const contactUs = await pb.collection('Contact_us').getFirstListItem('is_active=true', {
+		order: '+created'
+	});
+
 	return {
-		catalogs
+		catalogs,
+		contactUs
 	};
 };

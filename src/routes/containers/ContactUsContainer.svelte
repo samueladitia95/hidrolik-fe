@@ -5,29 +5,30 @@
 
 	import ContactUsModal from '$lib/components/ContactUsModal.svelte';
 
+	import { page } from '$app/stores';
+	import type { PageData } from '../$types';
+
+	let data = $page.data as PageData;
 	let showModal: boolean = false;
 
 	const contacts = [
 		{
 			logo: emailLogo,
 			type: 'Email',
-			description:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in ero.',
-			info: 'hello@relume.io'
+			info: data.contactUs.company_email,
+			description: data.contactUs.company_email_description
 		},
 		{
 			logo: phoneLogo,
 			type: 'Phone',
-			description:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in ero.',
-			info: '+1 (555) 000-0000'
+			info: data.contactUs.company_phone_number,
+			description: data.contactUs.company_email_description
 		},
 		{
 			logo: officeLogo,
 			type: 'Office',
-			description:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in ero.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in ero.',
-			info: '123 Sample St, Sydney NSW 2000 AU'
+			info: data.contactUs.office_address,
+			description: data.contactUs.office_address_description
 		}
 	];
 </script>
