@@ -231,7 +231,7 @@
 										class="w-full object-cover rounded-sm"
 									/>
 									<div>
-										<div class="text-lg/relaxed font-semibold text-secondary underline">
+										<div class="text-lg/relaxed font-semibold hover:text-secondary hover:underline">
 											{product.name}
 										</div>
 										<div class="text-sm/relaxed">{product.description}</div>
