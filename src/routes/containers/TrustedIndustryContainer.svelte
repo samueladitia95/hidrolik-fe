@@ -23,7 +23,7 @@
 		rootMargin: '-100px'
 	}}
 	on:inview_change={handleChange}
-	class="bg-white py-20"
+	class="bg-white py-20 min-h-40"
 >
 	<div class="container flex flex-col gap-6">
 		{#if isShow}
