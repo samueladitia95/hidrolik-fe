@@ -28,9 +28,9 @@
 				<div class="text-3xl/relaxed md:!text-4xl/relaxed font-bold">Featured Categories</div>
 				<div class="leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
 			</div>
-			<button
+			<a
 				class="px-6 py-3 border border-solid border-black rounded-full hover:bg-gray-500 hover:bg-opacity-10"
-				>View All Products</button
+				href="/products">View All Products</a
 			>
 		</div>
 
