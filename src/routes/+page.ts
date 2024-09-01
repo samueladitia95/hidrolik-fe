@@ -16,11 +16,6 @@ export const load: PageLoad = async () => {
 		order: '+created'
 	});
 
-	const featuredCategories = await pb.collection('parent_categories').getFullList({
-		filter: 'is_featured=true',
-		order: '+created'
-	});
-
 	const testimonials = await pb.collection('Testimonials').getFullList({
 		filter: 'is_active=true',
 		order: '-created'
@@ -40,7 +35,6 @@ export const load: PageLoad = async () => {
 		carausels,
 		trustedIndustries,
 		videoLink,
-		featuredCategories,
 		testimonials,
 		faqs,
 		applications

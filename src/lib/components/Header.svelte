@@ -10,7 +10,13 @@
 	let isModalOpen = false;
 	let isTransparent = false;
 
+	type ChildCategory = {
+		label: string;
+		link: string;
+	};
+
 	export let downloadFileUrl: string;
+	export let childCategories: ChildCategory[] = [];
 
 	isTopbarTransparent.subscribe((value) => (isTransparent = value));
 
@@ -29,28 +35,7 @@
 			label: 'Products',
 			isOpen: false,
 			link: '/products',
-			// childMenutItems: [
-			// 	{
-			// 		label: 'Industrial Cable',
-			// 		link: 'https://www.google.com'
-			// 	},
-			// 	{
-			// 		label: 'Hydraulic Cable',
-			// 		link: 'https://www.google.com'
-			// 	},
-			// 	{
-			// 		label: 'Industrial Connector',
-			// 		link: 'https://www.google.com'
-			// 	},
-			// 	{
-			// 		label: 'Hydraulic Connector',
-			// 		link: 'https://www.google.com'
-			// 	},
-			// 	{
-			// 		label: 'Hydraulic Pipe',
-			// 		link: 'https://www.google.com'
-			// 	}
-			// ]
+			childMenutItems: childCategories
 		},
 		{
 			label: 'Contact Us',

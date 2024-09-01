@@ -10,8 +10,15 @@ export const load: LayoutLoad = async () => {
 		order: '+created'
 	});
 
+	const featuredCategories = await pb.collection('parent_categories').getFullList({
+		filter: 'is_featured=true',
+		order: '+created',
+		expand: 'child_categories_via_parent_categories'
+	});
+
 	return {
 		catalogs,
-		contactUs
+		contactUs,
+		featuredCategories
 	};
 };
