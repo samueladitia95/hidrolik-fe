@@ -30,7 +30,7 @@
 					subjects: form.data.subjects,
 					message: form.data.message
 				};
-				await pb.collection('Inquiry_Forms').create(body);
+				await pb.collection('inquiry_forms').create(body);
 				isFinshed = true;
 			}
 		}
