@@ -9,8 +9,10 @@
 	import { isTopbarTransparent } from '$lib/store';
 
 	let data = $page.data as PageData;
-	let banners = data.carausels.map((element) => {
+	let banners = data.carousels.map((element) => {
 		return {
+			title: element.title,
+			subtitle: element.subtitle,
 			image: pb.files.getUrl(element, element.image_url, { thumb: '1920x1080' })
 		};
 	});
@@ -62,28 +64,28 @@
 		{#each banners as banner}
 			<div class="relative min-w-full">
 				<img src={banner.image} alt="banner" class="w-screen h-screen object-cover" />
+
+				<div
+					class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-screen text-white md:!left-0 md:!translate-x-0"
+				>
+					<div class="container">
+						<div class="lg:!max-w-[556px]">
+							<div class="font-bold text-4xl/normal md:!text-5xl/normal">
+								{banner.title}
+							</div>
+							<div class="leading-loose mt-4">
+								{banner.subtitle}
+							</div>
+							<a href="/products">
+								<button class="bg-secondary px-6 py-3 rounded-full mt-6 hover:bg-opacity-85">
+									Browse Our Products
+								</button>
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		{/each}
-	</div>
-	<div
-		class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-screen text-white md:!left-0 md:!translate-x-0"
-	>
-		<div class="container">
-			<div class="lg:!max-w-[556px]">
-				<div class="font-bold text-4xl/normal md:!text-5xl/normal">
-					Building a Stronger Industry by Quality
-				</div>
-				<div class="leading-loose mt-4">
-					Offer top-notch hydraulic hoses tailored to meet various industry needs, known for
-					exceptional quality and competitive pricing.
-				</div>
-				<a href="/products">
-					<button class="bg-secondary px-6 py-3 rounded-full mt-6 hover:bg-opacity-85">
-						Browse Our Products
-					</button>
-				</a>
-			</div>
-		</div>
 	</div>
 	<div class="absolute bottom-10 flex gap-3 z-20 left-1/2 -translate-x-1/2 -translate-y-1/2">
 		{#each { length: itemNumber } as _, i}

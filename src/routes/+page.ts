@@ -2,7 +2,7 @@ import { pb } from '$lib/pocketbase';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async () => {
-	const carausels = await pb.collection('main_image_carousels').getFullList({
+	const carousels = await pb.collection('main_image_carousels').getFullList({
 		filter: 'is_active=true',
 		order: '-created'
 	});
@@ -32,7 +32,7 @@ export const load: PageLoad = async () => {
 	});
 
 	return {
-		carausels,
+		carousels,
 		trustedIndustries,
 		videoLink,
 		testimonials: testimonials.items,
