@@ -1,7 +1,12 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import boxLogo from '$lib/icons/box-logo.svg?raw';
 	import { inview } from 'svelte-inview';
+	import type { PageData } from '../$types';
 	import { fade, fly } from 'svelte/transition';
+
+	let data = $page.data as PageData;
+
 	const howToOrders = [
 		{
 			title: 'Browse our products',
@@ -49,7 +54,9 @@
 					class="flex flex-col gap-6 text-left max-w-[500px] xl:!max-w-[1000px] xl:!items-center xl:!w-[1000px]"
 					transition:fade={{ duration: 500, delay: 500 }}
 				>
-					<div class="text-3xl md:!text-5xl/relaxed font-bold">How to order our products</div>
+					<div class="text-3xl md:!text-5xl/relaxed font-bold">
+						{data.groupHeader.fifth_group_header}
+					</div>
 				</div>
 			{/if}
 

@@ -42,9 +42,11 @@
 				transition:fade={{ duration: 500, delay: 500 }}
 			>
 				<div class="flex flex-col gap-2">
-					<div class="text-3xl/relaxed md:!text-4xl/relaxed font-bold">Featured Categories</div>
+					<div class="text-3xl/relaxed md:!text-4xl/relaxed font-bold">
+						{data.groupHeader.fourth_group_header}
+					</div>
 					<div class="leading-relaxed">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						{data.groupHeader.fourth_group_description}
 					</div>
 				</div>
 				<a

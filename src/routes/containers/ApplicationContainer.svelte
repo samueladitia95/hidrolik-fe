@@ -57,7 +57,7 @@
 			<div class="flex xl:!items-center gap-6" transition:fade={{ duration: 500, delay: 500 }}>
 				<div>
 					<div class="text-3xl/relaxed md:!text-5xl/relaxed font-bold">
-						We provides for various industries and applications
+						{data.groupHeader.third_group_header}
 					</div>
 
 					<div class="mt-10 flex flex-col gap-6">

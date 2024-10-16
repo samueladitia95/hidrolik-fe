@@ -45,7 +45,7 @@
 			<div
 				class="text-3xl/relaxed md:!text-5xl/relaxed font-bold text-left md:!text-center w-full flex justify-center"
 			>
-				<div class="max-w-xl">Frequently Asked Questions</div>
+				<div class="max-w-xl">{data.groupHeader.seventh_group_header}</div>
 			</div>
 		{/if}
 		<div class="mt-16 flex flex-col gap-12">

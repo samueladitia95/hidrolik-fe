@@ -27,7 +27,7 @@
 					class="text-3xl/normal md:!text-5xl/normal font-bold lg:!max-w-4xl"
 					transition:fade={{ duration: 500, delay: 500 }}
 				>
-					Your Trusted Partner for Premium Hydraulic Hoses
+					{data.groupHeader.first_group_header}
 				</div>
 			{/if}
 
@@ -36,9 +36,7 @@
 					class="leading-relaxed lg:!text-lg/normal"
 					transition:fade={{ duration: 500, delay: 700 }}
 				>
-					Dedicated to providing top-tier hydraulic hoses across a multitude of industries and
-					applications. Our commitment to excellence ensures that you receive the best quality
-					products at the most competitive prices available.
+					{data.groupHeader.first_group_description}
 				</div>
 			{/if}
 

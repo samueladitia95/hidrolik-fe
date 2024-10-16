@@ -1,7 +1,12 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import boxLogo from '$lib/icons/box-logo.svg?raw';
 	import { inview } from 'svelte-inview';
+	import type { PageData } from '../$types';
 	import { fade, fly } from 'svelte/transition';
+
+	let data = $page.data as PageData;
+
 	const reasons = [
 		{
 			title: 'High-Quality',
@@ -44,10 +49,9 @@
 				class="flex flex-col gap-6 md:!items-center md:!text-center"
 				transition:fade={{ duration: 500, delay: 500 }}
 			>
-				<div class="text-3xl md:!text-5xl font-bold">Why Choose Us</div>
+				<div class="text-3xl md:!text-5xl font-bold">{data.groupHeader.second_group_header}</div>
 				<div class="leading-relaxed md:!max-w-xl">
-					Not only the quality of the products, but we are also committed to providing the best
-					services to you with our company culture.
+					{data.groupHeader.second_group_description}
 				</div>
 			</div>
 		{/if}

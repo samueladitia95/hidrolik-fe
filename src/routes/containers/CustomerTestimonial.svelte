@@ -38,10 +38,10 @@
 				transition:fade={{ duration: 500, delay: 500 }}
 			>
 				<div class="text-3xl/relaxed md:!text-4xl/relaxed xl:!text-5xl/relaxed font-bold">
-					Customers Testimonials
+					{data.groupHeader.sixth_group_header}
 				</div>
 				<div class="leading-relaxed xl:!text-lg">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					{data.groupHeader.sixth_group_description}
 				</div>
 			</div>
 		{/if}
