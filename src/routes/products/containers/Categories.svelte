@@ -21,7 +21,7 @@
 		<div class="text-lg font-semibold py-2">Categories</div>
 		<div class="flex flex-col gap-2">
 			{#each filters as filter}
-				{#if filter.children.length}
+				{#if filter && filter.children && filter.children.length}
 					<div class="py-2">
 						<div class="flex justify-between">
 							<div>{filter.parent_label}</div>
