@@ -32,21 +32,34 @@
 			class="pt-10 pb-20 flex flex-col xl:!flex-row-reverse xl:!items-center gap-10 xl:!gap-40 container"
 			transition:fade={{ duration: 500, delay: 0 }}
 		>
-			<div
-				class="relative h-[400px] md:!h-[600px] lg:!h-[750px] xl:!h-[600px] grid grid-cols-2 gap-4 xl:!max-w-xl"
-			>
-				<img
-					src={pb.files.getUrl(about, about.main_images[1])}
-					alt="main-about"
-					class="rounded-lg object-cover self-end h-60 md:!h-[440px] xl:!h-[350px]"
-				/>
+			{#if about.main_images.length === 2}
+				<!-- If there are two images, display the current grid layout -->
+				<div
+					class="relative h-[400px] md:!h-[600px] lg:!h-[750px] xl:!h-[600px] grid grid-cols-2 gap-4 xl:!max-w-xl"
+				>
+					<img
+						src={pb.files.getUrl(about, about.main_images[1])}
+						alt="main-about"
+						class="rounded-lg object-cover self-end h-60 md:!h-[440px] xl:!h-[350px]"
+					/>
 
-				<img
-					src={pb.files.getUrl(about, about.main_images[0])}
-					alt="main-about"
-					class="rounded-lg object-cover self-start h-60 md:!h-[440px] xl:!h-[350px]"
-				/>
-			</div>
+					<img
+						src={pb.files.getUrl(about, about.main_images[0])}
+						alt="main-about"
+						class="rounded-lg object-cover self-start h-60 md:!h-[440px] xl:!h-[350px]"
+					/>
+				</div>
+			{:else if about.main_images.length === 1}
+				<!-- If there is only one image, make it larger to fill the container -->
+				<div class="relative h-[400px] md:!h-[600px] lg:!h-[750px] xl:!h-[600px] w-full">
+					<img
+						src={pb.files.getUrl(about, about.main_images[0])}
+						alt="main-about"
+						class="rounded-lg object-cover w-full h-full"
+					/>
+				</div>
+			{/if}
+
 			<div class="flex flex-col gap-6">
 				<div class="text-3xl/relaxed md:!text-5xl/relaxed font-bold">
 					{about.title_text}
@@ -71,7 +84,9 @@
 				/>
 
 				<div class="flex flex-col gap-6">
-					<div class="text-3xl/loose md:!text-4xl/loose font-bold">{visionMission.vision_title}</div>
+					<div class="text-3xl/loose md:!text-4xl/loose font-bold">
+						{visionMission.vision_title}
+					</div>
 					<div class="leading-loose max-w-3xl">
 						{visionMission.vision_description}
 					</div>
@@ -134,9 +149,9 @@
 							<div>Email: {location.email}</div>
 						</div>
 						<a href={location.coordinate} target="_blank">
-						<button class="bg-black text-white rounded-full font-semibold px-6 py-3">
-							Get Direction
-						</button>
+							<button class="bg-black text-white rounded-full font-semibold px-6 py-3">
+								Get Direction
+							</button>
 						</a>
 					</div>
 				{/each}
