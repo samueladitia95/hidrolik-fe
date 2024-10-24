@@ -49,10 +49,6 @@
 
 	// ORDERS
 	const orders = [
-		// {
-		// 	label: 'Best Seller',
-		// 	value: 'best-seller'
-		// },
 		{
 			label: 'Newest',
 			value: '+created'
@@ -236,15 +232,17 @@
 					<!-- ORDER BY -->
 					<div class="flex gap-2 items-center">
 						<div class="font-bold">Sort by</div>
-						<select
-							class="p-3 border border-solid border-black rounded outline-none"
-							bind:value={selectedOrder}
-							on:change={handleOrder}
-						>
-							{#each orders as order}
-								<option value={order.value}>{order.label}</option>
-							{/each}
-						</select>
+						<div class="select-wrapper">
+							<select
+								class="p-3 pr-5 border border-solid border-black rounded outline-none"
+								bind:value={selectedOrder}
+								on:change={handleOrder}
+							>
+								{#each orders as order}
+									<option value={order.value}>{order.label}</option>
+								{/each}
+							</select>
+						</div>
 					</div>
 				</div>
 			{/if}
@@ -332,3 +330,23 @@
 		/>
 	</div>
 </div>
+
+<!-- workaround for manually set select arrow down -->
+<style>
+	select {
+		-webkit-appearance: none;
+		appearance: none;
+	}
+	.select-wrapper {
+		position: relative;
+	}
+
+	.select-wrapper::after {
+		content: '^';
+		font-size: 1.3rem;
+		top: 5px;
+		right: 6px;
+		position: absolute;
+		transform: rotate(180deg);
+	}
+</style>
