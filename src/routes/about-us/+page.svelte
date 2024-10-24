@@ -148,7 +148,12 @@
 							<div>Phone: {location.phone}</div>
 							<div>Email: {location.email}</div>
 						</div>
-						<a href={location.coordinate} target="_blank">
+						<a
+							href={location.coordinate && location.coordinate != ''
+								? location.coordinate
+								: 'javascript:void(0);'}
+							target={location.coordinate && location.coordinate != '' ? '_blank' : '_self'}
+						>
 							<button class="bg-black text-white rounded-full font-semibold px-6 py-3">
 								Get Direction
 							</button>
