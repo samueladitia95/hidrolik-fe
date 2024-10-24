@@ -18,19 +18,28 @@
 			logo: emailLogo,
 			type: 'Email',
 			info: data.contactUs.company_email,
-			description: data.contactUs.company_email_description
+			description: data.contactUs.company_email_description,
+			isEmail: true,
+			isPhone: false,
+			isLocation: false
 		},
 		{
 			logo: phoneLogo,
 			type: 'Phone',
 			info: data.contactUs.company_phone_number,
-			description: data.contactUs.company_phone_number_description
+			description: data.contactUs.company_phone_number_description,
+			isEmail: false,
+			isPhone: true,
+			isLocation: false
 		},
 		{
 			logo: officeLogo,
 			type: 'Office',
 			info: data.contactUs.office_address,
-			description: data.contactUs.office_address_description
+			description: data.contactUs.office_address_description,
+			isEmail: false,
+			isPhone: false,
+			isLocation: true
 		}
 	];
 
@@ -77,7 +86,19 @@
 								{contact.description}
 							</div>
 						</div>
-						<div class="text-sm/relaxed underline md:!text-base/relaxed">{contact.info}</div>
+						{#if contact.isEmail}
+							<div class="text-sm/relaxed underline md:!text-base/relaxed">
+								<a href="mailto:{contact.info}">{contact.info}</a>
+							</div>
+						{:else if contact.isPhone}
+							<div class="text-sm/relaxed underline md:!text-base/relaxed">
+								<a href="tel:{contact.info}">{contact.info}</a>
+							</div>
+						{:else}
+							<div class="text-sm/relaxed underline md:!text-base/relaxed">
+								{contact.info}
+							</div>
+						{/if}
 					</div>
 				{/each}
 			</div>
