@@ -63,7 +63,13 @@
 						class="relative"
 						transition:fly={{ x: -200, duration: 500 + 100 * index, delay: 500 }}
 					>
-						<a href={category.link}>
+						<a
+							href={category.link}
+							on:click={(e) => {
+								e.preventDefault();
+								window.location.href = category.link;
+							}}
+						>
 							<div
 								class="transform max-h-[380px] lg:!max-h-[260px] xl:!max-h-[380px] overflow-hidden rounded-xl"
 							>
