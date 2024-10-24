@@ -1,42 +1,43 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import boxLogo from '$lib/icons/box-logo.svg?raw';
 	import { inview } from 'svelte-inview';
 	import type { PageData } from '../$types';
 	import { fade, fly } from 'svelte/transition';
+	import { pb } from '$lib/pocketbase';
 
 	let data = $page.data as PageData;
 
-	const howToOrders = [
-		{
-			title: 'Browse our products',
-			subTitle:
-				'Visit our website or contact our sales team to explore our extensive range of hydraulic hoses tailored for various industries and applications.',
-			isChatButton: false
-		},
-		{
-			title: 'Chat our sales team',
-			subTitle:
-				'Visit our website or contact our sales team to explore our extensive range of hydraulic hoses tailored for various industries and applications.',
-			isChatButton: true
-		},
-		{
-			title: 'Order Processing',
-			subTitle:
-				'Visit our website or contact our sales team to explore our extensive range of hydraulic hoses tailored for various industries and applications.',
-			isChatButton: false
-		},
-		{
-			title: 'Shipment & Delivery',
-			subTitle:
-				'Visit our website or contact our sales team to explore our extensive range of hydraulic hoses tailored for various industries and applications.',
-			isChatButton: false
-		}
-	];
+	let howToOrders = data.howToOrder.map((e) => {
+		return {
+			icon: pb.files.getUrl(e, e.icon),
+			label: e.label,
+			description: e.description,
+			buttonUrl: e.button_url,
+			buttonDownloadUrl: e.button_download_url,
+			buttonText: e.button_text,
+			isButtonActive: e.is_button_active,
+			isDownloadButton: e.is_download_button,
+			order: e.order
+		};
+	});
 
 	let isShow: boolean = false;
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
 		if (!isShow && detail.inView) isShow = true;
+	};
+
+	const toDataURL = async (url: string) => {
+		const blob = await fetch(url).then((res) => res.blob());
+		return URL.createObjectURL(blob);
+	};
+
+	const downloadCatalog = async (fileUrl: string) => {
+		const a = document.createElement('a');
+		a.href = await toDataURL(fileUrl);
+		a.download = `catalog-hammerspire.pdf`;
+		document.body.appendChild(a);
+		a.click();
+		document.body.removeChild(a);
 	};
 </script>
 
@@ -67,14 +68,27 @@
 							class="flex flex-col gap-6 items-start"
 							transition:fly={{ x: -200, duration: 500 + 100 * index, delay: 500 }}
 						>
-							<div class="w-12 h-12">{@html boxLogo}</div>
-							<div class="text-2xl font-bold">{index + 1}. {order.title}</div>
-							<div class="text-sm/loose">{order.subTitle}</div>
-							{#if order.isChatButton}
-								<button
-									class="px-6 py-3 rounded-full bg-black text-white font-semibold hover:bg-opacity-75"
-									>Chat Via WhatsApp</button
-								>
+							<div class="w-12 h-12"><img src={order.icon} alt="icon" /></div>
+							<div class="text-2xl font-bold">{index + 1}. {order.label}</div>
+							<div class="text-sm/loose">{order.description}</div>
+							{#if order.isButtonActive}
+								{#if order.isDownloadButton}
+									<button
+										on:click={() =>
+											downloadCatalog(
+												pb.getFileUrl(order.buttonDownloadUrl, order.buttonDownloadUrl)
+											)}
+										class="px-6 py-3 rounded-full bg-black text-white font-semibold hover:bg-opacity-75"
+										>{order.buttonText}</button
+									>
+								{:else}
+									<a href={order.buttonUrl} target="_blank">
+										<button
+											class="px-6 py-3 rounded-full bg-black text-white font-semibold hover:bg-opacity-75"
+											>{order.buttonText}</button
+										>
+									</a>
+								{/if}
 							{/if}
 						</div>
 					{/if}

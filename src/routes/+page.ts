@@ -26,6 +26,11 @@ export const load: PageLoad = async () => {
 		sort: '-created'
 	});
 
+	const howToOrder = await pb.collection('how_to_order').getFullList({
+		filter: 'is_active=true',
+		sort: 'order'
+	});
+
 	const testimonials = await pb.collection('testimonials').getList(1, 6, {
 		filter: 'is_active=true',
 		order: '-created'
@@ -46,6 +51,7 @@ export const load: PageLoad = async () => {
 		chooseUs,
 		faqs,
 		groupHeader: groupHeaders.items[0],
+		howToOrder,
 		testimonials: testimonials.items,
 		trustedIndustries,
 		videoLink
