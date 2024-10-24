@@ -11,11 +11,6 @@
 			isOpen: false,
 			link: '/about-us'
 		},
-		// {
-		// 	label: 'Service',
-		// 	isOpen: false,
-		// 	link: 'https://www.google.com'
-		// },
 		{
 			label: 'Products',
 			isOpen: false,
@@ -68,7 +63,14 @@
 									>{navbarItem.label}</button
 								>
 							{:else}
-								<a href={navbarItem.link} class="text-sm font-semibold">{navbarItem.label}</a>
+								<a
+									href={navbarItem.link}
+									on:click={(e) => {
+										e.preventDefault();
+										window.location.href = navbarItem.link;
+									}}
+									class="text-sm font-semibold">{navbarItem.label}</a
+								>
 							{/if}
 						{/each}
 					</div>

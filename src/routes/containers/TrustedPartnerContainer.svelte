@@ -41,10 +41,16 @@
 			{/if}
 
 			{#if isShow}
-				<button
-					class="px-6 py-3 rounded-full bg-black text-white font-semibold hover:bg-opacity-75"
-					transition:fade={{ duration: 500, delay: 900 }}>Learn More</button
-				>
+				<a href="/about-us">
+					<button
+						on:click={(e) => {
+							e.preventDefault();
+							window.location.href = 'about-us';
+						}}
+						class="px-6 py-3 rounded-full bg-black text-white font-semibold hover:bg-opacity-75"
+						transition:fade={{ duration: 500, delay: 900 }}>Learn More</button
+					>
+				</a>
 			{/if}
 		</div>
 
