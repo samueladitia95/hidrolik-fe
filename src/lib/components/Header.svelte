@@ -26,11 +26,6 @@
 			isOpen: false,
 			link: '/about-us'
 		},
-		// {
-		// 	label: 'Service',
-		// 	isOpen: false,
-		// 	link: 'https://www.google.com'
-		// },
 		{
 			label: 'Products',
 			isOpen: false,
