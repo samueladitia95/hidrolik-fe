@@ -12,6 +12,11 @@ export const load: PageLoad = async () => {
 		order: '-created'
 	});
 
+	const chooseUs = await pb.collection('choose_us').getFullList({
+		filter: 'is_active=true',
+		sort: 'order'
+	});
+
 	const faqs = await pb.collection('faqs').getFullList({
 		filter: 'is_active=true',
 		order: '-created'
@@ -38,6 +43,7 @@ export const load: PageLoad = async () => {
 	return {
 		applications,
 		carousels,
+		chooseUs,
 		faqs,
 		groupHeader: groupHeaders.items[0],
 		testimonials: testimonials.items,

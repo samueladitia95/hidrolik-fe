@@ -4,31 +4,17 @@
 	import { inview } from 'svelte-inview';
 	import type { PageData } from '../$types';
 	import { fade, fly } from 'svelte/transition';
+	import { pb } from '$lib/pocketbase';
 
 	let data = $page.data as PageData;
 
-	const reasons = [
-		{
-			title: 'High-Quality',
-			subTitle:
-				'Our hydraulic hoses are built to withstand the toughest conditions, ensuring long-lasting reliability.'
-		},
-		{
-			title: 'Trusted & Reliable',
-			subTitle:
-				'Committed to building and maintaining long-term relationships through transparency and integrity.'
-		},
-		{
-			title: 'Durability',
-			subTitle:
-				'Our hydraulic hoses are built to withstand the toughest conditions, ensuring long-lasting reliability.'
-		},
-		{
-			title: 'Flexibility',
-			subTitle:
-				'Designed to provide versatile solutions, ensuring that we can meet the diverse needs of our customers with flexibility and efficiency.'
-		}
-	];
+	let chooseUs = data.chooseUs.map((e) => {
+		return {
+			icon: pb.files.getUrl(e, e.icon),
+			label: e.label,
+			description: e.description
+		};
+	});
 
 	let isShow: boolean = false;
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
@@ -57,15 +43,17 @@
 		{/if}
 
 		<div class="mt-20 grid grid-cols-1 md:!grid-cols-2 lg:!grid-cols-4 gap-12 md:!gap-24">
-			{#each reasons as reason, index}
+			{#each chooseUs as choose, index}
 				{#if isShow}
 					<div
 						class="flex flex-col gap-6 md:!text-center md:!items-center"
 						transition:fly={{ x: 200, duration: 500 + 100 * index, delay: 500 }}
 					>
-						<div class="w-12 h-12">{@html boxLogo}</div>
-						<div class="text-2xl font-bold">{reason.title}</div>
-						<div class="text-sm/loose">{reason.subTitle}</div>
+						<div class="w-12 h-12">
+							<img src={choose.icon} alt="icon" />
+						</div>
+						<div class="text-2xl font-bold">{choose.label}</div>
+						<div class="text-sm/loose">{choose.description}</div>
 					</div>
 				{/if}
 			{/each}
