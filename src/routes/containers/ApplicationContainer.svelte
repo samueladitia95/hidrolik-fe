@@ -17,24 +17,20 @@
 		};
 	});
 
-	const itemNumber: number = 4;
+	const itemNumber: number = applications.length; // Adjust to actual length
 	let viewIndex: number = 0;
 	let carauselEl: Element;
 	let carauselDesktopEl: Element;
 
-	function scrollIntoView(action: 'plus' | 'minus') {
+	function scrollToIndex(index: number) {
 		const maxWidthCarausel = carauselEl.scrollWidth;
 		const maxWidthDesktopCarausel = carauselDesktopEl.scrollWidth;
 
-		if (action === 'plus' && viewIndex < itemNumber - 1) {
-			viewIndex = viewIndex + 1;
-		} else if (action === 'minus' && viewIndex > 0) {
-			viewIndex = viewIndex - 1;
-		}
+		viewIndex = index;
 
-		carauselEl.scrollTo({ left: (maxWidthCarausel / 4) * viewIndex, behavior: 'smooth' });
+		carauselEl.scrollTo({ left: (maxWidthCarausel / itemNumber) * viewIndex, behavior: 'smooth' });
 		carauselDesktopEl.scrollTo({
-			left: (maxWidthDesktopCarausel / 4) * viewIndex,
+			left: (maxWidthDesktopCarausel / itemNumber) * viewIndex,
 			behavior: 'smooth'
 		});
 	}
@@ -47,9 +43,7 @@
 
 <div
 	class="bg-white text-black min-h-screen xl:!flex xl:!flex-col xl:!justify-center"
-	use:inview={{
-		rootMargin: '-100px'
-	}}
+	use:inview={{ rootMargin: '-100px' }}
 	on:inview_change={handleChange}
 >
 	<div class="container py-28 min-h-screen">
@@ -78,11 +72,17 @@
 							{#each applications as application, index}
 								<div
 									class={clsx(
-										'p-4 flex flex-col gap-4 rounded-r-lg ',
+										'p-4 flex flex-col gap-4 rounded-r-lg cursor-pointer',
 										index === viewIndex
 											? 'bg-secondary border-l-3 border-solid border-secondary bg-opacity-20'
 											: ''
 									)}
+									role="button"
+									tabindex="0"
+									on:click={() => scrollToIndex(index)}
+									on:keydown={(e) => {
+										if (e.key === 'Enter' || e.key === ' ') scrollToIndex(index);
+									}}
 								>
 									<div class="text-2xl/relaxed font-bold">{application.title}</div>
 									<div
@@ -111,29 +111,6 @@
 						/>
 					{/each}
 				</div>
-			</div>
-		{/if}
-
-		{#if isShow}
-			<div class="flex gap-2 xl:!justify-end mt-6" transition:fade={{ duration: 500, delay: 500 }}>
-				<button
-					on:click|preventDefault={() => scrollIntoView('minus')}
-					class="p-3 border border-solid border-black rounded-full disabled:opacity-50 hover:opacity-75"
-					disabled={viewIndex <= 0}
-				>
-					<div class="h-6 w-6 rotate-180">
-						{@html arrowLogo}
-					</div>
-				</button>
-				<button
-					on:click|preventDefault={() => scrollIntoView('plus')}
-					class="p-3 border border-solid border-black rounded-full disabled:opacity-50 hover:opacity-75"
-					disabled={viewIndex >= itemNumber - 1}
-				>
-					<div class="h-6 w-6">
-						{@html arrowLogo}
-					</div></button
-				>
 			</div>
 		{/if}
 	</div>
