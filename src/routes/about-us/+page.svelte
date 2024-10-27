@@ -14,9 +14,24 @@
 	$: visionMission = data.visionMission;
 
 	let isShow: boolean = false;
+	let latitude: number = 0.0;
+	let longitude: number = 0.0;
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
 		if (!isShow && detail.inView) isShow = true;
 	};
+
+	if (data.locations && data.locations.length > 0) {
+		for (const location of data.locations) {
+			if (location && location.is_map_shown && location.latlong && location.latlong !== '') {
+				const latLongSplit: string[] = location.latlong.split(',');
+				if (latLongSplit.length === 2) {
+					latitude = parseFloat(latLongSplit[0]);
+					longitude = parseFloat(latLongSplit[1]);
+				}
+				break;
+			}
+		}
+	}
 </script>
 
 <div
@@ -130,12 +145,12 @@
 				<div class="w-full h-96">
 					<Map
 						options={{
-							center: [51.505, -0.09],
+							center: [latitude, longitude],
 							zoom: 13
 						}}
 					>
 						<TileLayer url={'https://tile.openstreetmap.org/{z}/{x}/{y}.png'} />
-						<Marker latLng={[51.505, -0.09]} />
+						<Marker latLng={[latitude, longitude]} />
 					</Map>
 				</div>
 			{/if}
