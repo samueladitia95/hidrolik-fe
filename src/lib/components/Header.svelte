@@ -73,7 +73,14 @@
 				<!-- List of navbar item -->
 				<div class="hidden lg:!flex lg:!justify-right lg:!gap-8">
 					{#each navbarItems as item}
-						<a href={item.link} class="cursor-pointer hover:underline">
+						<a
+							href={item.link}
+							on:click={(e) => {
+								e.preventDefault();
+								window.location.href = item.link;
+							}}
+							class="cursor-pointer hover:underline"
+						>
 							<div class="font-medium">{item.label}</div>
 						</a>
 					{/each}
